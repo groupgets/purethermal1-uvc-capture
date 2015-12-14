@@ -29,9 +29,10 @@ In fact no code is required to run this. If you need to install gstreamer:
 
 To view a live preview:
 
-    gst-launch-1.0 v4l2src device=/dev/video0 ! videoscale ! video/x-raw,width=640,height=480 ! videoconvert ! ximagesink
+    gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw,format=UYVY \
+    videoscale ! video/x-raw,width=640,height=480 ! videoconvert ! ximagesink
 
-Note that you can change the width and height as desired. As an exercise for the reader,
+Note that you can change the format, width, and height as desired. As an exercise for the reader,
 gstreamer can also be used to record a video and stills.
 
 
