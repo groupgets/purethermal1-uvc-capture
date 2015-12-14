@@ -25,7 +25,7 @@ PKG_CHECK_MODULES([libv4lconvert], [libv4lconvert >= 0.0.0])
 AC_HEADER_STDC
 AC_CHECK_HEADERS([stdint.h stdlib.h string.h])
 
-AC_OUTPUT(Makefile linux/Makefile python/Makefile)
+AC_OUTPUT(Makefile src/Makefile)
 
 echo "
 Configuration for $PACKAGE $VERSION:
