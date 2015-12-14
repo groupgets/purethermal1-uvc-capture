@@ -4,7 +4,6 @@ AC_PREREQ(2.61)
 AC_INIT(pure-thermal-examples, 1.0, labs@groupgets.com)
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 
-AC_CONFIG_SRCDIR([linux/])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR([m4])
@@ -25,7 +24,7 @@ PKG_CHECK_MODULES([libv4lconvert], [libv4lconvert >= 0.0.0])
 AC_HEADER_STDC
 AC_CHECK_HEADERS([stdint.h stdlib.h string.h])
 
-AC_OUTPUT(Makefile src/Makefile)
+AC_OUTPUT(Makefile grab/Makefile)
 
 echo "
 Configuration for $PACKAGE $VERSION:

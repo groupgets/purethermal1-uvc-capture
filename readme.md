@@ -72,7 +72,7 @@ You'll also want a few support libraries for V4L:
 
 Then:
 
-    cd linux
+    cd v4l2
     ./autogen.sh
     ./configure
     make
@@ -81,5 +81,5 @@ Then:
 
 Shows how to grab frames from video stream, saves 20 of them to disk in ppm format
 
-    ./pt1-v4l2-grab
+    grab/pt1-v4l2-grab
 
