@@ -6,7 +6,15 @@ using standardard tools and libraries. If you want to prototype quickly, your ap
 processing power, or you simply don't want to hack on the firmware, check out these examples to get started.
 
 
-## Linux + gstreamer
+## *NOTE* Linux (< 4.0) + V4L (and OpenCV) ##
+
+Linux Kernel versions less than 4.0 don't match the UVC format `UVC_GUID_FORMAT_BGR3` with `V4L2_PIX_FMT_BGR24`.
+Applications that use libv4l and depend on the BGR24 format (such as the `VideoCapture` module of OpenCV) will not
+be able to use this format. Instead, they will use software scaling to convert RGB565 into RGB24/BRG24, at a
+loss in color resolution and with expense to CPU.
+
+
+## gstreamer (Linux)
 
 No code is required to run this. If you need to install gstreamer:
 
@@ -21,7 +29,7 @@ Note that you can change the format, width, and height as desired. As an exercis
 gstreamer can also be used to record a video and stills.
 
 
-## Linux + guvcview
+## guvcview (Linux)
 
 guvcview is a simple USB webcam viewer for linux, and is a great way to test the different format and
 control capabilities of the PureThermal 1.
@@ -33,28 +41,24 @@ Then just run:
     guvcview
 
 
-## NOTE: Linux (< 4.0) + V4L (and OpenCV)
-
-Linux Kernel versions less than 4.0 don't match the UVC format `UVC_GUID_FORMAT_BGR3` with `V4L2_PIX_FMT_BGR24`.
-Applications that use libv4l and depend on the BGR24 format (such as the `VideoCapture` module of OpenCV) will not
-be able to use this format. Instead, they will use software scaling to convert RGB565 into RGB24/BRG24, at a
-loss in color resolution and with expense to CPU.
-
-
-## Python
+## Python (OS X, Windows, Linux)
 
 ### opencv-capture.py
 
 Basic video capture from the Pure Thermal 1 with the `cv2.VideoCapture` module.
 
-See note below for Linux + V4L + OpenCV compatibility.
+See note above for Linux + V4L + OpenCV compatibility.
 
 
-## Linux + V4L2
+## C + V4L2 (Linux)
 
 If you don't already have them, install development tools. For Ubuntu, that looks like this:
 
     sudo apt-get install autotools-dev autoconf build-essential
+
+You'll also want a few support libraries for V4L:
+
+    sudo apt-get install libv4l-dev v4l-utils
 
 Then:
 
