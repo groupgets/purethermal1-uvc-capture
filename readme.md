@@ -43,9 +43,19 @@ Then just run:
 
 ## Python (OS X, Windows, Linux)
 
+    cd python
+
 ### opencv-capture.py
 
 Basic video capture from the Pure Thermal 1 with the `cv2.VideoCapture` module.
+
+Install `python-opencv` if you do not have it already:
+
+    sudo apt-get install python-opencv
+
+Run the example:
+
+    ./opencv-capture.py
 
 See note above for Linux + V4L + OpenCV compatibility.
 
@@ -71,4 +81,5 @@ Then:
 
 Shows how to grab frames from video stream, saves 20 of them to disk in ppm format
 
+    ./pt1-v4l2-grab
 
