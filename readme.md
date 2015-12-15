@@ -22,11 +22,23 @@ No code is required to run this. If you need to install gstreamer:
 
 To view a live preview:
 
-    gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw,format=UYVY \
-    videoscale ! video/x-raw,width=640,height=480 ! videoconvert ! ximagesink
+    gst-launch-1.0 v4l2src device=/dev/video0 ! xvimagesink
 
-Note that you can change the format, width, and height as desired. As an exercise for the reader,
-gstreamer can also be used to record a video and stills.
+If you wish to use fixed scaling, you can use the `videoscale` element and leverage the
+lighter-weight `ximagesink`:
+
+    gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw,format=UYVY \
+    ! videoscale ! video/x-raw,width=640,height=480 ! videoconvert ! ximagesink
+
+The PureThermal1 can natively capture with the following raw types (and a few more):
+
+    video/x-raw,format=BGR    *Note that libv4l2 will emulate this type on Linux < 4.0
+    video/x-raw,format=RGB16
+    video/x-raw,format=GRAY8
+    video/x-raw,format=UYVY
+
+Gstreamer is very powerful and can be used to record video and stills, and even stream to remote
+network locations!
 
 
 ## guvcview (Linux)
