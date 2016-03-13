@@ -53,6 +53,15 @@ Then just run:
     guvcview
 
 
+## AVFoundation (OS X)
+
+### PT1Recorder
+
+Video preview and capture example leveraging AVFoundation on OS X.
+
+Build this example using XCode on OS X, `PT1Recorder.xcodeproj`
+
+
 ## Python (OS X, Windows, Linux)
 
     cd python
