@@ -1,0 +1,4924 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config version="1.0"
+	xmlns="http://groupgets.com"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://groupgets.com uvcconfig.xsd"
+>
+
+	<meta>
+		<version>1.0</version>
+		<author>GetLab</author>
+		<contact>contact@groupgets.com</contact>
+		<revision>1</revision>
+		<copyright>Copyright (c) GroupGets 2016 </copyright>
+		<history>
+		  PureThermal 1 FLIR Lepton CCI XU control interface
+		</history>
+	</meta>
+
+	<constants>
+
+		<constant type="guid">
+			<id>UVC_GUID_LEP_AGC_ID_CONTROL</id>
+			<value>2d317470-656c-2d70-6167-632d30303030</value>
+		</constant>
+
+		<constant type="guid">
+			<id>UVC_GUID_LEP_OEM_ID_CONTROL</id>
+			<value>2d317470-656c-2d70-6f65-6d2d30303030</value>
+		</constant>
+
+		<constant type="guid">
+			<id>UVC_GUID_LEP_RAD_ID_CONTROL</id>
+			<value>2d317470-656c-2d70-7261-642d30303030</value>
+		</constant>
+
+		<constant type="guid">
+			<id>UVC_GUID_LEP_SYS_ID_CONTROL</id>
+			<value>2d317470-656c-2d70-7379-732d30303030</value>
+		</constant>
+
+		<constant type="guid">
+			<id>UVC_GUID_LEP_VID_ID_CONTROL</id>
+			<value>2d317470-656c-2d70-7669-642d30303030</value>
+		</constant>
+
+
+		<constant type="integer">
+			<id>XU_LEP_CID_AGC_ENABLE_STATE</id>
+			<value>1</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_AGC_ENABLE_STATE</id>
+			<value>0x08000001</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_AGC_POLICY</id>
+			<value>2</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_AGC_POLICY</id>
+			<value>0x08000002</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_AGC_ROI</id>
+			<value>3</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_AGC_ROI</id>
+			<value>0x08000003</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_AGC_STATISTICS</id>
+			<value>4</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_AGC_STATISTICS</id>
+			<value>0x08000004</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_AGC_HISTOGRAM_CLIP_PERCENT</id>
+			<value>5</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_AGC_HISTOGRAM_CLIP_PERCENT</id>
+			<value>0x08000005</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_AGC_HISTOGRAM_TAIL_SIZE</id>
+			<value>6</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_AGC_HISTOGRAM_TAIL_SIZE</id>
+			<value>0x08000006</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_AGC_LINEAR_MAX_GAIN</id>
+			<value>7</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_AGC_LINEAR_MAX_GAIN</id>
+			<value>0x08000007</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_AGC_LINEAR_MIDPOINT</id>
+			<value>8</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_AGC_LINEAR_MIDPOINT</id>
+			<value>0x08000008</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_AGC_LINEAR_DAMPENING_FACTOR</id>
+			<value>9</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_AGC_LINEAR_DAMPENING_FACTOR</id>
+			<value>0x08000009</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_AGC_HEQ_DAMPENING_FACTOR</id>
+			<value>10</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_AGC_HEQ_DAMPENING_FACTOR</id>
+			<value>0x0800000a</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_AGC_HEQ_MAX_GAIN</id>
+			<value>11</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_AGC_HEQ_MAX_GAIN</id>
+			<value>0x0800000b</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_AGC_HEQ_CLIP_LIMIT_HIGH</id>
+			<value>12</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_AGC_HEQ_CLIP_LIMIT_HIGH</id>
+			<value>0x0800000c</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_AGC_HEQ_CLIP_LIMIT_LOW</id>
+			<value>13</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_AGC_HEQ_CLIP_LIMIT_LOW</id>
+			<value>0x0800000d</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_AGC_HEQ_BIN_EXTENSION</id>
+			<value>14</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_AGC_HEQ_BIN_EXTENSION</id>
+			<value>0x0800000e</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_AGC_HEQ_MIDPOINT</id>
+			<value>15</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_AGC_HEQ_MIDPOINT</id>
+			<value>0x0800000f</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_AGC_HEQ_EMPTY_COUNTS</id>
+			<value>16</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_AGC_HEQ_EMPTY_COUNTS</id>
+			<value>0x08000010</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_AGC_HEQ_NORMALIZATION_FACTOR</id>
+			<value>17</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_AGC_HEQ_NORMALIZATION_FACTOR</id>
+			<value>0x08000011</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_AGC_HEQ_SCALE_FACTOR</id>
+			<value>18</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_AGC_HEQ_SCALE_FACTOR</id>
+			<value>0x08000012</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_AGC_CALC_ENABLE_STATE</id>
+			<value>19</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_AGC_CALC_ENABLE_STATE</id>
+			<value>0x08000013</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_POWER_DOWN</id>
+			<value>1</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_POWER_DOWN</id>
+			<value>0x08010001</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_STANDBY</id>
+			<value>2</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_STANDBY</id>
+			<value>0x08010002</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_LOW_POWER_MODE_1</id>
+			<value>3</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_LOW_POWER_MODE_1</id>
+			<value>0x08010003</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_LOW_POWER_MODE_2</id>
+			<value>4</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_LOW_POWER_MODE_2</id>
+			<value>0x08010004</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_BIT_TEST</id>
+			<value>5</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_BIT_TEST</id>
+			<value>0x08010005</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_MASK_REVISION</id>
+			<value>6</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_MASK_REVISION</id>
+			<value>0x08010006</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_FLIR_PART_NUMBER</id>
+			<value>8</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_FLIR_PART_NUMBER</id>
+			<value>0x08010008</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_SOFTWARE_VERSION</id>
+			<value>9</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_SOFTWARE_VERSION</id>
+			<value>0x08010009</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_VIDEO_OUTPUT_ENABLE</id>
+			<value>10</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_VIDEO_OUTPUT_ENABLE</id>
+			<value>0x0801000a</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_VIDEO_OUTPUT_FORMAT</id>
+			<value>11</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_VIDEO_OUTPUT_FORMAT</id>
+			<value>0x0801000b</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_VIDEO_OUTPUT_SOURCE</id>
+			<value>12</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_VIDEO_OUTPUT_SOURCE</id>
+			<value>0x0801000c</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_VIDEO_OUTPUT_CHANNEL</id>
+			<value>13</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_VIDEO_OUTPUT_CHANNEL</id>
+			<value>0x0801000d</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_VIDEO_GAMMA_ENABLE</id>
+			<value>14</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_VIDEO_GAMMA_ENABLE</id>
+			<value>0x0801000e</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_CUST_PART_NUMBER</id>
+			<value>15</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_CUST_PART_NUMBER</id>
+			<value>0x0801000f</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_VIDEO_OUTPUT_CONSTANT</id>
+			<value>16</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_VIDEO_OUTPUT_CONSTANT</id>
+			<value>0x08010010</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_REBOOT</id>
+			<value>17</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_REBOOT</id>
+			<value>0x08010011</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_FFC_NORMALIZATION_TARGET</id>
+			<value>18</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_FFC_NORMALIZATION_TARGET</id>
+			<value>0x08010012</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_STATUS</id>
+			<value>19</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_STATUS</id>
+			<value>0x08010013</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_SCENE_MEAN_VALUE</id>
+			<value>20</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_SCENE_MEAN_VALUE</id>
+			<value>0x08010014</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_POWER_MODE</id>
+			<value>21</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_POWER_MODE</id>
+			<value>0x08010015</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_GPIO_MODE_SELECT</id>
+			<value>22</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_GPIO_MODE_SELECT</id>
+			<value>0x08010016</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_GPIO_VSYNC_PHASE_DELAY</id>
+			<value>23</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_GPIO_VSYNC_PHASE_DELAY</id>
+			<value>0x08010017</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_USER_DEFAULTS</id>
+			<value>24</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_USER_DEFAULTS</id>
+			<value>0x08010018</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_USER_DEFAULTS_RESTORE</id>
+			<value>25</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_USER_DEFAULTS_RESTORE</id>
+			<value>0x08010019</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_SHUTTER_PROFILE_OBJ</id>
+			<value>26</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_SHUTTER_PROFILE_OBJ</id>
+			<value>0x0801001a</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_THERMAL_SHUTDOWN_ENABLE_STATE</id>
+			<value>27</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_THERMAL_SHUTDOWN_ENABLE_STATE</id>
+			<value>0x0801001b</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_BAD_PIXEL_REPLACE_CONTROL</id>
+			<value>28</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_BAD_PIXEL_REPLACE_CONTROL</id>
+			<value>0x0801001c</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_TEMPORAL_FILTER_CONTROL</id>
+			<value>29</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_TEMPORAL_FILTER_CONTROL</id>
+			<value>0x0801001d</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_COLUMN_NOISE_ESTIMATE_CONTROL</id>
+			<value>30</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_COLUMN_NOISE_ESTIMATE_CONTROL</id>
+			<value>0x0801001e</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_OEM_PIXEL_NOISE_ESTIMATE_CONTROL</id>
+			<value>31</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_OEM_PIXEL_NOISE_ESTIMATE_CONTROL</id>
+			<value>0x0801001f</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_RBFO_INTERNAL</id>
+			<value>1</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_RBFO_INTERNAL</id>
+			<value>0x08020001</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_RBFO_EXTERNAL</id>
+			<value>2</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_RBFO_EXTERNAL</id>
+			<value>0x08020002</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_DEBUG_TEMP</id>
+			<value>3</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_DEBUG_TEMP</id>
+			<value>0x08020003</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_DEBUG_FLUX</id>
+			<value>4</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_DEBUG_FLUX</id>
+			<value>0x08020004</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_ENABLE_STATE</id>
+			<value>5</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_ENABLE_STATE</id>
+			<value>0x08020005</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_GLOBAL_OFFSET</id>
+			<value>6</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_GLOBAL_OFFSET</id>
+			<value>0x08020006</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_TFPA_CTS_MODE</id>
+			<value>7</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_TFPA_CTS_MODE</id>
+			<value>0x08020007</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_TFPA_CTS</id>
+			<value>8</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_TFPA_CTS</id>
+			<value>0x08020008</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_TEQ_SHUTTER_LUT</id>
+			<value>9</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_TEQ_SHUTTER_LUT</id>
+			<value>0x08020009</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_TSHUTTER_MODE</id>
+			<value>10</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_TSHUTTER_MODE</id>
+			<value>0x0802000a</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_TSHUTTER</id>
+			<value>11</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_TSHUTTER</id>
+			<value>0x0802000b</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_RUN_FFC</id>
+			<value>12</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_RUN_FFC</id>
+			<value>0x0802000c</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_RUN_STATUS</id>
+			<value>13</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_RUN_STATUS</id>
+			<value>0x0802000d</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_RESPONSIVITY_SHIFT</id>
+			<value>14</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_RESPONSIVITY_SHIFT</id>
+			<value>0x0802000e</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_F_NUMBER</id>
+			<value>15</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_F_NUMBER</id>
+			<value>0x0802000f</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_TAU_LENS</id>
+			<value>16</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_TAU_LENS</id>
+			<value>0x08020010</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_RESPONSIVITY_VALUE_LUT</id>
+			<value>17</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_RESPONSIVITY_VALUE_LUT</id>
+			<value>0x08020011</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_GLOBAL_GAIN</id>
+			<value>18</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_GLOBAL_GAIN</id>
+			<value>0x08020012</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_RADIOMETRY_FILTER</id>
+			<value>19</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_RADIOMETRY_FILTER</id>
+			<value>0x08020013</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_TFPA_LUT</id>
+			<value>20</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_TFPA_LUT</id>
+			<value>0x08020014</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_TAUX_LUT</id>
+			<value>21</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_TAUX_LUT</id>
+			<value>0x08020015</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_TAUX_CTS_MODE</id>
+			<value>22</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_TAUX_CTS_MODE</id>
+			<value>0x08020016</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_TAUX_CTS</id>
+			<value>23</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_TAUX_CTS</id>
+			<value>0x08020017</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_TEQ_SHUTTER_FLUX</id>
+			<value>24</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_TEQ_SHUTTER_FLUX</id>
+			<value>0x08020018</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_MFFC_FLUX</id>
+			<value>25</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_MFFC_FLUX</id>
+			<value>0x08020019</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_FRAME_MEDIAN_VALUE</id>
+			<value>32</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_FRAME_MEDIAN_VALUE</id>
+			<value>0x08020020</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_MLG_LUT</id>
+			<value>35</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_MLG_LUT</id>
+			<value>0x08020023</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_HOUSING_TCP</id>
+			<value>36</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_HOUSING_TCP</id>
+			<value>0x08020024</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_SHUTTER_TCP</id>
+			<value>37</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_SHUTTER_TCP</id>
+			<value>0x08020025</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_LENS_TCP</id>
+			<value>38</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_LENS_TCP</id>
+			<value>0x08020026</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_PREVIOUS_GLOBAL_OFFSET</id>
+			<value>39</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_PREVIOUS_GLOBAL_OFFSET</id>
+			<value>0x08020027</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_PREVIOUS_GLOBAL_GAIN</id>
+			<value>40</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_PREVIOUS_GLOBAL_GAIN</id>
+			<value>0x08020028</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_GLOBAL_GAIN_FFC</id>
+			<value>41</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_GLOBAL_GAIN_FFC</id>
+			<value>0x08020029</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_CNF_SCALE_FACTOR</id>
+			<value>42</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_CNF_SCALE_FACTOR</id>
+			<value>0x0802002a</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_TNF_SCALE_FACTOR</id>
+			<value>43</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_TNF_SCALE_FACTOR</id>
+			<value>0x0802002b</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_SNF_SCALE_FACTOR</id>
+			<value>44</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_SNF_SCALE_FACTOR</id>
+			<value>0x0802002c</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_ARBITRARY_OFFSET</id>
+			<value>47</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_ARBITRARY_OFFSET</id>
+			<value>0x0802002f</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_FLUX_LINEAR_PARAMS</id>
+			<value>48</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_FLUX_LINEAR_PARAMS</id>
+			<value>0x08020030</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_TLINEAR_ENABLE_STATE</id>
+			<value>49</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_TLINEAR_ENABLE_STATE</id>
+			<value>0x08020031</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_TLINEAR_RESOLUTION</id>
+			<value>50</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_TLINEAR_RESOLUTION</id>
+			<value>0x08020032</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_TLINEAR_AUTO_RESOLUTION</id>
+			<value>51</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_TLINEAR_AUTO_RESOLUTION</id>
+			<value>0x08020033</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_SPOTMETER_ROI</id>
+			<value>52</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_SPOTMETER_ROI</id>
+			<value>0x08020034</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_SPOTMETER_VALUE_KELVIN</id>
+			<value>53</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_SPOTMETER_VALUE_KELVIN</id>
+			<value>0x08020035</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_RBFO_INTERNAL_LG</id>
+			<value>54</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_RBFO_INTERNAL_LG</id>
+			<value>0x08020036</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_RBFO_EXTERNAL_LG</id>
+			<value>55</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_RBFO_EXTERNAL_LG</id>
+			<value>0x08020037</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_ARBITRARY_OFFSET_MODE</id>
+			<value>56</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_ARBITRARY_OFFSET_MODE</id>
+			<value>0x08020038</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_ARBITRARY_OFFSET_PARAMS</id>
+			<value>57</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_ARBITRARY_OFFSET_PARAMS</id>
+			<value>0x08020039</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_SYS_PING</id>
+			<value>1</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_PING</id>
+			<value>0x08030001</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_SYS_CAM_STATUS</id>
+			<value>2</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_CAM_STATUS</id>
+			<value>0x08030002</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_SYS_FLIR_SERIAL_NUMBER</id>
+			<value>3</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_FLIR_SERIAL_NUMBER</id>
+			<value>0x08030003</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_SYS_CAM_UPTIME</id>
+			<value>4</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_CAM_UPTIME</id>
+			<value>0x08030004</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_SYS_AUX_TEMPERATURE_KELVIN</id>
+			<value>5</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_AUX_TEMPERATURE_KELVIN</id>
+			<value>0x08030005</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_SYS_FPA_TEMPERATURE_KELVIN</id>
+			<value>6</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_FPA_TEMPERATURE_KELVIN</id>
+			<value>0x08030006</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_SYS_TELEMETRY_ENABLE_STATE</id>
+			<value>7</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_TELEMETRY_ENABLE_STATE</id>
+			<value>0x08030007</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_SYS_TELEMETRY_LOCATION</id>
+			<value>8</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_TELEMETRY_LOCATION</id>
+			<value>0x08030008</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_SYS_EXECTUE_FRAME_AVERAGE</id>
+			<value>9</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_EXECTUE_FRAME_AVERAGE</id>
+			<value>0x08030009</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_SYS_NUM_FRAMES_TO_AVERAGE</id>
+			<value>10</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_NUM_FRAMES_TO_AVERAGE</id>
+			<value>0x0803000a</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_SYS_CUST_SERIAL_NUMBER</id>
+			<value>11</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_CUST_SERIAL_NUMBER</id>
+			<value>0x0803000b</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_SYS_SCENE_STATISTICS</id>
+			<value>12</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_SCENE_STATISTICS</id>
+			<value>0x0803000c</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_SYS_SCENE_ROI</id>
+			<value>13</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_SCENE_ROI</id>
+			<value>0x0803000d</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_SYS_THERMAL_SHUTDOWN_COUNT</id>
+			<value>14</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_THERMAL_SHUTDOWN_COUNT</id>
+			<value>0x0803000e</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_SYS_SHUTTER_POSITION</id>
+			<value>15</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_SHUTTER_POSITION</id>
+			<value>0x0803000f</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_SYS_FFC_SHUTTER_MODE_OBJ</id>
+			<value>16</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_FFC_SHUTTER_MODE_OBJ</id>
+			<value>0x08030010</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_FLR_CID_SYS_RUN_FFC</id>
+			<value>17</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_FLR_CID_SYS_RUN_FFC</id>
+			<value>0x08050011</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_SYS_FFC_STATUS</id>
+			<value>18</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_FFC_STATUS</id>
+			<value>0x08030012</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_VID_POLARITY_SELECT</id>
+			<value>1</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_VID_POLARITY_SELECT</id>
+			<value>0x08040001</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_VID_LUT_SELECT</id>
+			<value>2</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_VID_LUT_SELECT</id>
+			<value>0x08040002</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_VID_LUT_TRANSFER</id>
+			<value>3</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_VID_LUT_TRANSFER</id>
+			<value>0x08040003</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_VID_FOCUS_CALC_ENABLE</id>
+			<value>4</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_VID_FOCUS_CALC_ENABLE</id>
+			<value>0x08040004</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_VID_FOCUS_ROI</id>
+			<value>5</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_VID_FOCUS_ROI</id>
+			<value>0x08040005</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_VID_FOCUS_THRESHOLD</id>
+			<value>6</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_VID_FOCUS_THRESHOLD</id>
+			<value>0x08040006</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_VID_FOCUS_METRIC</id>
+			<value>7</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_VID_FOCUS_METRIC</id>
+			<value>0x08040007</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_VID_SBNUC_ENABLE</id>
+			<value>8</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_VID_SBNUC_ENABLE</id>
+			<value>0x08040008</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_VID_GAMMA_SELECT</id>
+			<value>9</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_VID_GAMMA_SELECT</id>
+			<value>0x08040009</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_VID_FREEZE_ENABLE</id>
+			<value>10</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_VID_FREEZE_ENABLE</id>
+			<value>0x0804000a</value>
+		</constant>
+
+	</constants>
+	
+	<devices>
+		<device>
+			<match>
+				<vendor_id>0x1e4e</vendor_id> 
+				<product_id>0x0100</product_id>
+			</match>
+
+			<controls>
+
+				<control id="AGC_ENABLE_STATE">
+					<entity>UVC_GUID_LEP_AGC_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_AGC_ENABLE_STATE</selector>
+					<index>0</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set AGC module register ENABLE_STATE
+					</description>
+				</control>
+
+				<control id="AGC_POLICY">
+					<entity>UVC_GUID_LEP_AGC_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_AGC_POLICY</selector>
+					<index>1</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set AGC module register POLICY
+					</description>
+				</control>
+
+				<control id="AGC_ROI">
+					<entity>UVC_GUID_LEP_AGC_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_AGC_ROI</selector>
+					<index>2</index>
+					<size>8</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set AGC module register ROI
+					</description>
+				</control>
+
+				<control id="AGC_STATISTICS">
+					<entity>UVC_GUID_LEP_AGC_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_AGC_STATISTICS</selector>
+					<index>3</index>
+					<size>8</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set AGC module register STATISTICS
+					</description>
+				</control>
+
+				<control id="AGC_HISTOGRAM_CLIP_PERCENT">
+					<entity>UVC_GUID_LEP_AGC_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_AGC_HISTOGRAM_CLIP_PERCENT</selector>
+					<index>4</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set AGC module register HISTOGRAM_CLIP_PERCENT
+					</description>
+				</control>
+
+				<control id="AGC_HISTOGRAM_TAIL_SIZE">
+					<entity>UVC_GUID_LEP_AGC_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_AGC_HISTOGRAM_TAIL_SIZE</selector>
+					<index>5</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set AGC module register HISTOGRAM_TAIL_SIZE
+					</description>
+				</control>
+
+				<control id="AGC_LINEAR_MAX_GAIN">
+					<entity>UVC_GUID_LEP_AGC_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_AGC_LINEAR_MAX_GAIN</selector>
+					<index>6</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set AGC module register LINEAR_MAX_GAIN
+					</description>
+				</control>
+
+				<control id="AGC_LINEAR_MIDPOINT">
+					<entity>UVC_GUID_LEP_AGC_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_AGC_LINEAR_MIDPOINT</selector>
+					<index>7</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set AGC module register LINEAR_MIDPOINT
+					</description>
+				</control>
+
+				<control id="AGC_LINEAR_DAMPENING_FACTOR">
+					<entity>UVC_GUID_LEP_AGC_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_AGC_LINEAR_DAMPENING_FACTOR</selector>
+					<index>8</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set AGC module register LINEAR_DAMPENING_FACTOR
+					</description>
+				</control>
+
+				<control id="AGC_HEQ_DAMPENING_FACTOR">
+					<entity>UVC_GUID_LEP_AGC_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_AGC_HEQ_DAMPENING_FACTOR</selector>
+					<index>9</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set AGC module register HEQ_DAMPENING_FACTOR
+					</description>
+				</control>
+
+				<control id="AGC_HEQ_MAX_GAIN">
+					<entity>UVC_GUID_LEP_AGC_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_AGC_HEQ_MAX_GAIN</selector>
+					<index>10</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set AGC module register HEQ_MAX_GAIN
+					</description>
+				</control>
+
+				<control id="AGC_HEQ_CLIP_LIMIT_HIGH">
+					<entity>UVC_GUID_LEP_AGC_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_AGC_HEQ_CLIP_LIMIT_HIGH</selector>
+					<index>11</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set AGC module register HEQ_CLIP_LIMIT_HIGH
+					</description>
+				</control>
+
+				<control id="AGC_HEQ_CLIP_LIMIT_LOW">
+					<entity>UVC_GUID_LEP_AGC_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_AGC_HEQ_CLIP_LIMIT_LOW</selector>
+					<index>12</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set AGC module register HEQ_CLIP_LIMIT_LOW
+					</description>
+				</control>
+
+				<control id="AGC_HEQ_BIN_EXTENSION">
+					<entity>UVC_GUID_LEP_AGC_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_AGC_HEQ_BIN_EXTENSION</selector>
+					<index>13</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set AGC module register HEQ_BIN_EXTENSION
+					</description>
+				</control>
+
+				<control id="AGC_HEQ_MIDPOINT">
+					<entity>UVC_GUID_LEP_AGC_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_AGC_HEQ_MIDPOINT</selector>
+					<index>14</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set AGC module register HEQ_MIDPOINT
+					</description>
+				</control>
+
+				<control id="AGC_HEQ_EMPTY_COUNTS">
+					<entity>UVC_GUID_LEP_AGC_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_AGC_HEQ_EMPTY_COUNTS</selector>
+					<index>15</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set AGC module register HEQ_EMPTY_COUNTS
+					</description>
+				</control>
+
+				<control id="AGC_HEQ_NORMALIZATION_FACTOR">
+					<entity>UVC_GUID_LEP_AGC_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_AGC_HEQ_NORMALIZATION_FACTOR</selector>
+					<index>16</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set AGC module register HEQ_NORMALIZATION_FACTOR
+					</description>
+				</control>
+
+				<control id="AGC_HEQ_SCALE_FACTOR">
+					<entity>UVC_GUID_LEP_AGC_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_AGC_HEQ_SCALE_FACTOR</selector>
+					<index>17</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set AGC module register HEQ_SCALE_FACTOR
+					</description>
+				</control>
+
+				<control id="AGC_CALC_ENABLE_STATE">
+					<entity>UVC_GUID_LEP_AGC_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_AGC_CALC_ENABLE_STATE</selector>
+					<index>18</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set AGC module register CALC_ENABLE_STATE
+					</description>
+				</control>
+
+				<control id="OEM_POWER_DOWN">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_POWER_DOWN</selector>
+					<index>65536</index>
+					<size>1</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set OEM module register POWER_DOWN
+					</description>
+				</control>
+
+				<control id="OEM_STANDBY">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_STANDBY</selector>
+					<index>65537</index>
+					<size>1</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set OEM module register STANDBY
+					</description>
+				</control>
+
+				<control id="OEM_LOW_POWER_MODE_1">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_LOW_POWER_MODE_1</selector>
+					<index>65538</index>
+					<size>1</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set OEM module register LOW_POWER_MODE_1
+					</description>
+				</control>
+
+				<control id="OEM_LOW_POWER_MODE_2">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_LOW_POWER_MODE_2</selector>
+					<index>65539</index>
+					<size>1</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set OEM module register LOW_POWER_MODE_2
+					</description>
+				</control>
+
+				<control id="OEM_BIT_TEST">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_BIT_TEST</selector>
+					<index>65540</index>
+					<size>1</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set OEM module register BIT_TEST
+					</description>
+				</control>
+
+				<control id="OEM_MASK_REVISION">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_MASK_REVISION</selector>
+					<index>65541</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set OEM module register MASK_REVISION
+					</description>
+				</control>
+
+				<control id="OEM_FLIR_PART_NUMBER">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_FLIR_PART_NUMBER</selector>
+					<index>65543</index>
+					<size>32</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set OEM module register FLIR_PART_NUMBER
+					</description>
+				</control>
+
+				<control id="OEM_SOFTWARE_VERSION">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_SOFTWARE_VERSION</selector>
+					<index>65544</index>
+					<size>8</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set OEM module register SOFTWARE_VERSION
+					</description>
+				</control>
+
+				<control id="OEM_VIDEO_OUTPUT_ENABLE">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_VIDEO_OUTPUT_ENABLE</selector>
+					<index>65545</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set OEM module register VIDEO_OUTPUT_ENABLE
+					</description>
+				</control>
+
+				<control id="OEM_VIDEO_OUTPUT_FORMAT">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_VIDEO_OUTPUT_FORMAT</selector>
+					<index>65546</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set OEM module register VIDEO_OUTPUT_FORMAT
+					</description>
+				</control>
+
+				<control id="OEM_VIDEO_OUTPUT_SOURCE">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_VIDEO_OUTPUT_SOURCE</selector>
+					<index>65547</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set OEM module register VIDEO_OUTPUT_SOURCE
+					</description>
+				</control>
+
+				<control id="OEM_VIDEO_OUTPUT_CHANNEL">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_VIDEO_OUTPUT_CHANNEL</selector>
+					<index>65548</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set OEM module register VIDEO_OUTPUT_CHANNEL
+					</description>
+				</control>
+
+				<control id="OEM_VIDEO_GAMMA_ENABLE">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_VIDEO_GAMMA_ENABLE</selector>
+					<index>65549</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set OEM module register VIDEO_GAMMA_ENABLE
+					</description>
+				</control>
+
+				<control id="OEM_CUST_PART_NUMBER">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_CUST_PART_NUMBER</selector>
+					<index>65550</index>
+					<size>32</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set OEM module register CUST_PART_NUMBER
+					</description>
+				</control>
+
+				<control id="OEM_VIDEO_OUTPUT_CONSTANT">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_VIDEO_OUTPUT_CONSTANT</selector>
+					<index>65551</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set OEM module register VIDEO_OUTPUT_CONSTANT
+					</description>
+				</control>
+
+				<control id="OEM_REBOOT">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_REBOOT</selector>
+					<index>65552</index>
+					<size>1</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set OEM module register REBOOT
+					</description>
+				</control>
+
+				<control id="OEM_FFC_NORMALIZATION_TARGET">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_FFC_NORMALIZATION_TARGET</selector>
+					<index>65553</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set OEM module register FFC_NORMALIZATION_TARGET
+					</description>
+				</control>
+
+				<control id="OEM_STATUS">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_STATUS</selector>
+					<index>65554</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set OEM module register STATUS
+					</description>
+				</control>
+
+				<control id="OEM_SCENE_MEAN_VALUE">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_SCENE_MEAN_VALUE</selector>
+					<index>65555</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set OEM module register SCENE_MEAN_VALUE
+					</description>
+				</control>
+
+				<control id="OEM_POWER_MODE">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_POWER_MODE</selector>
+					<index>65556</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set OEM module register POWER_MODE
+					</description>
+				</control>
+
+				<control id="OEM_GPIO_MODE_SELECT">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_GPIO_MODE_SELECT</selector>
+					<index>65557</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set OEM module register GPIO_MODE_SELECT
+					</description>
+				</control>
+
+				<control id="OEM_GPIO_VSYNC_PHASE_DELAY">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_GPIO_VSYNC_PHASE_DELAY</selector>
+					<index>65558</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set OEM module register GPIO_VSYNC_PHASE_DELAY
+					</description>
+				</control>
+
+				<control id="OEM_USER_DEFAULTS">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_USER_DEFAULTS</selector>
+					<index>65559</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set OEM module register USER_DEFAULTS
+					</description>
+				</control>
+
+				<control id="OEM_USER_DEFAULTS_RESTORE">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_USER_DEFAULTS_RESTORE</selector>
+					<index>65560</index>
+					<size>1</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set OEM module register USER_DEFAULTS_RESTORE
+					</description>
+				</control>
+
+				<control id="OEM_SHUTTER_PROFILE_OBJ">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_SHUTTER_PROFILE_OBJ</selector>
+					<index>65561</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set OEM module register SHUTTER_PROFILE_OBJ
+					</description>
+				</control>
+
+				<control id="OEM_THERMAL_SHUTDOWN_ENABLE_STATE">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_THERMAL_SHUTDOWN_ENABLE_STATE</selector>
+					<index>65562</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set OEM module register THERMAL_SHUTDOWN_ENABLE_STATE
+					</description>
+				</control>
+
+				<control id="OEM_BAD_PIXEL_REPLACE_CONTROL">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_BAD_PIXEL_REPLACE_CONTROL</selector>
+					<index>65563</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set OEM module register BAD_PIXEL_REPLACE_CONTROL
+					</description>
+				</control>
+
+				<control id="OEM_TEMPORAL_FILTER_CONTROL">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_TEMPORAL_FILTER_CONTROL</selector>
+					<index>65564</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set OEM module register TEMPORAL_FILTER_CONTROL
+					</description>
+				</control>
+
+				<control id="OEM_COLUMN_NOISE_ESTIMATE_CONTROL">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_COLUMN_NOISE_ESTIMATE_CONTROL</selector>
+					<index>65565</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set OEM module register COLUMN_NOISE_ESTIMATE_CONTROL
+					</description>
+				</control>
+
+				<control id="OEM_PIXEL_NOISE_ESTIMATE_CONTROL">
+					<entity>UVC_GUID_LEP_OEM_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_OEM_PIXEL_NOISE_ESTIMATE_CONTROL</selector>
+					<index>65566</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set OEM module register PIXEL_NOISE_ESTIMATE_CONTROL
+					</description>
+				</control>
+
+				<control id="RAD_RBFO_INTERNAL">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_RBFO_INTERNAL</selector>
+					<index>131072</index>
+					<size>16</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set RAD module register RBFO_INTERNAL
+					</description>
+				</control>
+
+				<control id="RAD_RBFO_EXTERNAL">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_RBFO_EXTERNAL</selector>
+					<index>131073</index>
+					<size>16</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set RAD module register RBFO_EXTERNAL
+					</description>
+				</control>
+
+				<control id="RAD_DEBUG_TEMP">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_DEBUG_TEMP</selector>
+					<index>131074</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register DEBUG_TEMP
+					</description>
+				</control>
+
+				<control id="RAD_DEBUG_FLUX">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_DEBUG_FLUX</selector>
+					<index>131075</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register DEBUG_FLUX
+					</description>
+				</control>
+
+				<control id="RAD_ENABLE_STATE">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_ENABLE_STATE</selector>
+					<index>131076</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register ENABLE_STATE
+					</description>
+				</control>
+
+				<control id="RAD_GLOBAL_OFFSET">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_GLOBAL_OFFSET</selector>
+					<index>131077</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register GLOBAL_OFFSET
+					</description>
+				</control>
+
+				<control id="RAD_TFPA_CTS_MODE">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_TFPA_CTS_MODE</selector>
+					<index>131078</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register TFPA_CTS_MODE
+					</description>
+				</control>
+
+				<control id="RAD_TFPA_CTS">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_TFPA_CTS</selector>
+					<index>131079</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register TFPA_CTS
+					</description>
+				</control>
+
+				<control id="RAD_TEQ_SHUTTER_LUT">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_TEQ_SHUTTER_LUT</selector>
+					<index>131080</index>
+					<size>256</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set RAD module register TEQ_SHUTTER_LUT
+					</description>
+				</control>
+
+				<control id="RAD_TSHUTTER_MODE">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_TSHUTTER_MODE</selector>
+					<index>131081</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register TSHUTTER_MODE
+					</description>
+				</control>
+
+				<control id="RAD_TSHUTTER">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_TSHUTTER</selector>
+					<index>131082</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register TSHUTTER
+					</description>
+				</control>
+
+				<control id="RAD_RUN_FFC">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_RUN_FFC</selector>
+					<index>131083</index>
+					<size>1</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set RAD module register RUN_FFC
+					</description>
+				</control>
+
+				<control id="RAD_RUN_STATUS">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_RUN_STATUS</selector>
+					<index>131084</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register RUN_STATUS
+					</description>
+				</control>
+
+				<control id="RAD_RESPONSIVITY_SHIFT">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_RESPONSIVITY_SHIFT</selector>
+					<index>131085</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register RESPONSIVITY_SHIFT
+					</description>
+				</control>
+
+				<control id="RAD_F_NUMBER">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_F_NUMBER</selector>
+					<index>131086</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register F_NUMBER
+					</description>
+				</control>
+
+				<control id="RAD_TAU_LENS">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_TAU_LENS</selector>
+					<index>131087</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register TAU_LENS
+					</description>
+				</control>
+
+				<control id="RAD_RESPONSIVITY_VALUE_LUT">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_RESPONSIVITY_VALUE_LUT</selector>
+					<index>131088</index>
+					<size>256</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set RAD module register RESPONSIVITY_VALUE_LUT
+					</description>
+				</control>
+
+				<control id="RAD_GLOBAL_GAIN">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_GLOBAL_GAIN</selector>
+					<index>131089</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register GLOBAL_GAIN
+					</description>
+				</control>
+
+				<control id="RAD_RADIOMETRY_FILTER">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_RADIOMETRY_FILTER</selector>
+					<index>131090</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register RADIOMETRY_FILTER
+					</description>
+				</control>
+
+				<control id="RAD_TFPA_LUT">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_TFPA_LUT</selector>
+					<index>131091</index>
+					<size>512</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set RAD module register TFPA_LUT
+					</description>
+				</control>
+
+				<control id="RAD_TAUX_LUT">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_TAUX_LUT</selector>
+					<index>131092</index>
+					<size>512</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set RAD module register TAUX_LUT
+					</description>
+				</control>
+
+				<control id="RAD_TAUX_CTS_MODE">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_TAUX_CTS_MODE</selector>
+					<index>131093</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register TAUX_CTS_MODE
+					</description>
+				</control>
+
+				<control id="RAD_TAUX_CTS">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_TAUX_CTS</selector>
+					<index>131094</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register TAUX_CTS
+					</description>
+				</control>
+
+				<control id="RAD_TEQ_SHUTTER_FLUX">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_TEQ_SHUTTER_FLUX</selector>
+					<index>131095</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register TEQ_SHUTTER_FLUX
+					</description>
+				</control>
+
+				<control id="RAD_MFFC_FLUX">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_MFFC_FLUX</selector>
+					<index>131096</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register MFFC_FLUX
+					</description>
+				</control>
+
+				<control id="RAD_FRAME_MEDIAN_VALUE">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_FRAME_MEDIAN_VALUE</selector>
+					<index>131103</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register FRAME_MEDIAN_VALUE
+					</description>
+				</control>
+
+				<control id="RAD_MLG_LUT">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_MLG_LUT</selector>
+					<index>131106</index>
+					<size>256</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set RAD module register MLG_LUT
+					</description>
+				</control>
+
+				<control id="RAD_HOUSING_TCP">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_HOUSING_TCP</selector>
+					<index>131107</index>
+					<size>8</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register HOUSING_TCP
+					</description>
+				</control>
+
+				<control id="RAD_SHUTTER_TCP">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_SHUTTER_TCP</selector>
+					<index>131108</index>
+					<size>8</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register SHUTTER_TCP
+					</description>
+				</control>
+
+				<control id="RAD_LENS_TCP">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_LENS_TCP</selector>
+					<index>131109</index>
+					<size>8</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register LENS_TCP
+					</description>
+				</control>
+
+				<control id="RAD_PREVIOUS_GLOBAL_OFFSET">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_PREVIOUS_GLOBAL_OFFSET</selector>
+					<index>131110</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register PREVIOUS_GLOBAL_OFFSET
+					</description>
+				</control>
+
+				<control id="RAD_PREVIOUS_GLOBAL_GAIN">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_PREVIOUS_GLOBAL_GAIN</selector>
+					<index>131111</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register PREVIOUS_GLOBAL_GAIN
+					</description>
+				</control>
+
+				<control id="RAD_GLOBAL_GAIN_FFC">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_GLOBAL_GAIN_FFC</selector>
+					<index>131112</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register GLOBAL_GAIN_FFC
+					</description>
+				</control>
+
+				<control id="RAD_CNF_SCALE_FACTOR">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_CNF_SCALE_FACTOR</selector>
+					<index>131113</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register CNF_SCALE_FACTOR
+					</description>
+				</control>
+
+				<control id="RAD_TNF_SCALE_FACTOR">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_TNF_SCALE_FACTOR</selector>
+					<index>131114</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register TNF_SCALE_FACTOR
+					</description>
+				</control>
+
+				<control id="RAD_SNF_SCALE_FACTOR">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_SNF_SCALE_FACTOR</selector>
+					<index>131115</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register SNF_SCALE_FACTOR
+					</description>
+				</control>
+
+				<control id="RAD_ARBITRARY_OFFSET">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_ARBITRARY_OFFSET</selector>
+					<index>131118</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register ARBITRARY_OFFSET
+					</description>
+				</control>
+
+				<control id="RAD_FLUX_LINEAR_PARAMS">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_FLUX_LINEAR_PARAMS</selector>
+					<index>131119</index>
+					<size>16</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set RAD module register FLUX_LINEAR_PARAMS
+					</description>
+				</control>
+
+				<control id="RAD_TLINEAR_ENABLE_STATE">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_TLINEAR_ENABLE_STATE</selector>
+					<index>131120</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register TLINEAR_ENABLE_STATE
+					</description>
+				</control>
+
+				<control id="RAD_TLINEAR_RESOLUTION">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_TLINEAR_RESOLUTION</selector>
+					<index>131121</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register TLINEAR_RESOLUTION
+					</description>
+				</control>
+
+				<control id="RAD_TLINEAR_AUTO_RESOLUTION">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_TLINEAR_AUTO_RESOLUTION</selector>
+					<index>131122</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register TLINEAR_AUTO_RESOLUTION
+					</description>
+				</control>
+
+				<control id="RAD_SPOTMETER_ROI">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_SPOTMETER_ROI</selector>
+					<index>131123</index>
+					<size>8</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register SPOTMETER_ROI
+					</description>
+				</control>
+
+				<control id="RAD_SPOTMETER_VALUE_KELVIN">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_SPOTMETER_VALUE_KELVIN</selector>
+					<index>131124</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register SPOTMETER_VALUE_KELVIN
+					</description>
+				</control>
+
+				<control id="RAD_RBFO_INTERNAL_LG">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_RBFO_INTERNAL_LG</selector>
+					<index>131125</index>
+					<size>16</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set RAD module register RBFO_INTERNAL_LG
+					</description>
+				</control>
+
+				<control id="RAD_RBFO_EXTERNAL_LG">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_RBFO_EXTERNAL_LG</selector>
+					<index>131126</index>
+					<size>16</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set RAD module register RBFO_EXTERNAL_LG
+					</description>
+				</control>
+
+				<control id="RAD_ARBITRARY_OFFSET_MODE">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_ARBITRARY_OFFSET_MODE</selector>
+					<index>131127</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register ARBITRARY_OFFSET_MODE
+					</description>
+				</control>
+
+				<control id="RAD_ARBITRARY_OFFSET_PARAMS">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_ARBITRARY_OFFSET_PARAMS</selector>
+					<index>131128</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register ARBITRARY_OFFSET_PARAMS
+					</description>
+				</control>
+
+				<control id="SYS_PING">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_PING</selector>
+					<index>196608</index>
+					<size>1</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set SYS module register PING
+					</description>
+				</control>
+
+				<control id="SYS_CAM_STATUS">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_CAM_STATUS</selector>
+					<index>196609</index>
+					<size>8</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set SYS module register CAM_STATUS
+					</description>
+				</control>
+
+				<control id="SYS_FLIR_SERIAL_NUMBER">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_FLIR_SERIAL_NUMBER</selector>
+					<index>196610</index>
+					<size>8</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set SYS module register FLIR_SERIAL_NUMBER
+					</description>
+				</control>
+
+				<control id="SYS_CAM_UPTIME">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_CAM_UPTIME</selector>
+					<index>196611</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set SYS module register CAM_UPTIME
+					</description>
+				</control>
+
+				<control id="SYS_AUX_TEMPERATURE_KELVIN">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_AUX_TEMPERATURE_KELVIN</selector>
+					<index>196612</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set SYS module register AUX_TEMPERATURE_KELVIN
+					</description>
+				</control>
+
+				<control id="SYS_FPA_TEMPERATURE_KELVIN">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_FPA_TEMPERATURE_KELVIN</selector>
+					<index>196613</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set SYS module register FPA_TEMPERATURE_KELVIN
+					</description>
+				</control>
+
+				<control id="SYS_TELEMETRY_ENABLE_STATE">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_TELEMETRY_ENABLE_STATE</selector>
+					<index>196614</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set SYS module register TELEMETRY_ENABLE_STATE
+					</description>
+				</control>
+
+				<control id="SYS_TELEMETRY_LOCATION">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_TELEMETRY_LOCATION</selector>
+					<index>196615</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set SYS module register TELEMETRY_LOCATION
+					</description>
+				</control>
+
+				<control id="SYS_EXECTUE_FRAME_AVERAGE">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_EXECTUE_FRAME_AVERAGE</selector>
+					<index>196616</index>
+					<size>1</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set SYS module register EXECTUE_FRAME_AVERAGE
+					</description>
+				</control>
+
+				<control id="SYS_NUM_FRAMES_TO_AVERAGE">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_NUM_FRAMES_TO_AVERAGE</selector>
+					<index>196617</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set SYS module register NUM_FRAMES_TO_AVERAGE
+					</description>
+				</control>
+
+				<control id="SYS_CUST_SERIAL_NUMBER">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_CUST_SERIAL_NUMBER</selector>
+					<index>196618</index>
+					<size>32</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set SYS module register CUST_SERIAL_NUMBER
+					</description>
+				</control>
+
+				<control id="SYS_SCENE_STATISTICS">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_SCENE_STATISTICS</selector>
+					<index>196619</index>
+					<size>8</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set SYS module register SCENE_STATISTICS
+					</description>
+				</control>
+
+				<control id="SYS_SCENE_ROI">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_SCENE_ROI</selector>
+					<index>196620</index>
+					<size>8</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set SYS module register SCENE_ROI
+					</description>
+				</control>
+
+				<control id="SYS_THERMAL_SHUTDOWN_COUNT">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_THERMAL_SHUTDOWN_COUNT</selector>
+					<index>196621</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set SYS module register THERMAL_SHUTDOWN_COUNT
+					</description>
+				</control>
+
+				<control id="SYS_SHUTTER_POSITION">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_SHUTTER_POSITION</selector>
+					<index>196622</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set SYS module register SHUTTER_POSITION
+					</description>
+				</control>
+
+				<control id="SYS_FFC_SHUTTER_MODE_OBJ">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_FFC_SHUTTER_MODE_OBJ</selector>
+					<index>196623</index>
+					<size>32</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set SYS module register FFC_SHUTTER_MODE_OBJ
+					</description>
+				</control>
+
+
+				<control id="SYS_FFC_STATUS">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_FFC_STATUS</selector>
+					<index>196625</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set SYS module register FFC_STATUS
+					</description>
+				</control>
+
+				<control id="VID_POLARITY_SELECT">
+					<entity>UVC_GUID_LEP_VID_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_VID_POLARITY_SELECT</selector>
+					<index>262144</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set VID module register POLARITY_SELECT
+					</description>
+				</control>
+
+				<control id="VID_LUT_SELECT">
+					<entity>UVC_GUID_LEP_VID_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_VID_LUT_SELECT</selector>
+					<index>262145</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set VID module register LUT_SELECT
+					</description>
+				</control>
+
+				<control id="VID_LUT_TRANSFER">
+					<entity>UVC_GUID_LEP_VID_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_VID_LUT_TRANSFER</selector>
+					<index>262146</index>
+					<size>1024</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set VID module register LUT_TRANSFER
+					</description>
+				</control>
+
+				<control id="VID_FOCUS_CALC_ENABLE">
+					<entity>UVC_GUID_LEP_VID_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_VID_FOCUS_CALC_ENABLE</selector>
+					<index>262147</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set VID module register FOCUS_CALC_ENABLE
+					</description>
+				</control>
+
+				<control id="VID_FOCUS_ROI">
+					<entity>UVC_GUID_LEP_VID_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_VID_FOCUS_ROI</selector>
+					<index>262148</index>
+					<size>8</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set VID module register FOCUS_ROI
+					</description>
+				</control>
+
+				<control id="VID_FOCUS_THRESHOLD">
+					<entity>UVC_GUID_LEP_VID_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_VID_FOCUS_THRESHOLD</selector>
+					<index>262149</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set VID module register FOCUS_THRESHOLD
+					</description>
+				</control>
+
+				<control id="VID_FOCUS_METRIC">
+					<entity>UVC_GUID_LEP_VID_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_VID_FOCUS_METRIC</selector>
+					<index>262150</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set VID module register FOCUS_METRIC
+					</description>
+				</control>
+
+				<control id="VID_SBNUC_ENABLE">
+					<entity>UVC_GUID_LEP_VID_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_VID_SBNUC_ENABLE</selector>
+					<index>262151</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set VID module register SBNUC_ENABLE
+					</description>
+				</control>
+
+				<control id="VID_GAMMA_SELECT">
+					<entity>UVC_GUID_LEP_VID_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_VID_GAMMA_SELECT</selector>
+					<index>262152</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set VID module register GAMMA_SELECT
+					</description>
+				</control>
+
+				<control id="VID_FREEZE_ENABLE">
+					<entity>UVC_GUID_LEP_VID_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_VID_FREEZE_ENABLE</selector>
+					<index>262153</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set VID module register FREEZE_ENABLE
+					</description>
+				</control>
+
+			</controls>
+		</device>
+	</devices>
+
+	<!-- V4L2 mappings for the UVC controls defined above -->
+	<mappings>
+
+		<mapping>
+			<name>LEP_CID_AGC_ENABLE_STATE</name>
+			<uvc>
+				<control_ref idref="AGC_ENABLE_STATE"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_AGC_ENABLE_STATE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_AGC_POLICY</name>
+			<uvc>
+				<control_ref idref="AGC_POLICY"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_AGC_POLICY</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_AGC_ROI</name>
+			<uvc>
+				<control_ref idref="AGC_ROI"/>
+				<size>64</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_AGC_ROI</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_AGC_STATISTICS</name>
+			<uvc>
+				<control_ref idref="AGC_STATISTICS"/>
+				<size>64</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_AGC_STATISTICS</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_AGC_HISTOGRAM_CLIP_PERCENT</name>
+			<uvc>
+				<control_ref idref="AGC_HISTOGRAM_CLIP_PERCENT"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_AGC_HISTOGRAM_CLIP_PERCENT</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_AGC_HISTOGRAM_TAIL_SIZE</name>
+			<uvc>
+				<control_ref idref="AGC_HISTOGRAM_TAIL_SIZE"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_AGC_HISTOGRAM_TAIL_SIZE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_AGC_LINEAR_MAX_GAIN</name>
+			<uvc>
+				<control_ref idref="AGC_LINEAR_MAX_GAIN"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_AGC_LINEAR_MAX_GAIN</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_AGC_LINEAR_MIDPOINT</name>
+			<uvc>
+				<control_ref idref="AGC_LINEAR_MIDPOINT"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_AGC_LINEAR_MIDPOINT</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_AGC_LINEAR_DAMPENING_FACTOR</name>
+			<uvc>
+				<control_ref idref="AGC_LINEAR_DAMPENING_FACTOR"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_AGC_LINEAR_DAMPENING_FACTOR</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_AGC_HEQ_DAMPENING_FACTOR</name>
+			<uvc>
+				<control_ref idref="AGC_HEQ_DAMPENING_FACTOR"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_AGC_HEQ_DAMPENING_FACTOR</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_AGC_HEQ_MAX_GAIN</name>
+			<uvc>
+				<control_ref idref="AGC_HEQ_MAX_GAIN"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_AGC_HEQ_MAX_GAIN</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_AGC_HEQ_CLIP_LIMIT_HIGH</name>
+			<uvc>
+				<control_ref idref="AGC_HEQ_CLIP_LIMIT_HIGH"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_AGC_HEQ_CLIP_LIMIT_HIGH</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_AGC_HEQ_CLIP_LIMIT_LOW</name>
+			<uvc>
+				<control_ref idref="AGC_HEQ_CLIP_LIMIT_LOW"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_AGC_HEQ_CLIP_LIMIT_LOW</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_AGC_HEQ_BIN_EXTENSION</name>
+			<uvc>
+				<control_ref idref="AGC_HEQ_BIN_EXTENSION"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_AGC_HEQ_BIN_EXTENSION</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_AGC_HEQ_MIDPOINT</name>
+			<uvc>
+				<control_ref idref="AGC_HEQ_MIDPOINT"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_AGC_HEQ_MIDPOINT</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_AGC_HEQ_EMPTY_COUNTS</name>
+			<uvc>
+				<control_ref idref="AGC_HEQ_EMPTY_COUNTS"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_AGC_HEQ_EMPTY_COUNTS</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_AGC_HEQ_NORMALIZATION_FACTOR</name>
+			<uvc>
+				<control_ref idref="AGC_HEQ_NORMALIZATION_FACTOR"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_AGC_HEQ_NORMALIZATION_FACTOR</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_AGC_HEQ_SCALE_FACTOR</name>
+			<uvc>
+				<control_ref idref="AGC_HEQ_SCALE_FACTOR"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_AGC_HEQ_SCALE_FACTOR</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_AGC_CALC_ENABLE_STATE</name>
+			<uvc>
+				<control_ref idref="AGC_CALC_ENABLE_STATE"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_AGC_CALC_ENABLE_STATE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_POWER_DOWN</name>
+			<uvc>
+				<control_ref idref="OEM_POWER_DOWN"/>
+				<size>1</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_POWER_DOWN</id>
+				<v4l2_type>V4L2_CTRL_TYPE_BUTTON</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_STANDBY</name>
+			<uvc>
+				<control_ref idref="OEM_STANDBY"/>
+				<size>1</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_STANDBY</id>
+				<v4l2_type>V4L2_CTRL_TYPE_BUTTON</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_LOW_POWER_MODE_1</name>
+			<uvc>
+				<control_ref idref="OEM_LOW_POWER_MODE_1"/>
+				<size>1</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_LOW_POWER_MODE_1</id>
+				<v4l2_type>V4L2_CTRL_TYPE_BUTTON</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_LOW_POWER_MODE_2</name>
+			<uvc>
+				<control_ref idref="OEM_LOW_POWER_MODE_2"/>
+				<size>1</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_LOW_POWER_MODE_2</id>
+				<v4l2_type>V4L2_CTRL_TYPE_BUTTON</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_BIT_TEST</name>
+			<uvc>
+				<control_ref idref="OEM_BIT_TEST"/>
+				<size>1</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_BIT_TEST</id>
+				<v4l2_type>V4L2_CTRL_TYPE_BUTTON</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_MASK_REVISION</name>
+			<uvc>
+				<control_ref idref="OEM_MASK_REVISION"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_MASK_REVISION</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_FLIR_PART_NUMBER</name>
+			<uvc>
+				<control_ref idref="OEM_FLIR_PART_NUMBER"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_FLIR_PART_NUMBER</id>
+				<v4l2_type>V4L2_CTRL_TYPE_STRING</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_SOFTWARE_VERSION</name>
+			<uvc>
+				<control_ref idref="OEM_SOFTWARE_VERSION"/>
+				<size>64</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_SOFTWARE_VERSION</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_VIDEO_OUTPUT_ENABLE</name>
+			<uvc>
+				<control_ref idref="OEM_VIDEO_OUTPUT_ENABLE"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_VIDEO_OUTPUT_ENABLE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_VIDEO_OUTPUT_FORMAT</name>
+			<uvc>
+				<control_ref idref="OEM_VIDEO_OUTPUT_FORMAT"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_VIDEO_OUTPUT_FORMAT</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_VIDEO_OUTPUT_SOURCE</name>
+			<uvc>
+				<control_ref idref="OEM_VIDEO_OUTPUT_SOURCE"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_VIDEO_OUTPUT_SOURCE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_VIDEO_OUTPUT_CHANNEL</name>
+			<uvc>
+				<control_ref idref="OEM_VIDEO_OUTPUT_CHANNEL"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_VIDEO_OUTPUT_CHANNEL</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_VIDEO_GAMMA_ENABLE</name>
+			<uvc>
+				<control_ref idref="OEM_VIDEO_GAMMA_ENABLE"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_VIDEO_GAMMA_ENABLE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_CUST_PART_NUMBER</name>
+			<uvc>
+				<control_ref idref="OEM_CUST_PART_NUMBER"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_CUST_PART_NUMBER</id>
+				<v4l2_type>V4L2_CTRL_TYPE_STRING</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_VIDEO_OUTPUT_CONSTANT</name>
+			<uvc>
+				<control_ref idref="OEM_VIDEO_OUTPUT_CONSTANT"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_VIDEO_OUTPUT_CONSTANT</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_REBOOT</name>
+			<uvc>
+				<control_ref idref="OEM_REBOOT"/>
+				<size>1</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_REBOOT</id>
+				<v4l2_type>V4L2_CTRL_TYPE_BUTTON</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_FFC_NORMALIZATION_TARGET</name>
+			<uvc>
+				<control_ref idref="OEM_FFC_NORMALIZATION_TARGET"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_FFC_NORMALIZATION_TARGET</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_STATUS</name>
+			<uvc>
+				<control_ref idref="OEM_STATUS"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_STATUS</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_SCENE_MEAN_VALUE</name>
+			<uvc>
+				<control_ref idref="OEM_SCENE_MEAN_VALUE"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_SCENE_MEAN_VALUE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_POWER_MODE</name>
+			<uvc>
+				<control_ref idref="OEM_POWER_MODE"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_POWER_MODE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_GPIO_MODE_SELECT</name>
+			<uvc>
+				<control_ref idref="OEM_GPIO_MODE_SELECT"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_GPIO_MODE_SELECT</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_GPIO_VSYNC_PHASE_DELAY</name>
+			<uvc>
+				<control_ref idref="OEM_GPIO_VSYNC_PHASE_DELAY"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_GPIO_VSYNC_PHASE_DELAY</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_USER_DEFAULTS</name>
+			<uvc>
+				<control_ref idref="OEM_USER_DEFAULTS"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_USER_DEFAULTS</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_USER_DEFAULTS_RESTORE</name>
+			<uvc>
+				<control_ref idref="OEM_USER_DEFAULTS_RESTORE"/>
+				<size>1</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_USER_DEFAULTS_RESTORE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_BUTTON</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_SHUTTER_PROFILE_OBJ</name>
+			<uvc>
+				<control_ref idref="OEM_SHUTTER_PROFILE_OBJ"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_SHUTTER_PROFILE_OBJ</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_THERMAL_SHUTDOWN_ENABLE_STATE</name>
+			<uvc>
+				<control_ref idref="OEM_THERMAL_SHUTDOWN_ENABLE_STATE"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_THERMAL_SHUTDOWN_ENABLE_STATE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_BAD_PIXEL_REPLACE_CONTROL</name>
+			<uvc>
+				<control_ref idref="OEM_BAD_PIXEL_REPLACE_CONTROL"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_BAD_PIXEL_REPLACE_CONTROL</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_TEMPORAL_FILTER_CONTROL</name>
+			<uvc>
+				<control_ref idref="OEM_TEMPORAL_FILTER_CONTROL"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_TEMPORAL_FILTER_CONTROL</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_COLUMN_NOISE_ESTIMATE_CONTROL</name>
+			<uvc>
+				<control_ref idref="OEM_COLUMN_NOISE_ESTIMATE_CONTROL"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_COLUMN_NOISE_ESTIMATE_CONTROL</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_OEM_PIXEL_NOISE_ESTIMATE_CONTROL</name>
+			<uvc>
+				<control_ref idref="OEM_PIXEL_NOISE_ESTIMATE_CONTROL"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_OEM_PIXEL_NOISE_ESTIMATE_CONTROL</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_RBFO_INTERNAL</name>
+			<uvc>
+				<control_ref idref="RAD_RBFO_INTERNAL"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_RBFO_INTERNAL</id>
+				<v4l2_type>V4L2_CTRL_TYPE_STRING</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_RBFO_EXTERNAL</name>
+			<uvc>
+				<control_ref idref="RAD_RBFO_EXTERNAL"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_RBFO_EXTERNAL</id>
+				<v4l2_type>V4L2_CTRL_TYPE_STRING</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_DEBUG_TEMP</name>
+			<uvc>
+				<control_ref idref="RAD_DEBUG_TEMP"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_DEBUG_TEMP</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_DEBUG_FLUX</name>
+			<uvc>
+				<control_ref idref="RAD_DEBUG_FLUX"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_DEBUG_FLUX</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_ENABLE_STATE</name>
+			<uvc>
+				<control_ref idref="RAD_ENABLE_STATE"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_ENABLE_STATE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_GLOBAL_OFFSET</name>
+			<uvc>
+				<control_ref idref="RAD_GLOBAL_OFFSET"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_GLOBAL_OFFSET</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_TFPA_CTS_MODE</name>
+			<uvc>
+				<control_ref idref="RAD_TFPA_CTS_MODE"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_TFPA_CTS_MODE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_TFPA_CTS</name>
+			<uvc>
+				<control_ref idref="RAD_TFPA_CTS"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_TFPA_CTS</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_TEQ_SHUTTER_LUT</name>
+			<uvc>
+				<control_ref idref="RAD_TEQ_SHUTTER_LUT"/>
+				<size>256</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_TEQ_SHUTTER_LUT</id>
+				<v4l2_type>V4L2_CTRL_TYPE_STRING</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_TSHUTTER_MODE</name>
+			<uvc>
+				<control_ref idref="RAD_TSHUTTER_MODE"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_TSHUTTER_MODE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_TSHUTTER</name>
+			<uvc>
+				<control_ref idref="RAD_TSHUTTER"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_TSHUTTER</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_RUN_FFC</name>
+			<uvc>
+				<control_ref idref="RAD_RUN_FFC"/>
+				<size>1</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_RUN_FFC</id>
+				<v4l2_type>V4L2_CTRL_TYPE_BUTTON</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_RUN_STATUS</name>
+			<uvc>
+				<control_ref idref="RAD_RUN_STATUS"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_RUN_STATUS</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_RESPONSIVITY_SHIFT</name>
+			<uvc>
+				<control_ref idref="RAD_RESPONSIVITY_SHIFT"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_RESPONSIVITY_SHIFT</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_F_NUMBER</name>
+			<uvc>
+				<control_ref idref="RAD_F_NUMBER"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_F_NUMBER</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_TAU_LENS</name>
+			<uvc>
+				<control_ref idref="RAD_TAU_LENS"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_TAU_LENS</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_RESPONSIVITY_VALUE_LUT</name>
+			<uvc>
+				<control_ref idref="RAD_RESPONSIVITY_VALUE_LUT"/>
+				<size>256</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_RESPONSIVITY_VALUE_LUT</id>
+				<v4l2_type>V4L2_CTRL_TYPE_STRING</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_GLOBAL_GAIN</name>
+			<uvc>
+				<control_ref idref="RAD_GLOBAL_GAIN"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_GLOBAL_GAIN</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_RADIOMETRY_FILTER</name>
+			<uvc>
+				<control_ref idref="RAD_RADIOMETRY_FILTER"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_RADIOMETRY_FILTER</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_TFPA_LUT</name>
+			<uvc>
+				<control_ref idref="RAD_TFPA_LUT"/>
+				<size>512</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_TFPA_LUT</id>
+				<v4l2_type>V4L2_CTRL_TYPE_STRING</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_TAUX_LUT</name>
+			<uvc>
+				<control_ref idref="RAD_TAUX_LUT"/>
+				<size>512</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_TAUX_LUT</id>
+				<v4l2_type>V4L2_CTRL_TYPE_STRING</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_TAUX_CTS_MODE</name>
+			<uvc>
+				<control_ref idref="RAD_TAUX_CTS_MODE"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_TAUX_CTS_MODE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_TAUX_CTS</name>
+			<uvc>
+				<control_ref idref="RAD_TAUX_CTS"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_TAUX_CTS</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_TEQ_SHUTTER_FLUX</name>
+			<uvc>
+				<control_ref idref="RAD_TEQ_SHUTTER_FLUX"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_TEQ_SHUTTER_FLUX</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_MFFC_FLUX</name>
+			<uvc>
+				<control_ref idref="RAD_MFFC_FLUX"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_MFFC_FLUX</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_FRAME_MEDIAN_VALUE</name>
+			<uvc>
+				<control_ref idref="RAD_FRAME_MEDIAN_VALUE"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_FRAME_MEDIAN_VALUE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_MLG_LUT</name>
+			<uvc>
+				<control_ref idref="RAD_MLG_LUT"/>
+				<size>256</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_MLG_LUT</id>
+				<v4l2_type>V4L2_CTRL_TYPE_STRING</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_HOUSING_TCP</name>
+			<uvc>
+				<control_ref idref="RAD_HOUSING_TCP"/>
+				<size>64</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_HOUSING_TCP</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_SHUTTER_TCP</name>
+			<uvc>
+				<control_ref idref="RAD_SHUTTER_TCP"/>
+				<size>64</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_SHUTTER_TCP</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_LENS_TCP</name>
+			<uvc>
+				<control_ref idref="RAD_LENS_TCP"/>
+				<size>64</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_LENS_TCP</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_PREVIOUS_GLOBAL_OFFSET</name>
+			<uvc>
+				<control_ref idref="RAD_PREVIOUS_GLOBAL_OFFSET"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_PREVIOUS_GLOBAL_OFFSET</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_PREVIOUS_GLOBAL_GAIN</name>
+			<uvc>
+				<control_ref idref="RAD_PREVIOUS_GLOBAL_GAIN"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_PREVIOUS_GLOBAL_GAIN</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_GLOBAL_GAIN_FFC</name>
+			<uvc>
+				<control_ref idref="RAD_GLOBAL_GAIN_FFC"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_GLOBAL_GAIN_FFC</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_CNF_SCALE_FACTOR</name>
+			<uvc>
+				<control_ref idref="RAD_CNF_SCALE_FACTOR"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_CNF_SCALE_FACTOR</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_TNF_SCALE_FACTOR</name>
+			<uvc>
+				<control_ref idref="RAD_TNF_SCALE_FACTOR"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_TNF_SCALE_FACTOR</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_SNF_SCALE_FACTOR</name>
+			<uvc>
+				<control_ref idref="RAD_SNF_SCALE_FACTOR"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_SNF_SCALE_FACTOR</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_ARBITRARY_OFFSET</name>
+			<uvc>
+				<control_ref idref="RAD_ARBITRARY_OFFSET"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_ARBITRARY_OFFSET</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_FLUX_LINEAR_PARAMS</name>
+			<uvc>
+				<control_ref idref="RAD_FLUX_LINEAR_PARAMS"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_FLUX_LINEAR_PARAMS</id>
+				<v4l2_type>V4L2_CTRL_TYPE_STRING</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_TLINEAR_ENABLE_STATE</name>
+			<uvc>
+				<control_ref idref="RAD_TLINEAR_ENABLE_STATE"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_TLINEAR_ENABLE_STATE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_TLINEAR_RESOLUTION</name>
+			<uvc>
+				<control_ref idref="RAD_TLINEAR_RESOLUTION"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_TLINEAR_RESOLUTION</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_TLINEAR_AUTO_RESOLUTION</name>
+			<uvc>
+				<control_ref idref="RAD_TLINEAR_AUTO_RESOLUTION"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_TLINEAR_AUTO_RESOLUTION</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_SPOTMETER_ROI</name>
+			<uvc>
+				<control_ref idref="RAD_SPOTMETER_ROI"/>
+				<size>64</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_SPOTMETER_ROI</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_SPOTMETER_VALUE_KELVIN</name>
+			<uvc>
+				<control_ref idref="RAD_SPOTMETER_VALUE_KELVIN"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_SPOTMETER_VALUE_KELVIN</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_RBFO_INTERNAL_LG</name>
+			<uvc>
+				<control_ref idref="RAD_RBFO_INTERNAL_LG"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_RBFO_INTERNAL_LG</id>
+				<v4l2_type>V4L2_CTRL_TYPE_STRING</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_RBFO_EXTERNAL_LG</name>
+			<uvc>
+				<control_ref idref="RAD_RBFO_EXTERNAL_LG"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_RBFO_EXTERNAL_LG</id>
+				<v4l2_type>V4L2_CTRL_TYPE_STRING</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_ARBITRARY_OFFSET_MODE</name>
+			<uvc>
+				<control_ref idref="RAD_ARBITRARY_OFFSET_MODE"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_ARBITRARY_OFFSET_MODE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_ARBITRARY_OFFSET_PARAMS</name>
+			<uvc>
+				<control_ref idref="RAD_ARBITRARY_OFFSET_PARAMS"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_ARBITRARY_OFFSET_PARAMS</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_SYS_PING</name>
+			<uvc>
+				<control_ref idref="SYS_PING"/>
+				<size>1</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_PING</id>
+				<v4l2_type>V4L2_CTRL_TYPE_BUTTON</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_SYS_CAM_STATUS</name>
+			<uvc>
+				<control_ref idref="SYS_CAM_STATUS"/>
+				<size>64</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_CAM_STATUS</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_SYS_FLIR_SERIAL_NUMBER</name>
+			<uvc>
+				<control_ref idref="SYS_FLIR_SERIAL_NUMBER"/>
+				<size>64</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_FLIR_SERIAL_NUMBER</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_SYS_CAM_UPTIME</name>
+			<uvc>
+				<control_ref idref="SYS_CAM_UPTIME"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_CAM_UPTIME</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_SYS_AUX_TEMPERATURE_KELVIN</name>
+			<uvc>
+				<control_ref idref="SYS_AUX_TEMPERATURE_KELVIN"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_AUX_TEMPERATURE_KELVIN</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_SYS_FPA_TEMPERATURE_KELVIN</name>
+			<uvc>
+				<control_ref idref="SYS_FPA_TEMPERATURE_KELVIN"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_FPA_TEMPERATURE_KELVIN</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_SYS_TELEMETRY_ENABLE_STATE</name>
+			<uvc>
+				<control_ref idref="SYS_TELEMETRY_ENABLE_STATE"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_TELEMETRY_ENABLE_STATE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_SYS_TELEMETRY_LOCATION</name>
+			<uvc>
+				<control_ref idref="SYS_TELEMETRY_LOCATION"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_TELEMETRY_LOCATION</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_SYS_EXECTUE_FRAME_AVERAGE</name>
+			<uvc>
+				<control_ref idref="SYS_EXECTUE_FRAME_AVERAGE"/>
+				<size>1</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_EXECTUE_FRAME_AVERAGE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_BUTTON</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_SYS_NUM_FRAMES_TO_AVERAGE</name>
+			<uvc>
+				<control_ref idref="SYS_NUM_FRAMES_TO_AVERAGE"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_NUM_FRAMES_TO_AVERAGE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_SYS_CUST_SERIAL_NUMBER</name>
+			<uvc>
+				<control_ref idref="SYS_CUST_SERIAL_NUMBER"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_CUST_SERIAL_NUMBER</id>
+				<v4l2_type>V4L2_CTRL_TYPE_STRING</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_SYS_SCENE_STATISTICS</name>
+			<uvc>
+				<control_ref idref="SYS_SCENE_STATISTICS"/>
+				<size>64</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_SCENE_STATISTICS</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_SYS_SCENE_ROI</name>
+			<uvc>
+				<control_ref idref="SYS_SCENE_ROI"/>
+				<size>64</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_SCENE_ROI</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_SYS_THERMAL_SHUTDOWN_COUNT</name>
+			<uvc>
+				<control_ref idref="SYS_THERMAL_SHUTDOWN_COUNT"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_THERMAL_SHUTDOWN_COUNT</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_SYS_SHUTTER_POSITION</name>
+			<uvc>
+				<control_ref idref="SYS_SHUTTER_POSITION"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_SHUTTER_POSITION</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_SYS_FFC_SHUTTER_MODE_OBJ</name>
+			<uvc>
+				<control_ref idref="SYS_FFC_SHUTTER_MODE_OBJ"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_FFC_SHUTTER_MODE_OBJ</id>
+				<v4l2_type>V4L2_CTRL_TYPE_STRING</v4l2_type>
+			</v4l2>
+		</mapping>
+
+
+		<mapping>
+			<name>LEP_CID_SYS_FFC_STATUS</name>
+			<uvc>
+				<control_ref idref="SYS_FFC_STATUS"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_FFC_STATUS</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_VID_POLARITY_SELECT</name>
+			<uvc>
+				<control_ref idref="VID_POLARITY_SELECT"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_VID_POLARITY_SELECT</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_VID_LUT_SELECT</name>
+			<uvc>
+				<control_ref idref="VID_LUT_SELECT"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_VID_LUT_SELECT</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_VID_LUT_TRANSFER</name>
+			<uvc>
+				<control_ref idref="VID_LUT_TRANSFER"/>
+				<size>1024</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_VID_LUT_TRANSFER</id>
+				<v4l2_type>V4L2_CTRL_TYPE_STRING</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_VID_FOCUS_CALC_ENABLE</name>
+			<uvc>
+				<control_ref idref="VID_FOCUS_CALC_ENABLE"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_VID_FOCUS_CALC_ENABLE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_VID_FOCUS_ROI</name>
+			<uvc>
+				<control_ref idref="VID_FOCUS_ROI"/>
+				<size>64</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_VID_FOCUS_ROI</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_VID_FOCUS_THRESHOLD</name>
+			<uvc>
+				<control_ref idref="VID_FOCUS_THRESHOLD"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_VID_FOCUS_THRESHOLD</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_VID_FOCUS_METRIC</name>
+			<uvc>
+				<control_ref idref="VID_FOCUS_METRIC"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_VID_FOCUS_METRIC</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_VID_SBNUC_ENABLE</name>
+			<uvc>
+				<control_ref idref="VID_SBNUC_ENABLE"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_VID_SBNUC_ENABLE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_VID_GAMMA_SELECT</name>
+			<uvc>
+				<control_ref idref="VID_GAMMA_SELECT"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_VID_GAMMA_SELECT</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_VID_FREEZE_ENABLE</name>
+			<uvc>
+				<control_ref idref="VID_FREEZE_ENABLE"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_VID_FREEZE_ENABLE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+	</mappings>
+</config>
+
