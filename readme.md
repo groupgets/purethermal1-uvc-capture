@@ -104,3 +104,18 @@ Shows how to grab frames from video stream, saves 20 of them to disk in ppm form
 
     grab/pt1-v4l2-grab
 
+
+### uvcdynctrl
+
+This code sets up v4l2 controls for Lepton CCI with UVC extension units with libwebcam/uvcdynctrl.
+
+First install uvcdynctrl:
+
+    sudo apt-get install uvcdynctrl
+
+Now you can load the control definition file:
+
+    cd uvcdynctrl
+    uvcdynctrl -v -d /dev/video0 -i pt1.xml
+
+You can now alter Lepton CCI functions using the standard V4L2 APIs. Guvcview is a quick way to try out some of these controls.
