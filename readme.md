@@ -80,6 +80,49 @@ Run the example:
 
 See note above for Linux + V4L + OpenCV compatibility.
 
+### uvc-deviceinfo.py
+
+This example uses ctypes to hook into `libuvc` to show a cross-platform way of accessing CCI over USB extensions.
+
+You'll need the modified version of `libuvc` from [groupgets/libuvc](https://github.com/groupgets/libuvc).
+
+    git clone https://github.com/groupgets/libuvc
+    cd libuvc
+    mkdir build
+    cd build
+    cmake ..
+    make && sudo make install
+
+If you don't want to install this system-wide, you can copy the shared library to your working directory.
+
+Then run the example:
+
+    ./uvc-deviceinfo.py
+
+The example prints the Lepton's software and hardware version information.
+
+### uvc-radiometry.py
+
+This example uses ctypes to hook into `libuvc` and circumvents the troubles associated with using OS camera
+capture drivers, particularly on Mac OS X, whose standard capture drivers do not support the Y16 data type
+for grabbing raw sensor data.
+
+This example leverages the Radiometric Lepton 2.5. The same approach can of course modified to support other Leptons as well.
+
+You'll need the modified version of `libuvc` from [groupgets/libuvc](https://github.com/groupgets/libuvc).
+
+    git clone https://github.com/groupgets/libuvc
+    cd libuvc
+    mkdir build
+    cd build
+    cmake ..
+    make && sudo make install
+
+If you don't want to install this system-wide, you can copy the shared library to your working directory.
+
+Then run the example:
+
+    ./uvc-radiometry.py
 
 ## C + V4L2 (Linux)
 
