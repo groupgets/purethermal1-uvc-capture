@@ -22,6 +22,7 @@ INPUT_REGISTER_DEFINITIONS = """
 #define LEP_CID_AGC_HEQ_NORMALIZATION_FACTOR    (LEP_AGC_MODULE_BASE + 0x0040 )
 #define LEP_CID_AGC_HEQ_SCALE_FACTOR            (LEP_AGC_MODULE_BASE + 0x0044 )
 #define LEP_CID_AGC_CALC_ENABLE_STATE           (LEP_AGC_MODULE_BASE + 0x0048 )
+#define LEP_CID_AGC_HEQ_LINEAR_PERCENT          (LEP_AGC_MODULE_BASE + 0x004C )
 
 #define LEP_CID_OEM_POWER_DOWN                  (LEP_OEM_MODULE_BASE + 0x4000 )
 #define LEP_CID_OEM_STANDBY                     (LEP_OEM_MODULE_BASE + 0x4004 )
@@ -99,13 +100,15 @@ INPUT_REGISTER_DEFINITIONS = """
 #define LEP_CID_RAD_TLINEAR_RESOLUTION          (LEP_RAD_MODULE_BASE + 0x00C4 )
 #define LEP_CID_RAD_TLINEAR_AUTO_RESOLUTION     (LEP_RAD_MODULE_BASE + 0x00C8 )
 #define LEP_CID_RAD_SPOTMETER_ROI               (LEP_RAD_MODULE_BASE + 0x00CC )
-#define LEP_CID_RAD_SPOTMETER_VALUE_KELVIN      (LEP_RAD_MODULE_BASE + 0x00D0 )
+#define LEP_CID_RAD_SPOTMETER_OBJ_KELVIN        (LEP_RAD_MODULE_BASE + 0x00D0 )
 
 #define LEP_CID_RAD_RBFO_INTERNAL_LG            (LEP_RAD_MODULE_BASE + 0x00D4 )  /* Low Gain */
 #define LEP_CID_RAD_RBFO_EXTERNAL_LG            (LEP_RAD_MODULE_BASE + 0x00D8 )  /* Low Gain */
 
 #define LEP_CID_RAD_ARBITRARY_OFFSET_MODE       (LEP_RAD_MODULE_BASE + 0x00DC )
 #define LEP_CID_RAD_ARBITRARY_OFFSET_PARAMS     (LEP_RAD_MODULE_BASE + 0x00E0 )
+
+#define LEP_CID_RAD_RADIO_CAL_VALUES            (LEP_RAD_MODULE_BASE + 0x00E4 )
 
 #define LEP_CID_SYS_PING                        (LEP_SYS_MODULE_BASE + 0x0000 )
 #define LEP_CID_SYS_CAM_STATUS                  (LEP_SYS_MODULE_BASE + 0x0004 )
@@ -125,6 +128,11 @@ INPUT_REGISTER_DEFINITIONS = """
 #define LEP_CID_SYS_FFC_SHUTTER_MODE_OBJ        (LEP_SYS_MODULE_BASE + 0x003C )
 #define FLR_CID_SYS_RUN_FFC                     (LEP_SYS_MODULE_BASE + 0x0042 )
 #define LEP_CID_SYS_FFC_STATUS                  (LEP_SYS_MODULE_BASE + 0x0044 )
+#define LEP_CID_SYS_GAIN_MODE                   (LEP_SYS_MODULE_BASE + 0x0048 )
+#define LEP_CID_SYS_FFC_STATE                   (LEP_SYS_MODULE_BASE + 0x004C )
+#define LEP_CID_SYS_GAIN_MODE_OBJ               (LEP_SYS_MODULE_BASE + 0x0050 )
+#define LEP_CID_SYS_GAIN_MODE_DESIRED_FLAG      (LEP_SYS_MODULE_BASE + 0x0054 )
+#define LEP_CID_SYS_BORESIGHT_VALUES            (LEP_SYS_MODULE_BASE + 0x0058 )
 
 #define LEP_CID_VID_POLARITY_SELECT         (LEP_VID_MODULE_BASE + 0x0000 )
 #define LEP_CID_VID_LUT_SELECT              (LEP_VID_MODULE_BASE + 0x0004 )
@@ -136,6 +144,10 @@ INPUT_REGISTER_DEFINITIONS = """
 #define LEP_CID_VID_SBNUC_ENABLE            (LEP_VID_MODULE_BASE + 0x001C )
 #define LEP_CID_VID_GAMMA_SELECT            (LEP_VID_MODULE_BASE + 0x0020 )
 #define LEP_CID_VID_FREEZE_ENABLE           (LEP_VID_MODULE_BASE + 0x0024 )
+#define LEP_CID_VID_BORESIGHT_CALC_ENABLE   (LEP_VID_MODULE_BASE + 0x0028 )
+#define LEP_CID_VID_BORESIGHT_COORDINATES   (LEP_VID_MODULE_BASE + 0x002C )
+#define LEP_CID_VID_VIDEO_OUTPUT_FORMAT     (LEP_VID_MODULE_BASE + 0x0030 )
+#define LEP_CID_VID_LOW_GAIN_COLOR_LUT      (LEP_VID_MODULE_BASE + 0x0034 )
 
 ---
 
@@ -158,6 +170,7 @@ unit:AGC register:16 length:2
 unit:AGC register:17 length:2
 unit:AGC register:18 length:4
 unit:AGC register:19 length:4
+unit:AGC register:20 length:2
 unit:OEM register:1 length:1
 unit:OEM register:2 length:1
 unit:OEM register:3 length:1
@@ -246,6 +259,7 @@ unit:RAD register:54 length:16
 unit:RAD register:55 length:16
 unit:RAD register:56 length:4
 unit:RAD register:57 length:4
+unit:RAD register:58 length:8
 unit:SYS register:1 length:1
 unit:SYS register:2 length:8
 unit:SYS register:3 length:8
@@ -264,6 +278,11 @@ unit:SYS register:15 length:4
 unit:SYS register:16 length:32
 unit:SYS register:17 length:2
 unit:SYS register:18 length:4
+unit:SYS register:19 length:4
+unit:SYS register:20 length:4
+unit:SYS register:21 length:28
+unit:SYS register:22 length:4
+unit:SYS register:23 length:12
 unit:VID register:1 length:4
 unit:VID register:2 length:4
 unit:VID register:3 length:1024
@@ -274,6 +293,10 @@ unit:VID register:7 length:4
 unit:VID register:8 length:4
 unit:VID register:9 length:2
 unit:VID register:10 length:4
+unit:VID register:11 length:4
+unit:VID register:12 length:32
+unit:VID register:13 length:4
+unit:VID register:14 length:4
 """
 
 def parse_unit_reg(unit_reg_id):
@@ -431,10 +454,10 @@ def main():
 >
 
 	<meta>
-		<version>1.0</version>
+		<version>3.3.13</version>
 		<author>GetLab</author>
 		<contact>contact@groupgets.com</contact>
-		<revision>1</revision>
+		<revision>2</revision>
 		<copyright>Copyright (c) GroupGets 2017 </copyright>
 		<history>
 		  PureThermal 1 FLIR Lepton CCI XU control interface

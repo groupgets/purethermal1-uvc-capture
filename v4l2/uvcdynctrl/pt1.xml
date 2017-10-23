@@ -7,11 +7,11 @@
 >
 
 	<meta>
-		<version>1.0</version>
+		<version>3.3.13</version>
 		<author>GetLab</author>
 		<contact>contact@groupgets.com</contact>
-		<revision>1</revision>
-		<copyright>Copyright (c) GroupGets 2016 </copyright>
+		<revision>2</revision>
+		<copyright>Copyright (c) GroupGets 2017 </copyright>
 		<history>
 		  PureThermal 1 FLIR Lepton CCI XU control interface
 		</history>
@@ -214,6 +214,15 @@
 		<constant type="integer">
 			<id>V4L2_LEP_CID_AGC_CALC_ENABLE_STATE</id>
 			<value>0x08000013</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_AGC_HEQ_LINEAR_PERCENT</id>
+			<value>20</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_AGC_HEQ_LINEAR_PERCENT</id>
+			<value>0x08000014</value>
 		</constant>
 
 		<constant type="integer">
@@ -865,11 +874,11 @@
 		</constant>
 
 		<constant type="integer">
-			<id>XU_LEP_CID_RAD_SPOTMETER_VALUE_KELVIN</id>
+			<id>XU_LEP_CID_RAD_SPOTMETER_OBJ_KELVIN</id>
 			<value>53</value>
 		</constant>
 		<constant type="integer">
-			<id>V4L2_LEP_CID_RAD_SPOTMETER_VALUE_KELVIN</id>
+			<id>V4L2_LEP_CID_RAD_SPOTMETER_OBJ_KELVIN</id>
 			<value>0x08020035</value>
 		</constant>
 
@@ -907,6 +916,15 @@
 		<constant type="integer">
 			<id>V4L2_LEP_CID_RAD_ARBITRARY_OFFSET_PARAMS</id>
 			<value>0x08020039</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_RAD_RADIO_CAL_VALUES</id>
+			<value>58</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_RAD_RADIO_CAL_VALUES</id>
+			<value>0x0802003a</value>
 		</constant>
 
 		<constant type="integer">
@@ -1072,6 +1090,51 @@
 		</constant>
 
 		<constant type="integer">
+			<id>XU_LEP_CID_SYS_GAIN_MODE</id>
+			<value>19</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_GAIN_MODE</id>
+			<value>0x08030013</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_SYS_FFC_STATE</id>
+			<value>20</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_FFC_STATE</id>
+			<value>0x08030014</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_SYS_GAIN_MODE_OBJ</id>
+			<value>21</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_GAIN_MODE_OBJ</id>
+			<value>0x08030015</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_SYS_GAIN_MODE_DESIRED_FLAG</id>
+			<value>22</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_GAIN_MODE_DESIRED_FLAG</id>
+			<value>0x08030016</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_SYS_BORESIGHT_VALUES</id>
+			<value>23</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_SYS_BORESIGHT_VALUES</id>
+			<value>0x08030017</value>
+		</constant>
+
+		<constant type="integer">
 			<id>XU_LEP_CID_VID_POLARITY_SELECT</id>
 			<value>1</value>
 		</constant>
@@ -1159,6 +1222,42 @@
 		<constant type="integer">
 			<id>V4L2_LEP_CID_VID_FREEZE_ENABLE</id>
 			<value>0x0804000a</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_VID_BORESIGHT_CALC_ENABLE</id>
+			<value>11</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_VID_BORESIGHT_CALC_ENABLE</id>
+			<value>0x0804000b</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_VID_BORESIGHT_COORDINATES</id>
+			<value>12</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_VID_BORESIGHT_COORDINATES</id>
+			<value>0x0804000c</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_VID_VIDEO_OUTPUT_FORMAT</id>
+			<value>13</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_VID_VIDEO_OUTPUT_FORMAT</id>
+			<value>0x0804000d</value>
+		</constant>
+
+		<constant type="integer">
+			<id>XU_LEP_CID_VID_LOW_GAIN_COLOR_LUT</id>
+			<value>14</value>
+		</constant>
+		<constant type="integer">
+			<id>V4L2_LEP_CID_VID_LOW_GAIN_COLOR_LUT</id>
+			<value>0x0804000e</value>
 		</constant>
 
 	</constants>
@@ -1492,6 +1591,23 @@
 					</requests>
 					<description>
 						Get/Set AGC module register CALC_ENABLE_STATE
+					</description>
+				</control>
+
+				<control id="AGC_HEQ_LINEAR_PERCENT">
+					<entity>UVC_GUID_LEP_AGC_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_AGC_HEQ_LINEAR_PERCENT</selector>
+					<index>19</index>
+					<size>2</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set AGC module register HEQ_LINEAR_PERCENT
 					</description>
 				</control>
 
@@ -2665,9 +2781,9 @@
 					</description>
 				</control>
 
-				<control id="RAD_SPOTMETER_VALUE_KELVIN">
+				<control id="RAD_SPOTMETER_OBJ_KELVIN">
 					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
-					<selector>XU_LEP_CID_RAD_SPOTMETER_VALUE_KELVIN</selector>
+					<selector>XU_LEP_CID_RAD_SPOTMETER_OBJ_KELVIN</selector>
 					<index>131124</index>
 					<size>2</size>
 					<requests>
@@ -2678,7 +2794,7 @@
 						<request>GET_RES</request>
 					</requests>
 					<description>
-						Get/Set RAD module register SPOTMETER_VALUE_KELVIN
+						Get/Set RAD module register SPOTMETER_OBJ_KELVIN
 					</description>
 				</control>
 
@@ -2741,6 +2857,23 @@
 					</requests>
 					<description>
 						Get/Set RAD module register ARBITRARY_OFFSET_PARAMS
+					</description>
+				</control>
+
+				<control id="RAD_RADIO_CAL_VALUES">
+					<entity>UVC_GUID_LEP_RAD_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_RAD_RADIO_CAL_VALUES</selector>
+					<index>131129</index>
+					<size>8</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set RAD module register RADIO_CAL_VALUES
 					</description>
 				</control>
 
@@ -3022,6 +3155,85 @@
 					</description>
 				</control>
 
+				<control id="SYS_GAIN_MODE">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_GAIN_MODE</selector>
+					<index>196626</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set SYS module register GAIN_MODE
+					</description>
+				</control>
+
+				<control id="SYS_FFC_STATE">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_FFC_STATE</selector>
+					<index>196627</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set SYS module register FFC_STATE
+					</description>
+				</control>
+
+				<control id="SYS_GAIN_MODE_OBJ">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_GAIN_MODE_OBJ</selector>
+					<index>196628</index>
+					<size>28</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set SYS module register GAIN_MODE_OBJ
+					</description>
+				</control>
+
+				<control id="SYS_GAIN_MODE_DESIRED_FLAG">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_GAIN_MODE_DESIRED_FLAG</selector>
+					<index>196629</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set SYS module register GAIN_MODE_DESIRED_FLAG
+					</description>
+				</control>
+
+				<control id="SYS_BORESIGHT_VALUES">
+					<entity>UVC_GUID_LEP_SYS_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_SYS_BORESIGHT_VALUES</selector>
+					<index>196630</index>
+					<size>12</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set SYS module register BORESIGHT_VALUES
+					</description>
+				</control>
+
 				<control id="VID_POLARITY_SELECT">
 					<entity>UVC_GUID_LEP_VID_ID_CONTROL</entity>
 					<selector>XU_LEP_CID_VID_POLARITY_SELECT</selector>
@@ -3186,6 +3398,71 @@
 					</requests>
 					<description>
 						Get/Set VID module register FREEZE_ENABLE
+					</description>
+				</control>
+
+				<control id="VID_BORESIGHT_CALC_ENABLE">
+					<entity>UVC_GUID_LEP_VID_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_VID_BORESIGHT_CALC_ENABLE</selector>
+					<index>262154</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set VID module register BORESIGHT_CALC_ENABLE
+					</description>
+				</control>
+
+				<control id="VID_BORESIGHT_COORDINATES">
+					<entity>UVC_GUID_LEP_VID_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_VID_BORESIGHT_COORDINATES</selector>
+					<index>262155</index>
+					<size>32</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+					</requests>
+					<description>
+						Get/Set VID module register BORESIGHT_COORDINATES
+					</description>
+				</control>
+
+				<control id="VID_VIDEO_OUTPUT_FORMAT">
+					<entity>UVC_GUID_LEP_VID_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_VID_VIDEO_OUTPUT_FORMAT</selector>
+					<index>262156</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set VID module register VIDEO_OUTPUT_FORMAT
+					</description>
+				</control>
+
+				<control id="VID_LOW_GAIN_COLOR_LUT">
+					<entity>UVC_GUID_LEP_VID_ID_CONTROL</entity>
+					<selector>XU_LEP_CID_VID_LOW_GAIN_COLOR_LUT</selector>
+					<index>262157</index>
+					<size>4</size>
+					<requests>
+						<request>SET_CUR</request>
+						<request>GET_CUR</request>
+						<request>GET_MIN</request>
+						<request>GET_MAX</request>
+						<request>GET_RES</request>
+					</requests>
+					<description>
+						Get/Set VID module register LOW_GAIN_COLOR_LUT
 					</description>
 				</control>
 
@@ -3458,6 +3735,20 @@
 			</uvc>
 			<v4l2>
 				<id>V4L2_LEP_CID_AGC_CALC_ENABLE_STATE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_AGC_HEQ_LINEAR_PERCENT</name>
+			<uvc>
+				<control_ref idref="AGC_HEQ_LINEAR_PERCENT"/>
+				<size>16</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_AGC_HEQ_LINEAR_PERCENT</id>
 				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
 			</v4l2>
 		</mapping>
@@ -4471,15 +4762,15 @@
 		</mapping>
 
 		<mapping>
-			<name>LEP_CID_RAD_SPOTMETER_VALUE_KELVIN</name>
+			<name>LEP_CID_RAD_SPOTMETER_OBJ_KELVIN</name>
 			<uvc>
-				<control_ref idref="RAD_SPOTMETER_VALUE_KELVIN"/>
+				<control_ref idref="RAD_SPOTMETER_OBJ_KELVIN"/>
 				<size>16</size>
 				<offset>0</offset>
 				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
 			</uvc>
 			<v4l2>
-				<id>V4L2_LEP_CID_RAD_SPOTMETER_VALUE_KELVIN</id>
+				<id>V4L2_LEP_CID_RAD_SPOTMETER_OBJ_KELVIN</id>
 				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
 			</v4l2>
 		</mapping>
@@ -4536,6 +4827,20 @@
 			</uvc>
 			<v4l2>
 				<id>V4L2_LEP_CID_RAD_ARBITRARY_OFFSET_PARAMS</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_RAD_RADIO_CAL_VALUES</name>
+			<uvc>
+				<control_ref idref="RAD_RADIO_CAL_VALUES"/>
+				<size>64</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_RAD_RADIO_CAL_VALUES</id>
 				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
 			</v4l2>
 		</mapping>
@@ -4780,6 +5085,76 @@
 		</mapping>
 
 		<mapping>
+			<name>LEP_CID_SYS_GAIN_MODE</name>
+			<uvc>
+				<control_ref idref="SYS_GAIN_MODE"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_GAIN_MODE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_SYS_FFC_STATE</name>
+			<uvc>
+				<control_ref idref="SYS_FFC_STATE"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_FFC_STATE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_SYS_GAIN_MODE_OBJ</name>
+			<uvc>
+				<control_ref idref="SYS_GAIN_MODE_OBJ"/>
+				<size>28</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_GAIN_MODE_OBJ</id>
+				<v4l2_type>V4L2_CTRL_TYPE_STRING</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_SYS_GAIN_MODE_DESIRED_FLAG</name>
+			<uvc>
+				<control_ref idref="SYS_GAIN_MODE_DESIRED_FLAG"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_GAIN_MODE_DESIRED_FLAG</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_SYS_BORESIGHT_VALUES</name>
+			<uvc>
+				<control_ref idref="SYS_BORESIGHT_VALUES"/>
+				<size>12</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_SYS_BORESIGHT_VALUES</id>
+				<v4l2_type>V4L2_CTRL_TYPE_STRING</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
 			<name>LEP_CID_VID_POLARITY_SELECT</name>
 			<uvc>
 				<control_ref idref="VID_POLARITY_SELECT"/>
@@ -4915,6 +5290,62 @@
 			</uvc>
 			<v4l2>
 				<id>V4L2_LEP_CID_VID_FREEZE_ENABLE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_VID_BORESIGHT_CALC_ENABLE</name>
+			<uvc>
+				<control_ref idref="VID_BORESIGHT_CALC_ENABLE"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_VID_BORESIGHT_CALC_ENABLE</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_VID_BORESIGHT_COORDINATES</name>
+			<uvc>
+				<control_ref idref="VID_BORESIGHT_COORDINATES"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_VID_BORESIGHT_COORDINATES</id>
+				<v4l2_type>V4L2_CTRL_TYPE_STRING</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_VID_VIDEO_OUTPUT_FORMAT</name>
+			<uvc>
+				<control_ref idref="VID_VIDEO_OUTPUT_FORMAT"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_VID_VIDEO_OUTPUT_FORMAT</id>
+				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
+			</v4l2>
+		</mapping>
+
+		<mapping>
+			<name>LEP_CID_VID_LOW_GAIN_COLOR_LUT</name>
+			<uvc>
+				<control_ref idref="VID_LOW_GAIN_COLOR_LUT"/>
+				<size>32</size>
+				<offset>0</offset>
+				<uvc_type>UVC_CTRL_DATA_TYPE_RAW</uvc_type>
+			</uvc>
+			<v4l2>
+				<id>V4L2_LEP_CID_VID_LOW_GAIN_COLOR_LUT</id>
 				<v4l2_type>V4L2_CTRL_TYPE_INTEGER</v4l2_type>
 			</v4l2>
 		</mapping>
