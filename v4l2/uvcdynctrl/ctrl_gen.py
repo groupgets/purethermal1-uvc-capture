@@ -289,7 +289,7 @@ def parse_registers(register_definitions):
   lengths = { "AGC": {}, "OEM": {}, "RAD": {}, "SYS": {}, "VID": {} }
   p = re.compile("define\s+(\w+)\s+\(\w+\W+(\S+)")
   p2 = re.compile("unit:(\w+)\s+register:(\d+)\s+length:(\d+)")
-  for line in register_definitions:
+  for line in register_definitions.split('\n'):
     match = p.findall(line)
     match2 = p2.findall(line)
 
@@ -333,7 +333,7 @@ def format_constant(const, value):
 
 def format_constants(registers):
   for register in registers:
-    print format_constant(*register)
+    print(format_constant(*register))
 
 def unit_to_entity(unit):
   return "UVC_GUID_LEP_{0}_ID_CONTROL".format(unit)
@@ -378,7 +378,7 @@ def format_control(register, lengths):
 
 def format_controls(registers, lengths):
   for register in registers:
-    print format_control(register, lengths)
+    print(format_control(register, lengths))
 
 
 def format_mapping(register, lengths):
@@ -417,12 +417,12 @@ def format_mapping(register, lengths):
 
 def format_mappings(registers, lengths):
   for register in registers:
-    print format_mapping(register, lengths)
+    print(format_mapping(register, lengths))
 
 
 def main():
   registers,lengths = parse_registers(INPUT_REGISTER_DEFINITIONS)
-  print """<?xml version="1.0" encoding="UTF-8"?>
+  print("""<?xml version="1.0" encoding="UTF-8"?>
 
 <config version="1.0"
 	xmlns="http://groupgets.com"
@@ -435,7 +435,7 @@ def main():
 		<author>GetLab</author>
 		<contact>contact@groupgets.com</contact>
 		<revision>1</revision>
-		<copyright>Copyright (c) GroupGets 2016 </copyright>
+		<copyright>Copyright (c) GroupGets 2017 </copyright>
 		<history>
 		  PureThermal 1 FLIR Lepton CCI XU control interface
 		</history>
@@ -467,11 +467,11 @@ def main():
 			<id>UVC_GUID_LEP_VID_ID_CONTROL</id>
 			<value>2d317470-656c-2d70-7669-642d30303030</value>
 		</constant>
-"""
+""")
 
   format_constants(registers)
 
-  print """
+  print("""
 	</constants>
 	
 	<devices>
@@ -481,24 +481,24 @@ def main():
 				<product_id>0x0100</product_id>
 			</match>
 
-			<controls>"""
+			<controls>""")
 
   format_controls(registers,lengths)
 
-  print """
+  print("""
 			</controls>
 		</device>
 	</devices>
 
 	<!-- V4L2 mappings for the UVC controls defined above -->
-	<mappings>"""
+	<mappings>""")
 
   format_mappings(registers,lengths)
 
-  print """
+  print("""
 	</mappings>
 </config>
-"""
+""")
 
 if __name__ == '__main__':
   main()
