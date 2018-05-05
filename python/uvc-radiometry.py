@@ -80,7 +80,14 @@ def main():
       print_device_info(devh)
       print_device_formats(devh)
 
-      libuvc.uvc_get_stream_ctrl_format_size(devh, byref(ctrl), UVC_FRAME_FORMAT_Y16, 80, 60, 9)
+      frame_formats = uvc_get_frame_formats_by_guid(devh, VS_FMT_GUID_Y16)
+      if len(frame_formats) == 0:
+        print("device does not support Y16")
+        exit(1)
+
+      libuvc.uvc_get_stream_ctrl_format_size(devh, byref(ctrl), UVC_FRAME_FORMAT_Y16,
+        frame_formats[0].wWidth, frame_formats[0].wHeight, 10000000 / frame_formats[0].dwDefaultFrameInterval
+      )
 
       res = libuvc.uvc_start_streaming(devh, byref(ctrl), PTR_PY_FRAME_CALLBACK, None, 0)
       if res < 0:
@@ -97,7 +104,7 @@ def main():
           img = raw_to_8bit(data)
           display_temperature(img, minVal, minLoc, (255, 0, 0))
           display_temperature(img, maxVal, maxLoc, (0, 0, 255))
-          cv2.imshow('Lepton 2.5 Radiometry', img)
+          cv2.imshow('Lepton Radiometry', img)
           cv2.waitKey(1)
 
         cv2.destroyAllWindows()
