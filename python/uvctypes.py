@@ -46,6 +46,66 @@ class uvc_stream_ctrl(Structure):
 class uvc_format_desc(Structure):
   pass
 
+class uvc_frame_desc(Structure):
+  pass
+
+uvc_frame_desc._fields_ = [
+              ("parent", POINTER(uvc_format_desc)),
+              ("prev", POINTER(uvc_frame_desc)),
+              ("next", POINTER(uvc_frame_desc)),
+              # /** Type of frame, such as JPEG frame or uncompressed frme */
+              ("bDescriptorSubtype", c_uint), # enum uvc_vs_desc_subtype bDescriptorSubtype;
+              # /** Index of the frame within the list of specs available for this format */
+              ("bFrameIndex", c_uint8),
+              ("bmCapabilities", c_uint8),
+              # /** Image width */
+              ("wWidth", c_uint16),
+              # /** Image height */
+              ("wHeight", c_uint16),
+              # /** Bitrate of corresponding stream at minimal frame rate */
+              ("dwMinBitRate", c_uint32),
+              # /** Bitrate of corresponding stream at maximal frame rate */
+              ("dwMaxBitRate", c_uint32),
+              # /** Maximum number of bytes for a video frame */
+              ("dwMaxVideoFrameBufferSize", c_uint32),
+              # /** Default frame interval (in 100ns units) */
+              ("dwDefaultFrameInterval", c_uint32),
+              # /** Minimum frame interval for continuous mode (100ns units) */
+              ("dwMinFrameInterval", c_uint32),
+              # /** Maximum frame interval for continuous mode (100ns units) */
+              ("dwMaxFrameInterval", c_uint32),
+              # /** Granularity of frame interval range for continuous mode (100ns) */
+              ("dwFrameIntervalStep", c_uint32),
+              # /** Frame intervals */
+              ("bFrameIntervalType", c_uint8),
+              # /** number of bytes per line */
+              ("dwBytesPerLine", c_uint32),
+              # /** Available frame rates, zero-terminated (in 100ns units) */
+              ("intervals", POINTER(c_uint32))]
+
+uvc_format_desc._fields_ = [
+              ("parent", c_void_p),
+              ("prev", POINTER(uvc_format_desc)),
+              ("next", POINTER(uvc_format_desc)),
+              # /** Type of image stream, such as JPEG or uncompressed. */
+              ("bDescriptorSubtype", c_uint), # enum uvc_vs_desc_subtype bDescriptorSubtype;
+              # /** Identifier of this format within the VS interface's format list */
+              ("bFormatIndex", c_uint8),
+              ("bNumFrameDescriptors", c_uint8),
+              # /** Format specifier */
+              ("guidFormat", c_char * 16), # union { uint8_t guidFormat[16]; uint8_t fourccFormat[4]; }
+              # /** Format-specific data */
+              ("bBitsPerPixel", c_uint8),
+              # /** Default {uvc_frame_desc} to choose given this format */
+              ("bDefaultFrameIndex", c_uint8),
+              ("bAspectRatioX", c_uint8),
+              ("bAspectRatioY", c_uint8),
+              ("bmInterlaceFlags", c_uint8),
+              ("bCopyProtect", c_uint8),
+              ("bVariableSize", c_uint8),
+              # /** Available frame specifications for this format */
+              ("frame_descs", POINTER(uvc_frame_desc))]
+
 class timeval(Structure):
   _fields_ = [("tv_sec", c_long), ("tv_usec", c_long)]
 
