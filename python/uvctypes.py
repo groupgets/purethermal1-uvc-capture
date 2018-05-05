@@ -9,7 +9,7 @@ try:
   else:
     libuvc = cdll.LoadLibrary("libuvc")
 except OSError:
-  print "Error: could not find libuvc!"
+  print("Error: could not find libuvc!")
   exit(1)
 
 class uvc_context(Structure):
