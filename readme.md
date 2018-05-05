@@ -1,9 +1,13 @@
-# PureThermal 1 UVC Capture Examples
+# PureThermal UVC Capture Examples
 
 The [PureThermal 1 FLIR Lepton development board](https://groupgets.com/manufacturers/groupgets-labs/products/pure-thermal-1-flir-lepton-dev-kit)
 by GroupGets supports the USB video class (UVC), and this makes it very easy to capture thermal imaging data
 from a host PC using standard tools and libraries. If you want to prototype quickly, your application demands
 increasing processing power, or you simply don't want to hack on the firmware, check out these examples to get started.
+
+[PureThermal 2](https://groupgets.com/manufacturers/getlab/products/purethermal-2-flir-lepton-smart-i-o-module) is
+an evolution of the PureThermal 1 board, in a more embeddable package and including the ability to update device
+firmware over USB. All host-side code leveraging the PureThermal 1 is also compatible with the PureThermal 2.
 
 
 ## *NOTE* Linux (< 4.0) + V4L (and OpenCV) ##
