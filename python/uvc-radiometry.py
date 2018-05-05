@@ -5,11 +5,14 @@ from uvctypes import *
 import time
 import cv2
 import numpy as np
-import Queue
+try:
+  from queue import Queue
+except ImportError:
+  from Queue import Queue
 import platform
 
 BUF_SIZE = 2
-q = Queue.Queue(BUF_SIZE)
+q = Queue(BUF_SIZE)
 
 def py_frame_callback(frame, userptr):
 
@@ -86,7 +89,7 @@ def main():
         exit(1)
 
       libuvc.uvc_get_stream_ctrl_format_size(devh, byref(ctrl), UVC_FRAME_FORMAT_Y16,
-        frame_formats[0].wWidth, frame_formats[0].wHeight, 10000000 / frame_formats[0].dwDefaultFrameInterval
+        frame_formats[0].wWidth, frame_formats[0].wHeight, int(1e7 / frame_formats[0].dwDefaultFrameInterval)
       )
 
       res = libuvc.uvc_start_streaming(devh, byref(ctrl), PTR_PY_FRAME_CALLBACK, None, 0)

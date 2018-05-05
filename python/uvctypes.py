@@ -180,31 +180,31 @@ UVC_FRAME_FORMAT_BGR = 8
 UVC_FRAME_FORMAT_Y16 = 13
 
 VS_FMT_GUID_GREY = create_string_buffer(
-    "Y8  \x00\x00\x10\x00\x80\x00\x00\xaa\x00\x38\x9b\x71", 16
+    b"Y8  \x00\x00\x10\x00\x80\x00\x00\xaa\x00\x38\x9b\x71", 16
 )
 
 VS_FMT_GUID_Y16 = create_string_buffer(
-    "Y16 \x00\x00\x10\x00\x80\x00\x00\xaa\x00\x38\x9b\x71", 16
+    b"Y16 \x00\x00\x10\x00\x80\x00\x00\xaa\x00\x38\x9b\x71", 16
 )
 
 VS_FMT_GUID_YUYV = create_string_buffer(
-    "UYVY\x00\x00\x10\x00\x80\x00\x00\xaa\x00\x38\x9b\x71", 16
+    b"UYVY\x00\x00\x10\x00\x80\x00\x00\xaa\x00\x38\x9b\x71", 16
 )
 
 VS_FMT_GUID_NV12 = create_string_buffer(
-    "NV12\x00\x00\x10\x00\x80\x00\x00\xaa\x00\x38\x9b\x71", 16
+    b"NV12\x00\x00\x10\x00\x80\x00\x00\xaa\x00\x38\x9b\x71", 16
 )
 
 VS_FMT_GUID_YU12 = create_string_buffer(
-    "I420\x00\x00\x10\x00\x80\x00\x00\xaa\x00\x38\x9b\x71", 16
+    b"I420\x00\x00\x10\x00\x80\x00\x00\xaa\x00\x38\x9b\x71", 16
 )
 
 VS_FMT_GUID_BGR3 = create_string_buffer(
-    "\x7d\xeb\x36\xe4\x4f\x52\xce\x11\x9f\x53\x00\x20\xaf\x0b\xa7\x70", 16
+    b"\x7d\xeb\x36\xe4\x4f\x52\xce\x11\x9f\x53\x00\x20\xaf\x0b\xa7\x70", 16
 )
 
 VS_FMT_GUID_RGB565 = create_string_buffer(
-    "RGBP\x00\x00\x10\x00\x80\x00\x00\xaa\x00\x38\x9b\x71", 16
+    b"RGBP\x00\x00\x10\x00\x80\x00\x00\xaa\x00\x38\x9b\x71", 16
 )
 
 libuvc.uvc_get_format_descs.restype = POINTER(uvc_format_desc)
@@ -241,7 +241,7 @@ def print_device_formats(devh):
   for format_desc in uvc_iter_formats(devh):
     print("format: {0}".format(format_desc.guidFormat[0:4]))
     for frame_desc in uvc_iter_frames_for_format(devh, format_desc):
-      print("  frame {0}x{1} @ {2}fps".format(frame_desc.wWidth, frame_desc.wHeight, 10000000 / frame_desc.dwDefaultFrameInterval))
+      print("  frame {0}x{1} @ {2}fps".format(frame_desc.wWidth, frame_desc.wHeight, int(1e7 / frame_desc.dwDefaultFrameInterval)))
 
 def uvc_get_frame_formats_by_guid(devh, vs_fmt_guid):
   for format_desc in uvc_iter_formats(devh):
