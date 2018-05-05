@@ -104,6 +104,9 @@ class lep_oem_sw_version(Structure):
 def call_extension_unit(devh, unit, control, data, size):
   return libuvc.uvc_get_ctrl(devh, unit, control, data, size, 0x81)
 
+def set_extension_unit(devh, unit, control, data, size):
+  return libuvc.uvc_set_ctrl(devh, unit, control, data, size, 0x81)
+
 AGC_UNIT_ID = 3
 OEM_UNIT_ID = 4
 RAD_UNIT_ID = 5
