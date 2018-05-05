@@ -178,3 +178,19 @@ UVC_FRAME_FORMAT_I420 = 5
 UVC_FRAME_FORMAT_RGB = 7
 UVC_FRAME_FORMAT_BGR = 8
 UVC_FRAME_FORMAT_Y16 = 13
+
+def print_device_info(devh):
+  vers = lep_oem_sw_version()
+  call_extension_unit(devh, OEM_UNIT_ID, 9, byref(vers), 8)
+  print("Version gpp: {0}.{1}.{2} dsp: {3}.{4}.{5}".format(
+    vers.gpp_major, vers.gpp_minor, vers.gpp_build,
+    vers.dsp_major, vers.dsp_minor, vers.dsp_build,
+  ))
+
+  flir_pn = create_string_buffer(32)
+  call_extension_unit(devh, OEM_UNIT_ID, 8, flir_pn, 32)
+  print("FLIR part #: {0}".format(flir_pn.raw))
+
+  flir_sn = create_string_buffer(8)
+  call_extension_unit(devh, SYS_UNIT_ID, 3, flir_sn, 8)
+  print("FLIR serial #: {0}".format(repr(flir_sn.raw)))
