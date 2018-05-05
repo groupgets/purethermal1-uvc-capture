@@ -78,6 +78,7 @@ def main():
       print("device opened!")
 
       print_device_info(devh)
+      print_device_formats(devh)
 
       libuvc.uvc_get_stream_ctrl_format_size(devh, byref(ctrl), UVC_FRAME_FORMAT_Y16, 80, 60, 9)
 

@@ -194,3 +194,14 @@ def print_device_info(devh):
   flir_sn = create_string_buffer(8)
   call_extension_unit(devh, SYS_UNIT_ID, 3, flir_sn, 8)
   print("FLIR serial #: {0}".format(repr(flir_sn.raw)))
+
+def print_device_formats(devh):
+  libuvc.uvc_get_format_descs.restype = POINTER(uvc_format_desc)
+  format_desc = libuvc.uvc_get_format_descs(devh)
+  while format_desc:
+    print("format: {0}".format(format_desc.contents.guidFormat))
+    frame_desc = format_desc.contents.frame_descs
+    while frame_desc:
+      print("  frame {0}x{1}".format(frame_desc.contents.wWidth, frame_desc.contents.wHeight))
+      frame_desc = frame_desc.contents.next
+    format_desc = format_desc.contents.next
