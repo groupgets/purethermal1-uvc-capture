@@ -179,6 +179,36 @@ UVC_FRAME_FORMAT_RGB = 7
 UVC_FRAME_FORMAT_BGR = 8
 UVC_FRAME_FORMAT_Y16 = 13
 
+VS_FMT_GUID_GREY = create_string_buffer(
+    "Y8  \x00\x00\x10\x00\x80\x00\x00\xaa\x00\x38\x9b\x71", 16
+)
+
+VS_FMT_GUID_Y16 = create_string_buffer(
+    "Y16 \x00\x00\x10\x00\x80\x00\x00\xaa\x00\x38\x9b\x71", 16
+)
+
+VS_FMT_GUID_YUYV = create_string_buffer(
+    "UYVY\x00\x00\x10\x00\x80\x00\x00\xaa\x00\x38\x9b\x71", 16
+)
+
+VS_FMT_GUID_NV12 = create_string_buffer(
+    "NV12\x00\x00\x10\x00\x80\x00\x00\xaa\x00\x38\x9b\x71", 16
+)
+
+VS_FMT_GUID_YU12 = create_string_buffer(
+    "I420\x00\x00\x10\x00\x80\x00\x00\xaa\x00\x38\x9b\x71", 16
+)
+
+VS_FMT_GUID_BGR3 = create_string_buffer(
+    "\x7d\xeb\x36\xe4\x4f\x52\xce\x11\x9f\x53\x00\x20\xaf\x0b\xa7\x70", 16
+)
+
+VS_FMT_GUID_RGB565 = create_string_buffer(
+    "RGBP\x00\x00\x10\x00\x80\x00\x00\xaa\x00\x38\x9b\x71", 16
+)
+
+libuvc.uvc_get_format_descs.restype = POINTER(uvc_format_desc)
+
 def print_device_info(devh):
   vers = lep_oem_sw_version()
   call_extension_unit(devh, OEM_UNIT_ID, 9, byref(vers), 8)
@@ -195,13 +225,26 @@ def print_device_info(devh):
   call_extension_unit(devh, SYS_UNIT_ID, 3, flir_sn, 8)
   print("FLIR serial #: {0}".format(repr(flir_sn.raw)))
 
+def uvc_iter_formats(devh):
+  p_format_desc = libuvc.uvc_get_format_descs(devh)
+  while p_format_desc:
+    yield p_format_desc.contents
+    p_format_desc = p_format_desc.contents.next
+
+def uvc_iter_frames_for_format(devh, format_desc):
+  p_frame_desc = format_desc.frame_descs
+  while p_frame_desc:
+    yield p_frame_desc.contents
+    p_frame_desc = p_frame_desc.contents.next
+
 def print_device_formats(devh):
-  libuvc.uvc_get_format_descs.restype = POINTER(uvc_format_desc)
-  format_desc = libuvc.uvc_get_format_descs(devh)
-  while format_desc:
-    print("format: {0}".format(format_desc.contents.guidFormat))
-    frame_desc = format_desc.contents.frame_descs
-    while frame_desc:
-      print("  frame {0}x{1}".format(frame_desc.contents.wWidth, frame_desc.contents.wHeight))
-      frame_desc = frame_desc.contents.next
-    format_desc = format_desc.contents.next
+  for format_desc in uvc_iter_formats(devh):
+    print("format: {0}".format(format_desc.guidFormat[0:4]))
+    for frame_desc in uvc_iter_frames_for_format(devh, format_desc):
+      print("  frame {0}x{1} @ {2}fps".format(frame_desc.wWidth, frame_desc.wHeight, 10000000 / frame_desc.dwDefaultFrameInterval))
+
+def uvc_get_frame_formats_by_guid(devh, vs_fmt_guid):
+  for format_desc in uvc_iter_formats(devh):
+    if vs_fmt_guid[0:4] == format_desc.guidFormat[0:4]:
+      return [fmt for fmt in uvc_iter_frames_for_format(devh, format_desc)]
+  return []
