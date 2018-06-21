@@ -167,6 +167,9 @@ def call_extension_unit(devh, unit, control, data, size):
 def set_extension_unit(devh, unit, control, data, size):
   return libuvc.uvc_set_ctrl(devh, unit, control, data, size, 0x81)
 
+PT_USB_VID = 0x1e4e
+PT_USB_PID = 0x0100
+
 AGC_UNIT_ID = 3
 OEM_UNIT_ID = 4
 RAD_UNIT_ID = 5

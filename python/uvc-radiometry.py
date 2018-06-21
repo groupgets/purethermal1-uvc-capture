@@ -67,7 +67,7 @@ def main():
     exit(1)
 
   try:
-    res = libuvc.uvc_find_device(ctx, byref(dev), 0, 0, 0)
+    res = libuvc.uvc_find_device(ctx, byref(dev), PT_USB_VID, PT_USB_PID, 0)
     if res < 0:
       print("uvc_find_device error")
       exit(1)
