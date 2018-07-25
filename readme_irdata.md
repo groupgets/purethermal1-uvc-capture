@@ -1,4 +1,6 @@
 ﻿#UPDATES
+
+Terminal Commands
 	sudo apt-get update
 	sudo apt-get install python-qt4
 	sudo apt-get install python-opencv
@@ -7,6 +9,8 @@
 	sudo apt-get update && sudo apt-get install build-essential
 
 #GITHUB
+
+Terminal Commands
 	cd Documents
 	cd mkdir Lepton
 	cd Lepton
@@ -22,6 +26,7 @@
 	make && sudo make install
 
 #FYI
+
 Might have to run .py files as sudo (admin)
 
 All Raw Data is Save to Same Directory as .PY
