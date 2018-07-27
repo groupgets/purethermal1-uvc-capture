@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>920</width>
+    <height>532</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Parabilis IR Software</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>0</y>
+      <width>271</width>
+      <height>301</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="startRec">
+       <property name="text">
+        <string>Start Recording Raw Data</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="stopRec">
+       <property name="text">
+        <string>Stop Recording and Save</string>
+       </property>
+      </widget>
+     </item>
+     <item alignment="Qt::AlignTop">
+      <widget class="QPushButton" name="displayC">
+       <property name="text">
+        <string>Display Celcius</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="displayF">
+       <property name="text">
+        <string>Display Fahrenheit</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="recLabel">
+       <property name="text">
+        <string>Not Recording</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="timeStatus">
+       <property name="text">
+        <string>Time/Date</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="maxTempLabel">
+       <property name="text">
+        <string>Max Temperature</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="minTempLabel">
+       <property name="text">
+        <string>Min Temperature</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="filePathBut">
+       <property name="text">
+        <string>Select File Path</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="displayFrame">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>640</width>
+      <height>480</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="filePathDisp">
+    <property name="geometry">
+     <rect>
+      <x>135</x>
+      <y>500</y>
+      <width>671</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Please Specify Using the Select File Path Button to the Right</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelForLocation">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>500</y>
+      <width>111</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>File Save Location:</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
