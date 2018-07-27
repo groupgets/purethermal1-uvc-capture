@@ -1,6 +1,12 @@
 ﻿# PureThermal 2, Lepton 3.5, Raw Data
 
-## UPDATES
+## REVISION CHANGES
+
+v12 = Works, but crashes on pi
+v14 = Uses new .ui and doesn't crash on pi.
+v15 = New save format.
+
+## SYSTEM UPDATE/INSTALL COMMANDS
 
 Terminal Commands:
 
@@ -8,6 +14,7 @@ Terminal Commands:
 	sudo apt-get install python-qt4
 	sudo apt-get install python-opencv
 	sudo apt-get install python-tifffile 
+	sudo apt-get install python-h5py
 	sudo apt-get install git
 	sudo apt-get update && sudo apt-get install build-essential
 
@@ -33,6 +40,13 @@ Terminal Commands:
 
 Might have to run .py files as sudo (admin)
 
-All Raw Data is Save to Same Directory as .PY
+## Old FYI for Previous Versions
 
+v12:
+All Raw Data is Save to Same Directory as .PY
 Use .m script and Octave GNU to process .tiff raw data files.
+
+## Helpful Links
+
+https://pythonspot.com/qt4-file-dialog/
+https://stackoverflow.com/questions/4286036/how-to-have-a-directory-dialog-in-pyqt
