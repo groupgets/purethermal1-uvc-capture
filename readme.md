@@ -17,6 +17,7 @@ Terminal Commands:
 	sudo apt-get install python-h5py
 	sudo apt-get install git
 	sudo apt-get install libusb-1.0-0-dev
+	sudo apt-get install libusb-1.0
 	sudo apt-get install build-essential
 
 ## GITHUB
@@ -34,6 +35,7 @@ Terminal Commands:
 	cd build
 	cmake ..
 	make && sudo make install
+	sudo ldconfig -v
 
 ## FYI
 
