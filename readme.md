@@ -56,6 +56,16 @@ Might have to run .py files as sudo (admin)
 - All Raw Data is Save to Same Directory as .PY
 - Use .m script and Octave GNU to process .tiff raw data files.
 
+## Development
+
+Install Qt Designer:
+
+	sudo apt-get install qt4-designer
+
+Or Qt Creator:
+
+	sudo apt-get install qtcreator
+
 ## Helpful Links
 
 - https://pythonspot.com/qt4-file-dialog/
