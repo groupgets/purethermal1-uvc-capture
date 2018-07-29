@@ -53,8 +53,8 @@ Might have to run .py files as sudo (admin)
 ## Old FYI for Previous Versions
 
 - v12:
-- All Raw Data is Save to Same Directory as .PY
-- Use .m script and Octave GNU to process .tiff raw data files.
+	- All Raw Data is Save to Same Directory as .PY
+	- Use .m script and Octave GNU to process .tiff raw data files.
 
 ## Helpful Links
 
