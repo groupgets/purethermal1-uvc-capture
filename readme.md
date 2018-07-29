@@ -36,6 +36,14 @@ Terminal Commands:
 	cmake ..
 	make && sudo make install
 	sudo ldconfig -v
+	cd ../..
+
+## RUNNING SCRIPT
+
+Make sure device is plugged into computer.
+
+Terminal Commands:
+	sudo python irdatav15c.py
 
 ## FYI
 
