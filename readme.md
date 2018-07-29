@@ -16,15 +16,14 @@ Terminal Commands:
 	sudo apt-get install python-tifffile 
 	sudo apt-get install python-h5py
 	sudo apt-get install git
-	sudo apt-get update && sudo apt-get install build-essential
+	sudo apt-get install libusb-1.0-0-dev
+	sudo apt-get install build-essential
 
 ## GITHUB
 
 Terminal Commands:
 
 	cd Documents
-	cd mkdir Lepton
-	cd Lepton
 	git clone https://github.com/Kheirlb/purethermal1-uvc-capture.git
 	cd purethermal1-uvc-capture
 	cd python
