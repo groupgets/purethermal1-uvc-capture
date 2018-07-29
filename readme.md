@@ -43,6 +43,7 @@ Terminal Commands:
 Make sure device is plugged into computer.
 
 Terminal Commands:
+
 	sudo python irdatav15c.py
 
 ## FYI
