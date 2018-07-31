@@ -3,16 +3,17 @@ from PyQt4 import QtCore, QtGui, uic
 from PyQt4.QtCore import (QCoreApplication, QThread, QThreadPool, pyqtSignal, pyqtSlot, Qt, SIGNAL, QTimer, QDateTime)
 from PyQt4.QtGui import (QImage, QWidget, QApplication, QLabel, QPixmap, QPushButton, QVBoxLayout, QGridLayout, QSizePolicy, QMessageBox, QFileDialog)
 import sys
-import os
+import os.path
 import cv2
 from tifffile import imsave
 import numpy as np
 import h5py
 import time
+import psutil
 from uvctypes import *
 from Queue import Queue
 
-qtCreatorFile = "ir_v3.ui"  # Enter file here.
+qtCreatorFile = "ir_v4.ui"  # Enter file here.
 
 Ui_MainWindow, QtBaseClass = uic.loadUiType(qtCreatorFile)
 
@@ -180,11 +181,18 @@ def startRec():
     if camState == 'recording':
         print('Alredy Recording')
     else:
-	file_nameH = str(('/Lepton HDPY Vid ' + QDateTime.currentDateTime().toString()))
-	filePathAndName = str(saveFilePath + file_nameH)
-	startRec.hdf5_file = h5py.File(filePathAndName, mode='w')
-	camState = 'recording'
-        print('Started Recording')
+	file_nameH = str(('Lepton HDPY Vid ' + QDateTime.currentDateTime().toString()))
+	try:
+		filePathAndName = str(saveFilePath + '/' + file_nameH)
+		#saveFilePathSlash = str(saveFilePath + '/')
+		startRec.hdf5_file = h5py.File(filePathAndName, mode='w')
+		#startRec.hdf5_file = h5py.File(os.path.join(saveFilePathSlash, file_nameH))
+		camState = 'recording'
+        	print('Started Recording')
+	except:
+		print('Incorrect File Path')
+		camState = 'not_recording'
+		print('Did Not Begin Recording')
 
 def getFrame():
     global tiff_frame
@@ -296,6 +304,7 @@ class App(QtGui.QMainWindow, Ui_MainWindow):
         self.timer.setInterval(1000)
         self.timerFast.setInterval(10)
         self.timer.timeout.connect(self.displayTime)
+        self.timer.timeout.connect(self.displayStorage)
         self.timerFast.timeout.connect(self.displayTempValues)
         self.timer.start()
         self.timerFast.start()
@@ -313,11 +322,23 @@ class App(QtGui.QMainWindow, Ui_MainWindow):
     def displayTime(self):
         self.timeStatus.setText(QDateTime.currentDateTime().toString())
 
+    def displayStorage(self):
+        usage = psutil.disk_usage('/')
+	oneMinVid = 25000000
+	timeAvail = usage.free/oneMinVid
+        self.storageLabel.setText('Recording Time Left: ' + str(timeAvail) + ' Minutes')
+
     def displayRec(self):
-        self.recLabel.setText('Recording')
+	if camState == 'recording':
+        	self.recLabel.setText('Recording')
+	else:
+	   self.recLabel.setText('Not Recording')
 
     def displayNotRec(self):
-        self.recLabel.setText('Not Recording')
+        if camState == 'not_recording':
+        	self.recLabel.setText('Not Recording')
+	else:
+	   self.recLabel.setText('Did Not Stop Recording')
 
     def getFiles(self):
 	global saveFilePath
