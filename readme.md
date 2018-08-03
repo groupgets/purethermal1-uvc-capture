@@ -26,7 +26,7 @@ No code is required to run this. If you need to install gstreamer:
 
 To view a live preview:
 
-    gst-launch-1.0 v4l2src device=/dev/video0 ! xvimagesink
+    gst-launch-1.0 v4l2src device=/dev/video0 ! videoconvert ! xvimagesink
 
 If you wish to use fixed scaling, you can use the `videoscale` element and leverage the
 lighter-weight `ximagesink`:
@@ -39,6 +39,7 @@ The PureThermal1 can natively capture with the following raw types (and a few mo
     video/x-raw,format=BGR    *Note that libv4l2 will emulate this type on Linux < 4.0
     video/x-raw,format=RGB16
     video/x-raw,format=GRAY8
+    video/x-raw,format=GRAY16_LE   *RAW IR data, won't look like much on screen due to large range
     video/x-raw,format=UYVY
 
 Gstreamer is very powerful and can be used to record video and stills, and even stream to remote
