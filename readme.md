@@ -167,3 +167,28 @@ Now you can load the control definition file:
     uvcdynctrl -v -d /dev/video0 -i pt1.xml
 
 You can now alter Lepton CCI functions using the standard V4L2 APIs. Guvcview is a quick way to try out some of these controls.
+
+List all controls available:
+
+    v4l2-ctl -l
+
+                         brightness 0x00980900 (int)    : min=0 max=255 step=1 default=128 value=128
+                           contrast 0x00980901 (int)    : min=0 max=255 step=1 default=128 value=128
+           lep_cid_agc_enable_state 0x08000001 (int)    : min=0 max=1 step=1 default=0 value=1
+                 lep_cid_agc_policy 0x08000002 (int)    : min=0 max=1 step=1 default=0 value=1
+    lep_cid_agc_histogram_clip_perc 0x08000005 (int)    : min=0 max=65535 step=1 default=0 value=0
+    lep_cid_agc_histogram_tail_size 0x08000006 (int)    : min=0 max=65535 step=1 default=0 value=0
+        lep_cid_agc_linear_max_gain 0x08000007 (int)    : min=0 max=65535 step=1 default=0 value=1
+        lep_cid_agc_linear_midpoint 0x08000008 (int)    : min=0 max=65535 step=1 default=0 value=128
+    lep_cid_agc_linear_dampening_fa 0x08000009 (int)    : min=0 max=65535 step=1 default=0 value=100
+    lep_cid_agc_heq_dampening_facto 0x0800000a (int)    : min=0 max=65535 step=1 default=0 value=0
+           lep_cid_agc_heq_max_gain 0x0800000b (int)    : min=0 max=65535 step=1 default=0 value=1
+    lep_cid_agc_heq_clip_limit_high 0x0800000c (int)    : min=0 max=65535 step=1 default=0 value=19200
+     lep_cid_agc_heq_clip_limit_low 0x0800000d (int)    : min=0 max=65535 step=1 default=0 value=512
+    ...
+
+Set a control, for example select a color palette:
+
+    v4l2-ctl -c lep_cid_vid_lut_select=1
+
+Take a look at the Lepton SDK header files for the meanings of enumeration values.
