@@ -25,6 +25,8 @@ The folder IR Data Viewer has the python script irDataViewervXX.py and another .
 - Zoom in and analyze your data in depth
 - Executable files are included for Linux and Windows Machines!
 
+Special thanks to the developers of GetThermal and the Flir Community Forum.
+
 ## REVISION CHANGES
 
 ### IR Data
