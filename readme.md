@@ -121,3 +121,4 @@ Or Qt Creator:
 
 - https://pythonspot.com/qt4-file-dialog/
 - https://stackoverflow.com/questions/4286036/how-to-have-a-directory-dialog-in-pyqt
+- Test Edit
