@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1008</width>
+    <width>1070</width>
     <height>532</height>
    </rect>
   </property>
@@ -19,7 +19,7 @@
      <rect>
       <x>670</x>
       <y>0</y>
-      <width>331</width>
+      <width>391</width>
       <height>431</height>
      </rect>
     </property>
@@ -113,7 +113,7 @@
             </font>
            </property>
            <property name="text">
-            <string>Start Recording IR Data</string>
+            <string>Start Recording Data</string>
            </property>
           </widget>
          </item>
@@ -249,7 +249,7 @@
      <rect>
       <x>670</x>
       <y>430</y>
-      <width>331</width>
+      <width>391</width>
       <height>61</height>
      </rect>
     </property>

@@ -15,6 +15,8 @@ from Queue import Queue
 import threading
 from subprocess import call
 
+print('Loaded Packages and Starting IR Data')
+
 qtCreatorFile = "ir_v7.ui"  # Enter file here.
 
 Ui_MainWindow, QtBaseClass = uic.loadUiType(qtCreatorFile)
@@ -302,7 +304,7 @@ class App(QtGui.QMainWindow, Ui_MainWindow):
 
     def initUI(self):
 	global fileNamingFull
-        self.startRec.clicked.connect(self.startRec2)  
+        self.startRec.clicked.connect(self.startRec2)
 	self.stopRec.clicked.connect(self.stopRecAndSave)
         self.startRec.clicked.connect(self.displayRec)
         self.stopRec.clicked.connect(self.displayNotRec)
@@ -368,7 +370,7 @@ class App(QtGui.QMainWindow, Ui_MainWindow):
 		print('Remember to Start Stream')
 		self.history.insertPlainText('Remember to Start Stream\n')
 		self.history.moveCursor(QTextCursor.End)
-		
+
     def stopRecAndSave(self):
 	global fileNum
 	global tiff_frame
@@ -414,8 +416,8 @@ class App(QtGui.QMainWindow, Ui_MainWindow):
 				thread = "active"
 				print('Starting Thread')
 			except:
-				print('Failed!!!!')     
-				exit(1)   
+				print('Failed!!!!')
+				exit(1)
 		else:
 			print('Already Started Camera')
 	except:
@@ -471,7 +473,7 @@ class App(QtGui.QMainWindow, Ui_MainWindow):
         	self.recLabel.setText('Recording')
 	else:
 	   self.recLabel.setText('Not Recording')
-	   
+
     def displayNotRec(self):
         if camState == 'not_recording':
         	self.recLabel.setText('Not Recording')
@@ -481,7 +483,7 @@ class App(QtGui.QMainWindow, Ui_MainWindow):
     def getFiles(self):
 	global saveFilePath
 	saveFilePath = QFileDialog.getExistingDirectory(self.w, 'Open File Directory', '/')
-	self.filePathDisp.setText(saveFilePath)	
+	self.filePathDisp.setText(saveFilePath)
 	self.fileNaming()
 
     def closeEvent(self, event):
