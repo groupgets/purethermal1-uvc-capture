@@ -1,10 +1,8 @@
-﻿# IR Data - Lepton 3.5, PureThermal 2, Raspbery Pi, Linux, Windows, Python, OpenCV, Matplotlib
+﻿# IR Data - Lepton 3.5, PureThermal 2, Raspbery Pi, Linux, Ubuntu, Windows, Python, OpenCV, Matplotlib
 
 # Raw Data Recording and Viewing
 
 I wanted an infared camera that could be easily controlled remotely and could record raw data. The Lepton 3.5 along with the purethermal 2 board provided a lot of options integrated with a raspberry pi. Looking through Groupgets software GetThermal and purethermal1-uvc-capture, I was able to piece together two user interfaces combining opencv and matplotlib with pyqt4. 
-
-The folder IR Data has the python script irdatavXX.X.py and a .ui file. IR Data is configured to run on a raspberry pi 3b+ at a 45% CPU usage (cv2.resize takes up too much resources on the pi).
 
 ### IR Data Abilities
 
@@ -12,8 +10,10 @@ The folder IR Data has the python script irdatavXX.X.py and a .ui file.
 
 - View IR Camera Stream
 - Display Max and Min Temperatures
-- Record Raw Data as HDF5 without overloading CPU
+- Record Raw Data as HDF5 without overloading raspberry pi CPU
 - Save Specific Filenames to Directories
+
+Screenshot of IR Data Software
 
 ![Alt text](/images/irDataOpen.png?raw=true)
 
@@ -28,14 +28,18 @@ The folder IR Data Viewer has the python script irDataViewervXX.py and another .
 - View .HDF5 Recorded Raw Data in matplotlib format
 - Save .AVI Files of specific length
 - Save PNG Images
-- Generate TIFF Files for further processing in Matlab or GNU Octave
+- Generate TIFF Files for further processing in MATLAB or GNU Octave
 - View Temperatures at any pixel on the frame
 - Zoom in and analyze your data in depth
 - Executable files are included for Linux and Windows Machines!
 
+Screenshot of IR Data Viewer Software
+
 ![Alt text](/images/irDataViewerSelected.png?raw=true)
 
-Special thanks to the developers of GetThermal and the Flir Community Forum.
+Unfortunately, Perform FFC and changing Gain Modes still is a feature I have not been able to add. If anyone wants to help me add these features, please reach out to me or take it on yourself. 
+
+Special thanks to the developers of GetThermal and the Flir Community Forum who helped me achieve my goals in this project.
 
 ## REVISION CHANGES
 
@@ -131,4 +135,3 @@ Or Qt Creator:
 
 - https://pythonspot.com/qt4-file-dialog/
 - https://stackoverflow.com/questions/4286036/how-to-have-a-directory-dialog-in-pyqt
-- Test Edit
