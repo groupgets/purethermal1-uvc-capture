@@ -8,14 +8,18 @@ The folder IR Data has the python script irdatavXX.X.py and a .ui file. IR Data 
 
 ### IR Data Abilities
 
+The folder IR Data has the python script irdatavXX.X.py and a .ui file. IR Data is configured to run on a raspberry pi 3b+ at a 45% CPU usage (cv2.resize takes up too much resources on the pi).
+
 - View IR Camera Stream
 - Display Max and Min Temperatures
 - Record Raw Data as HDF5 without overloading CPU
 - Save Specific Filenames to Directories
 
-The folder IR Data Viewer has the python script irDataViewervXX.py and another .ui file. IR Data Viewer is a post processing script designed to take in the binary .HDF5 files and process them into a matplotlib figure.
+![alt text] (images/irDataOpen.png)
 
 ### IR Data Viewer Abilities
+
+The folder IR Data Viewer has the python script irDataViewervXX.py and another .ui file. IR Data Viewer is a post processing script designed to take in the binary .HDF5 files and process them into a matplotlib figure.
 
 - View .HDF5 Recorded Raw Data in matplotlib format
 - Save .AVI Files of specific length
@@ -24,6 +28,8 @@ The folder IR Data Viewer has the python script irDataViewervXX.py and another .
 - View Temperatures at any pixel on the frame
 - Zoom in and analyze your data in depth
 - Executable files are included for Linux and Windows Machines!
+
+![alt text] (images/irDataViewerSelected.png)
 
 Special thanks to the developers of GetThermal and the Flir Community Forum.
 
