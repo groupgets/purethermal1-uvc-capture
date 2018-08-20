@@ -17,6 +17,10 @@ The folder IR Data has the python script irdatavXX.X.py and a .ui file. IR Data 
 
 ![Alt text](/images/irDataOpen.png?raw=true)
 
+Unfortunately I do not have a screenshot available of the newest version. Here is a screenshot of the old version.
+
+![Alt text](/images/irDataStreamingOld.png?raw=true)
+
 ### IR Data Viewer Abilities
 
 The folder IR Data Viewer has the python script irDataViewervXX.py and another .ui file. IR Data Viewer is a post processing script designed to take in the binary .HDF5 files and process them into a matplotlib figure.
