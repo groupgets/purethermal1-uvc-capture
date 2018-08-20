@@ -2,7 +2,11 @@
 
 # Raw Data Recording and Viewing
 
-I wanted an infared camera that could be easily controlled remotely and could record raw data. The Lepton 3.5 along with the purethermal 2 board provided a lot of options integrated with a raspberry pi. Looking through Groupgets software GetThermal and purethermal1-uvc-capture, I was able to piece together two user interfaces combining opencv and matplotlib with pyqt4. 
+I wanted an infared camera that could be easily controlled remotely and could record raw data. The Lepton 3.5 along with the purethermal 2  (PT2) board provided a lot of options integrated with a raspberry pi. Looking through Groupgets software GetThermal and purethermal1-uvc-capture, I was able to piece together two user interfaces combining opencv and matplotlib with pyqt4. 
+
+Purchased the Lepton 3.5 and PT2 from the below link. 
+
+https://groupgets.com/manufacturers/getlab/products/purethermal-2-flir-lepton-smart-i-o-module
 
 ### IR Data Abilities
 
