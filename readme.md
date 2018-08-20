@@ -15,7 +15,7 @@ The folder IR Data has the python script irdatavXX.X.py and a .ui file. IR Data 
 - Record Raw Data as HDF5 without overloading CPU
 - Save Specific Filenames to Directories
 
-![alt text] (images/irDataOpen.png)
+![Alt text] (/images/irDataOpen.png?raw=true)
 
 ### IR Data Viewer Abilities
 
@@ -29,7 +29,7 @@ The folder IR Data Viewer has the python script irDataViewervXX.py and another .
 - Zoom in and analyze your data in depth
 - Executable files are included for Linux and Windows Machines!
 
-![alt text] (images/irDataViewerSelected.png)
+![Alt text] (/images/irDataViewerSelected.png?raw=true)
 
 Special thanks to the developers of GetThermal and the Flir Community Forum.
 
