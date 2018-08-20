@@ -2,15 +2,15 @@
 
 # Raw Data Recording and Viewing
 
-I wanted an infared camera that could be easily controlled remotely and could record raw data. The Lepton 3.5 along with the purethermal 2  (PT2) board provided a lot of options integrated with a raspberry pi. Looking through Groupgets software GetThermal and purethermal1-uvc-capture, I was able to piece together two user interfaces combining opencv and matplotlib with pyqt4. 
+I wanted an infared camera that could be easily controlled remotely and could record raw data. The Lepton 3.5 along with the purethermal 2  (PT2) board provided a lot of options integrated with a raspberry pi. Looking through Groupgets software GetThermal and purethermal1-uvc-capture, I was able to piece together two user interfaces combining opencv and matplotlib with pyqt4.
 
-Purchased the Lepton 3.5 and PT2 from the below link. 
+Purchased the Lepton 3.5 and PT2 from the below link.
 
 https://groupgets.com/manufacturers/getlab/products/purethermal-2-flir-lepton-smart-i-o-module
 
 ### IR Data Abilities
 
-The folder IR Data has the python script irdatavXX.X.py and a .ui file. 
+The folder IR Data has the python script irdatavXX.X.py and a .ui file.
 
 - View IR Camera Stream
 - Display Max and Min Temperatures
@@ -19,11 +19,9 @@ The folder IR Data has the python script irdatavXX.X.py and a .ui file.
 
 Screenshot of IR Data Software
 
-![Alt text](/images/irDataOpen.png?raw=true)
+![Alt text](/images/irDataStreaming.png?raw=true)
 
-Unfortunately I do not have a screenshot available of the newest version streaming the IR images. However, here is a screenshot of version 15 I believe. You can notice here the pixelation of the IR images; this is because it is being resized from 120X160 to 480x640 using Qt's resizer function only, the cv2 resize function is commented out. IR Data is configured to run on a raspberry pi 3b+ at a 45% CPU usage (cv2.resize takes up too much resources on the pi). If you are running on a stronger computer, simply uncomment the cv2.resize function from irDatav16.5.py.
-
-![Alt text](/images/irDataStreamingOld.PNG?raw=true)
+You can notice in the above Screenshot the pixelation of the IR images; this is because it is being resized from 120X160 to 480x640 using Qt's resize function only, the cv2 resize function is commented out. IR Data is configured to run on a raspberry pi 3b+ at a 45% CPU usage (cv2.resize takes up too much resources on the pi). If you are running on a stronger computer, simply uncomment the cv2.resize function from irDatav16.5.py.
 
 ### IR Data Viewer Abilities
 
@@ -41,7 +39,7 @@ Screenshot of IR Data Viewer Software
 
 ![Alt text](/images/irDataViewerSelected.png?raw=true)
 
-Unfortunately, Perform FFC and changing Gain Modes still is a feature I have not been able to add. If anyone wants to help me add these features, please reach out to me or take it on yourself. 
+Unfortunately, Perform FFC and changing Gain Modes still is a feature I have not been able to add. If anyone wants to help me add these features, please reach out to me or take it on yourself.
 
 Special thanks to the developers of GetThermal and the Flir Community Forum who helped me achieve my goals in this project.
 
@@ -67,7 +65,7 @@ Terminal Commands:
 	sudo apt-get dist-upgrade
 	sudo apt-get install python-qt4
 	sudo apt-get install python-opencv
-	sudo apt-get install python-tifffile 
+	sudo apt-get install python-tifffile
 	sudo apt-get install python-h5py
 	sudo apt-get install python-psutil
 	sudo apt-get install git
@@ -105,7 +103,7 @@ Terminal Commands:
 ## RUNNNING IR Data Viewer .PY SCRIPT - Post Processing Script
 
 Terminal Commands:
-	
+
 	cd IR_Data_Viewer
 	sudo python irDataViewervXX.py
 
