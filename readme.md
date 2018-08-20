@@ -8,7 +8,7 @@ The folder IR Data has the python script irdatavXX.X.py and a .ui file. IR Data 
 
 ### IR Data Abilities
 
-The folder IR Data has the python script irdatavXX.X.py and a .ui file. IR Data is configured to run on a raspberry pi 3b+ at a 45% CPU usage (cv2.resize takes up too much resources on the pi).
+The folder IR Data has the python script irdatavXX.X.py and a .ui file. 
 
 - View IR Camera Stream
 - Display Max and Min Temperatures
@@ -17,7 +17,7 @@ The folder IR Data has the python script irdatavXX.X.py and a .ui file. IR Data 
 
 ![Alt text](/images/irDataOpen.png?raw=true)
 
-Unfortunately I do not have a screenshot available of the newest version. Here is a screenshot of the old version.
+Unfortunately I do not have a screenshot available of the newest version streaming the IR images. However, here is a screenshot of version 15 I believe. You can notice here the pixelation of the IR images; this is because it is being resized from 120X160 to 480x640 using Qt's resizer function only, the cv2 resize function is commented out. IR Data is configured to run on a raspberry pi 3b+ at a 45% CPU usage (cv2.resize takes up too much resources on the pi). If you are running on a stronger computer, simply uncomment the cv2.resize function from irDatav16.5.py.
 
 ![Alt text](/images/irDataStreamingOld.png?raw=true)
 
