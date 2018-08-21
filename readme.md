@@ -135,6 +135,9 @@ You can notice in the first Screenshot under IR Data Abilities the pixelation of
 
 Unfortunately, Perform FFC and changing Gain Modes features on IR Data are still unavailable. If anyone wants to help me develop these features, please reach out to me or take it on yourself.
 
+### For Lepton Protection
+If you would like to keep your Lepton and PT2 Board protected, two STLs were uploaded for a top and bottom of a 1"x3"x0.5" case that can be 3D printed using PLA or ABS. I used #8 Machine Srcew fasteners. The mount is designed to fit the lepton 3.5, the PT2, and the groupgets white USB cord that is sent with the PT2 board and prevent the cord from being pulled out. You may need to adjust the dimensions to fit other USB cords (It's a tight fit!). An image is included in this repo. The Groupgets purethermal developers also have their own STEP model which is what mine is based off of linked here: https://groupgets.com/manufacturers/getlab/products/purethermal-2-flir-lepton-smart-i-o-module
+
 ### Old FYI for Previous Versions
 
 - v12:
