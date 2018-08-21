@@ -1,0 +1,44 @@
+missing module named PySide - imported by c:\python27\lib\site-packages\PyInstaller\loader\rthooks\pyi_rth_qt4plugins.py
+missing module named org - imported by copy
+missing module named riscosenviron - imported by os
+missing module named riscospath - imported by os
+missing module named riscos - imported by os
+missing module named ce - imported by os
+missing module named _emx_link - imported by os
+missing module named os2 - imported by os
+missing module named pwd - imported by posixpath, getpass
+missing module named posix - imported by os
+missing module named resource - imported by posix
+missing module named readline - imported by cmd, pdb
+missing module named 'org.python' - imported by pickle, xml.sax
+missing module named fcntl - imported by tempfile, subprocess
+missing module named _dummy_threading - imported by dummy_threading
+missing module named vms_lib - imported by platform
+missing module named 'java.lang' - imported by platform, xml.sax._exceptions
+missing module named java - imported by platform
+missing module named _scproxy - imported by urllib
+missing module named EasyDialogs - imported by getpass
+missing module named termios - imported by getpass
+missing module named SOCKS - imported by ftplib
+missing module named rourl2path - imported by urllib
+missing module named _xmlplus - imported by xml
+missing module named 'Carbon.File' - imported by plistlib
+missing module named 'Carbon.Files' - imported by plistlib
+missing module named Carbon - imported by plistlib
+missing module named MacOS - imported by platform
+missing module named macresource - imported by MacOS
+missing module named gestalt - imported by platform
+missing module named winreg.HKEY_LOCAL_MACHINE - imported by winreg, platform
+missing module named winreg.CloseKey - imported by winreg, platform
+missing module named winreg.QueryValueEx - imported by winreg, platform
+missing module named winreg.OpenKeyEx - imported by winreg, platform
+missing module named psutil - imported by C:\Users\KarlP\Documents\GitHub\purethermal1-uvc-capture\python\irdatav16b.py
+missing module named h5py - imported by C:\Users\KarlP\Documents\GitHub\purethermal1-uvc-capture\python\irdatav16b.py
+missing module named numpy - imported by C:\Users\KarlP\Documents\GitHub\purethermal1-uvc-capture\python\irdatav16b.py
+missing module named tifffile - imported by C:\Users\KarlP\Documents\GitHub\purethermal1-uvc-capture\python\irdatav16b.py
+missing module named cv2 - imported by C:\Users\KarlP\Documents\GitHub\purethermal1-uvc-capture\python\irdatav16b.py
+missing module named 'PyQt4.elementtree' - imported by PyQt4.uic.uiparser
+missing module named elementtree - imported by PyQt4.uic.uiparser
+missing module named ElementTree - imported by PyQt4.uic.uiparser
+missing module named ElementC14N - imported by xml.etree.ElementTree
+missing module named 'PyQt4.uic.port_v3' - imported by PyQt4.uic.properties, PyQt4.uic.objcreator, PyQt4.uic.Compiler.qtproxies, PyQt4.uic.Compiler.qobjectcreator, PyQt4.uic
