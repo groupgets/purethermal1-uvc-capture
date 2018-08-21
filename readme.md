@@ -1,10 +1,21 @@
-﻿# IR, Thermal Imager, Lepton 3.5, PureThermal 2, Raspberry Pi, Linux, Ubuntu, Windows, Python, OpenCV, Matplotlib, VNC, Wireless Control
+﻿ # Raw IR Data Recording and Viewing
+ 
+# TAGS: IR, Thermal Imager, Lepton 3.5, PureThermal 2, Raspberry Pi, Linux, Ubuntu, Windows, Python, OpenCV, Matplotlib, VNC, Wireless Control
 
-# Raw IR Data Recording and Viewing
+## Description
 
 I wanted an infared, thermal imaging camera for my job that could be easily controlled remotely from a PC and record raw IR data. The Lepton 3.5 along with the purethermal 2 (PT2) board provided a lot of options integrated with a raspberry pi. Looking through Groupgets Github software GetThermal and purethermal1-uvc-capture, I was able to piece together two user interfaces, IR Data and IR Data Viewer, combining opencv and matplotlib with pyqt4.
 
-### IR Data Abilities
+## Table of Contents:
+
+- IR Data Ablilities
+- IR Data Viewer Abilities
+- Revision Changes
+- Downloading, Installing, and Running Software
+- Important Notices
+- UI Developement
+
+## IR Data Abilities
 
 The GitHub folder IR Data has the python script irdatavXX.X.py and a .ui file.
 
@@ -25,7 +36,7 @@ https://www.realvnc.com/en/raspberrypi/
 
 If you purchase the raspberry pi touchscreen, you can also very easily have a handheld IR camera if you don't have access to a wirless network and can't just use your phone. The UI file would most likely need to be resized/adjusted using Qt Designer mentioned in UI Development at the bottom of this document in order to properly fit the UI on the 800x400 screen.
 
-### IR Data Viewer Abilities
+## IR Data Viewer Abilities
 
 The folder IR Data Viewer has the python script irDataViewervXX.py and another .ui file. IR Data Viewer is a post processing script designed to take in the binary .HDF5 files and process them into a matplotlib figure for analysis.
 
@@ -124,7 +135,7 @@ Or As An Executable:
 
 There is also a Windows executable for IR Data Viewer.
 
-## FYI
+## IMPORTANT NOTICES
 
 ### For Raspberry Pi
 Might have to run .py files as sudo (admin)
@@ -136,7 +147,7 @@ You can notice in the first Screenshot under IR Data Abilities the pixelation of
 
 Unfortunately, Perform FFC and changing Gain Modes features on IR Data are still unavailable. If anyone wants to help me develop these features, please reach out to me or take it on yourself.
 
-## Old FYI for Previous Versions
+### Old FYI for Previous Versions
 
 - v12:
 	- All Raw Data is Save to Same Directory as .PY
