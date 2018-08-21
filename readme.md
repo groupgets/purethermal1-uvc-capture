@@ -1,8 +1,8 @@
-﻿# IR, Thermal Imager, Lepton 3.5, PureThermal 2, Raspbery Pi, Linux, Ubuntu, Windows, Python, OpenCV, Matplotlib, VNC, Wireless Control
+﻿# IR, Thermal Imager, Lepton 3.5, PureThermal 2, Raspberry Pi, Linux, Ubuntu, Windows, Python, OpenCV, Matplotlib, VNC, Wireless Control
 
 # Raw IR Data Recording and Viewing
 
-I wanted an infared, thermal imaging camera that could be easily controlled remotely from a PC and record the raw IR data. The Lepton 3.5 along with the purethermal 2 (PT2) board provided a lot of options integrated with a raspberry pi. Looking through Groupgets Github software GetThermal and purethermal1-uvc-capture, I was able to piece together two user interfaces, IR Data and IR Data Viewer, combining opencv and matplotlib with pyqt4.
+I wanted an infared, thermal imaging camera that could be easily controlled remotely from a PC and record raw IR data. The Lepton 3.5 along with the purethermal 2 (PT2) board provided a lot of options integrated with a raspberry pi. Looking through Groupgets Github software GetThermal and purethermal1-uvc-capture, I was able to piece together two user interfaces, IR Data and IR Data Viewer, combining opencv and matplotlib with pyqt4.
 
 ### IR Data Abilities
 
@@ -126,8 +126,12 @@ There is also a Windows executable for IR Data Viewer.
 
 ## FYI
 
+### For Raspberry Pi
 Might have to run .py files as sudo (admin)
 
+Your Raspberry Pi should have the latest version of Rasbian Strech with Desktop installed on the SD Card. Follow this link  https://www.raspberrypi.org/downloads/raspbian/ and install the ZIP image onto your SD Card using your favorite SD Card writer (My favorite is Etcher found at https://etcher.io/. It does not require you unzip the file).
+
+### For IR Data
 You can notice in the first Screenshot under IR Data Abilities the pixelation of the IR images; this is because it is being resized from 120X160 to 480x640 using Qt's resize function only, the cv2 resize function is commented out. IR Data is configured to run on a raspberry pi 3b+ at around 45% CPU usage (cv2.resize takes up too much resources on the pi causing the software to crash). If you are running on a stronger computer, simply uncomment the cv2.resize function from irDatav16.5.py script.
 
 Unfortunately, Perform FFC and changing Gain Modes features on IR Data are still unavailable. If anyone wants to help me develop these features, please reach out to me or take it on yourself.
