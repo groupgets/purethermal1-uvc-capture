@@ -2,7 +2,7 @@
 
 # Raw IR Data Recording and Viewing
 
-I wanted an infared, thermal imaging camera that could be easily controlled remotely from a PC and record raw IR data. The Lepton 3.5 along with the purethermal 2 (PT2) board provided a lot of options integrated with a raspberry pi. Looking through Groupgets Github software GetThermal and purethermal1-uvc-capture, I was able to piece together two user interfaces, IR Data and IR Data Viewer, combining opencv and matplotlib with pyqt4.
+I wanted an infared, thermal imaging camera for my job that could be easily controlled remotely from a PC and record raw IR data. The Lepton 3.5 along with the purethermal 2 (PT2) board provided a lot of options integrated with a raspberry pi. Looking through Groupgets Github software GetThermal and purethermal1-uvc-capture, I was able to piece together two user interfaces, IR Data and IR Data Viewer, combining opencv and matplotlib with pyqt4.
 
 ### IR Data Abilities
 
@@ -23,7 +23,7 @@ In order to control the IR Camera wirelessly, I was able to use a VNC Session be
 
 https://www.realvnc.com/en/raspberrypi/
 
-If you purchase the raspberry pi touchscreen, you can also very easily have a handheld IR camera if you don't have access to a wirless network. The UI file would most likely need to be resized/adjusted using Qt Designer mentioned in UI Development at the bottom of this document in order to properly fit the UI on the 800x400 screen.
+If you purchase the raspberry pi touchscreen, you can also very easily have a handheld IR camera if you don't have access to a wirless network and can't just use your phone. The UI file would most likely need to be resized/adjusted using Qt Designer mentioned in UI Development at the bottom of this document in order to properly fit the UI on the 800x400 screen.
 
 ### IR Data Viewer Abilities
 
