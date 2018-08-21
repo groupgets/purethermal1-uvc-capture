@@ -59,7 +59,7 @@ I purchased the Lepton 3.5 and PT2 from the below link:
 
 https://groupgets.com/manufacturers/getlab/products/purethermal-2-flir-lepton-smart-i-o-module
 
-## REVISION CHANGES
+## Revision Changes
 
 ### IR Data
 
@@ -72,7 +72,9 @@ https://groupgets.com/manufacturers/getlab/products/purethermal-2-flir-lepton-sm
 
 - v10 = Open and review .hdf5 files
 
-## HOW TO GET THIS SOFTWARE RUNNING ON YOUR PI OR LINUX PC
+## Downloading, Installing, and Running Software
+
+How to get this software running on your pi or linux pc.
 
 ### SYSTEM UPDATE/INSTALL PACKAGE COMMANDS
 
@@ -113,7 +115,7 @@ Terminal Commands:
 	sudo ldconfig -v
 	cd ../..
 
-### RUNNING IR Data
+### Running IR Data
 
 Make sure the PT2 is plugged into your pi or other linux computer.
 
@@ -122,7 +124,7 @@ Terminal Commands:
 	cd IR_Data
 	sudo python irdatavXX.X.py
 
-### RUNNNING IR Data Viewer - Post Processing Script
+### Running IR Data Viewer - Post Processing Script
 
 Terminal Commands:
 
