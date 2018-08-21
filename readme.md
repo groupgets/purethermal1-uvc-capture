@@ -10,10 +10,9 @@ I wanted an infared, thermal imaging camera for my job that could be easily cont
 
 - IR Data Ablilities
 - IR Data Viewer Abilities
-- Revision Changes
 - Downloading, Installing, and Running Software
 - Important Notices
-- UI Developement
+- Contributing Developement
 
 ## IR Data Abilities
 
@@ -58,19 +57,6 @@ Special thanks to the developers of GetThermal and the Flir Community Forum who 
 I purchased the Lepton 3.5 and PT2 from the below link:
 
 https://groupgets.com/manufacturers/getlab/products/purethermal-2-flir-lepton-smart-i-o-module
-
-## Revision Changes
-
-### IR Data
-
-- v12 = Works, but crashes on pi
-- v14 = Uses new .ui and doesn't crash on pi
-- v15 = New save format
-- v16 = Improvments all around
-
-### IR Data Viewer
-
-- v10 = Open and review .hdf5 files
 
 ## Downloading, Installing, and Running Software
 
@@ -155,7 +141,7 @@ Unfortunately, Perform FFC and changing Gain Modes features on IR Data are still
 	- All Raw Data is Save to Same Directory as .PY
 	- Use .m script and Octave GNU to process .tiff raw data files.
 
-## UI Development
+## Contributing Development
 
 If you would like to change the user interface and do more development of your own, I used Qt Designer.
 
@@ -166,6 +152,17 @@ Install Qt Designer:
 Or Qt Creator:
 
 	sudo apt-get install qtcreator
+
+### Revision Changes
+
+IR Data:
+- v12 = Works, but crashes on pi
+- v14 = Uses new .ui and doesn't crash on pi
+- v15 = New save format
+- v16 = Improvments all around
+
+IR Data Viewer:
+- v10 = Open and review .hdf5 files
 
 ### Helpful Links
 
