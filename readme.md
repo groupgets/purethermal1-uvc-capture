@@ -1,6 +1,6 @@
 ﻿ # Raw IR Data Recording and Viewing
  
-# TAGS: IR, Thermal Imager, Lepton 3.5, PureThermal 2, Raspberry Pi, Linux, Ubuntu, Windows, Python, OpenCV, Matplotlib, VNC, Wireless Control
+# Tags: IR, Thermal Imager, Lepton 3.5, PureThermal 2, Raspberry Pi, Linux, Ubuntu, Windows, Python, OpenCV, Matplotlib, VNC, Wireless Control
 
 ## Description
 
@@ -62,7 +62,7 @@ https://groupgets.com/manufacturers/getlab/products/purethermal-2-flir-lepton-sm
 
 How to get this software running on your pi or linux pc.
 
-### SYSTEM UPDATE/INSTALL PACKAGE COMMANDS
+### System Update and Install Packages
 
 If you have not already, please connect your pi or linux computer to the internet and open up the terminal. Most of these commands download the python packages necessary to run IR Data on your linux os. Important Note: These scripts were written using Python 2.7, not Python 3.
 
@@ -81,7 +81,7 @@ Terminal Commands:
 	sudo apt-get install libusb-1.0
 	sudo apt-get install build-essential
 
-### DOWNLOAD SOFTWARE FROM GITHUB
+### Download Software from GitHub 
 
 These terminal commands downloads the software from GitHub. They also install the libuvc package develped by Groupgets to use the PT2 board with Linux/MAC OS.
 
@@ -123,7 +123,7 @@ Or As An Executable:
 
 There is also a Windows executable for IR Data Viewer.
 
-## IMPORTANT NOTICES
+## Important Notices
 
 ### For Raspberry Pi
 Might have to run .py files as sudo (admin)
