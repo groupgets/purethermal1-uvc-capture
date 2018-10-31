@@ -90,7 +90,7 @@ Terminal Commands:
 	cd Documents
 	git clone https://github.com/Kheirlb/purethermal1-uvc-capture.git
 	cd purethermal1-uvc-capture
-	cd python
+	cd ui_software
 	git clone https://github.com/groupgets/libuvc
 	sudo apt-get install cmake
 	cd libuvc
