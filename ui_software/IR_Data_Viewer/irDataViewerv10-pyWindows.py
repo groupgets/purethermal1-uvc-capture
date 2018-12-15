@@ -133,7 +133,7 @@ def readTemp(unit, state):
         else:
             display('What are you asking for?')
     elif state == 'none':
-	if unit == 'F':
+        if unit == 'F':
             return (str(ktof(cursorVal)) + ' ' + unit)
         elif unit == 'C':
             return (str(ktoc(cursorVal)) + ' ' + unit)
@@ -162,7 +162,7 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
 
 	def initUI(self):
 		self.w = QWidget()
-		
+
 		# a figure instance to plot on
 		self.figure = Figure()
 
@@ -177,7 +177,7 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
 		# set the layout for the main window
 		self.dispLayout.addWidget(self.toolbar)
 		self.dispLayout.addWidget(self.canvas)
-		
+
 		#buttons
 		self.nextFrame.clicked.connect(self.dispNextImg)
 		self.prevFrame.clicked.connect(self.dispPrevImg)
@@ -186,7 +186,7 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
 		self.makeTiffBut.clicked.connect(self.makeTiff2)
 		self.displayC.clicked.connect(self.dispCDef)
 		self.displayC.clicked.connect(self.displayTempValues)
-        	self.displayF.clicked.connect(self.dispFDef)
+		self.displayF.clicked.connect(self.dispFDef)
 		self.displayF.clicked.connect(self.displayTempValues)
 		self.sl.valueChanged.connect(self.slValueChange)
 		self.saveCvImageBut.clicked.connect(self.saveCvImage)
@@ -195,7 +195,7 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
 		self.pauseVidBut.clicked.connect(self.pauseVideo)
 		#self.startEdit.returnPressed(frame = str(self.startEdit.text()))
 		#self.startEdit.returnPressed(frame = str(self.startEdit.text()))
-	
+
 		#self.history.verticalScrollBar().setValue(self.history.verticalScrollBar().maximum())
 
 		self.timer = QTimer(self)
@@ -218,7 +218,7 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
 	def startTimer(self):
 		global hz
 		self.timer.stop()
-		print(hz)		
+		print(hz)
 		self.timer.setInterval(timerHz)
 		self.timer.timeout.connect(self.playVid5)
 		self.timer.start()
@@ -230,7 +230,7 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
 	def speed(self):
 		global framerate
 		hzIndex = self.comboBoxHz.currentIndex()
-		if hzIndex == 0: 
+		if hzIndex == 0:
 			framerate = 0.5
 			print('Half Framerate')
 		elif hzIndex == 1:
@@ -247,7 +247,7 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
 		global frame
 		#global fileSelected
 		#if fileSelected != "":
-		#print('SlValueChange Def Called')		
+		#print('SlValueChange Def Called')
 		frame = self.sl.value()
 		self.dispImg()
 		self.canvas.draw()
@@ -261,16 +261,16 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
 		self.sl.setMinimum(1)
 		#print(lastFrame)
 		#print('Set Maximum')
-      		self.sl.setMaximum(lastFrame)
-      		self.sl.setValue(1)
-      		self.sl.setTickPosition(QSlider.TicksBelow)
-      		self.sl.setTickInterval(9)
+		self.sl.setMaximum(lastFrame)
+		self.sl.setValue(1)
+		self.sl.setTickPosition(QSlider.TicksBelow)
+		self.sl.setTickInterval(9)
 		self.slStartF.setText('First Frame: 1')
 		self.slMidF.setText('Mid Frame: ' + str(lastFrame/2))
 		self.slEndF.setText('Last Frame: ' + str(lastFrame))
 		self.slStartT.setText('0 Seconds')
 		self.slMidT.setText(str(lastFrame/(2*9)) + ' Seconds')
-		self.slEndT.setText(str(lastFrame/9) + ' Seconds')	
+		self.slEndT.setText(str(lastFrame/9) + ' Seconds')
 
 	def saveVideoSS(self):
 		global frame
@@ -286,14 +286,14 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
 			#if self.startEdit.isModified():
 			fileNameVid = str(fileNameVid)
 			#if fileNameVid.endswith('.avi') == False:
-			#	fileNameVid = fileNameVid + '.avi' 
+			#	fileNameVid = fileNameVid + '.avi'
 			frame = int(self.startEdit.text())
-			#if self.stopEdit.isModified():	
+			#if self.stopEdit.isModified():
 			editLastFrame = int(self.stopEdit.text())
 			fourcc = cv2.VideoWriter_fourcc(*'MJPG')
 			if fileNameVid != "":
 				try:
-			    		out = cv2.VideoWriter(fileNameVid,fourcc, 9.0, (640,480), True)
+					out = cv2.VideoWriter(fileNameVid,fourcc, 9.0, (640,480), True)
 					print('past out')
 					for i in range(frame, editLastFrame):
 						print('frame' + str(i))
@@ -363,14 +363,14 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
 				self.history.moveCursor(QTextCursor.End)
 				print('Collecting Data Frames...')
 				for i in range(1,lastFrame):
-					    #print('Frame to Tiff: ' + str(i))
-					    data = self.f_read[('image'+str(i))][:]
-					    if i == 1:
+					#print('Frame to Tiff: ' + str(i))
+					data = self.f_read[('image'+str(i))][:]
+					if i == 1:
 						dataCollection = data
-					    else:
+					else:
 						dataCollection = np.dstack((dataCollection,data))
-					    i += 1
-					    if i == lastFrame/2:
+					i += 1
+					if i == lastFrame/2:
 						print('Half Way Through File...')
 				print('Completed Collecting All Data Frames')
 				try:
@@ -401,8 +401,8 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
 
 	def on_press(self, event):
 		global xMouse
-		global yMouse	
-		global cursorVal	
+		global yMouse
+		global cursorVal
 		#print('you pressed', event.button, event.xdata, event.ydata)
 		xMouse = event.xdata
 		yMouse = event.ydata
@@ -411,8 +411,8 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
 
 	def hover(self, event):
 		global xMouse
-		global yMouse	
-		global cursorVal	
+		global yMouse
+		global cursorVal
 		#print('you pressed', event.button, event.xdata, event.ydata)
 		if event.xdata != None:
 			xMouse = int(round(event.xdata))
@@ -426,7 +426,7 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
 			#print('MOVE CURSOR OVER IMAGE')
 			self.cursorTempLabel.setText('Cursor Temp: MOVE CURSOR OVER IMAGE')
 
-    	def displayTempValues(self):
+	def displayTempValues(self):
 		global fileSelected
 		global toggleUnitState
 		if fileSelected != "":
@@ -477,7 +477,7 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
 		global editLastFrame
 		if videoState == 'play':
 			if editLastFrame <= lastFrame:
-				if frame <= editLastFrame:	
+				if frame <= editLastFrame:
 					self.sl.setValue(frame)
 					if frame != lastFrame:
 						frame += 1
@@ -528,9 +528,9 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
 		global lastFrame
 		global fileSelected
 		global maxVal
-    		global minVal
+		global minVal
 		global maxLoc
-    		global minLoc
+		global minLoc
 		#if frame > 1:
 			#self.cb.remove()
 		#print('Display Image at Frame: ' + str(frame))
@@ -551,15 +551,15 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
 		#colorVals = cm.get_clim(rgbImage)
 		#print(colorVals)
 		#cax = self.figure.add_axes([0.2, 0.08, 0.6, 0.04])
-		#self.figure.colorbar(rgbImage, cax, orientation='horizontal')		
+		#self.figure.colorbar(rgbImage, cax, orientation='horizontal')
 		self.cax = self.ax.imshow(rgbImage)
-		#self.cb = self.figure.colorbar(self.cax)		
+		#self.cb = self.figure.colorbar(self.cax)
 		lastFrame = len(self.f_read)
 		self.sl.setValue(frame)
 		self.displayTempValues()
 		self.currentTimeLabel.setText('Current Time: ' + str(round(((frame-1)/9.00),2)))
 		cid = self.canvas.mpl_connect('motion_notify_event', self.hover)
-	
+
 	def enableThings(self):
 		self.playVidBut.setEnabled(True)
 		self.pauseVidBut.setEnabled(True)
