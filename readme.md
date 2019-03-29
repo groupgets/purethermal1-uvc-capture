@@ -156,6 +156,29 @@ Or Qt Creator:
 
 	sudo apt-get install qtcreator
 
+### Desired Updates and Features
+
+IR Data:
+- Set Gain Mode to LOW
+- Send files over VNC Easily
+- Rotate View
+- Hover Mouse Temp
+- Rescalable abilities
+- Change Color Mode (Grayscale)
+- Add perform FFC
+- Have reset feature for when values read absoulte 0. Likely need simple reboot button for raspberry pi.
+
+IR Data Viewer:
+- Create new exe without --onefile
+- Import HD5F OR TIFF Files
+- Compare 2 Videos
+- Plot Line
+- Import as Numpy array instead of just grabbing from HD5F
+- Grab files from PI (might not be possible at all)
+
+Physical Mount
+- Improve vibration resistance (Improve Stiffness)
+
 ### Revision Changes
 
 IR Data:
