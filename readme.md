@@ -67,6 +67,20 @@ Video preview and capture example leveraging AVFoundation on OS X.
 Build this example using XCode on OS X, `PT1Recorder.xcodeproj`
 
 
+## MediaFoundation (Windows)
+
+This example shows how to interact with a PureThermal board using the Windows SDK.
+
+* Read UVC extension unit (e.g. Lepton serial number or part number)
+* Write UVC extension unit (e.g. command FFC)
+* Demonstrate selection and acquisition of Y16 data type
+* Demonstrate use of telemetry data
+
+To build this example, you'll need the [Windows 10 SDK](https://developer.microsoft.com/en-US/windows/downloads/windows-10-sdk) and Microsoft Visual Studio. Note that if you have a different version of the SDK installed, you may need to right-click the solution and select the Retarget Solution, or modify the project properties.
+
+Note that in order for the telemetry features to work, you'll need to have the PureThermal firmware version must be 1.2.2 or greater.
+
+
 ## Python (OS X, Windows, Linux)
 
     cd python
