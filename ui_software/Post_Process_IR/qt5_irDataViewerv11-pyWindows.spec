@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['qt5_irDataViewerv11-pyWindows.py'],
-             pathex=['C:\\Users\\KarlP\\Documents\\GitHub\\purethermal1-uvc-capture\\ui_software\\IR_Data_Viewer'],
+             pathex=['C:\\Users\\KarlP\\Documents\\GitHub\\purethermal1-uvc-capture\\ui_software\\Post_Process_IR'],
              binaries=[],
              datas=[],
              hiddenimports=[],

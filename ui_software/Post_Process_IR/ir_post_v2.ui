@@ -157,6 +157,16 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="tempScaleBut">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>Generate Figure with Temp Scale</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="saveCvImageBut">
         <property name="enabled">
          <bool>false</bool>
@@ -172,17 +182,7 @@
          <bool>false</bool>
         </property>
         <property name="text">
-         <string>Generate Tiff File</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="tempScaleBut">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>Generate Figure with Temp Scale</string>
+         <string>Generate Tiff File (Full Duration)</string>
         </property>
        </widget>
       </item>

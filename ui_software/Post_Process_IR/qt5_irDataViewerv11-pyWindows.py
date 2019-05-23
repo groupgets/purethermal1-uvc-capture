@@ -2,13 +2,14 @@
 # Python 3 and PyQt5 Implementation
 
 import sys
+print(sys.version)
 
 from PyQt5 import QtCore, QtGui, uic
 print('Successful import of uic') #often reinstallation of PyQt5 is required
 
 from PyQt5.QtCore import (QCoreApplication, QThread, QThreadPool, pyqtSignal, pyqtSlot, Qt, QTimer, QDateTime)
 from PyQt5.QtGui import (QImage, QPixmap, QTextCursor)
-from PyQt5.QtWidgets import (QWidget, QMainWindow, QApplication, QLabel, QPushButton, QVBoxLayout, QGridLayout, QSizePolicy, QMessageBox, QFileDialog, QSlider, QComboBox)
+from PyQt5.QtWidgets import (QWidget, QMainWindow, QApplication, QLabel, QPushButton, QVBoxLayout, QGridLayout, QSizePolicy, QMessageBox, QFileDialog, QSlider, QComboBox, QProgressDialog)
 import numpy as np
 import cv2
 import h5py
@@ -36,6 +37,9 @@ from matplotlib.colors import ListedColormap, LinearSegmentedColormap
 
 import random
 colorMapType = 0
+
+import warnings
+warnings.filterwarnings("ignore")
 
 def generate_colour_map():
 	global colorMapType
@@ -210,6 +214,7 @@ class Window(QMainWindow, Ui_MainWindow):
 		self.initUI()
 
 	def initUI(self):
+		print('Starting user interface...')
 		self.w = QWidget()
 
 		# a figure instance to plot on
@@ -343,12 +348,12 @@ class Window(QMainWindow, Ui_MainWindow):
 		self.sl.setTickPosition(QSlider.TicksBelow)
 		self.sl.setTickInterval(9)
 		self.slStartF.setText('First Frame: 1')
-		self.slMidF.setText('Mid Frame: ' + str(lastFrame/2))
+		self.slMidF.setText('Mid Frame: ' + str(round(lastFrame/2)))
 		self.slEndF.setText('Last Frame: ' + str(lastFrame))
 		self.slStartT.setText('0 Seconds')
-		self.slMidT.setText(str(lastFrame/(2*9)) + ' Seconds')
-		self.slEndT.setText(str(lastFrame/9) + ' Seconds')
-
+		self.slMidT.setText(str(round(lastFrame/(2*9),1)) + ' Seconds')
+		self.slEndT.setText(str(round(lastFrame/9,1)) + ' Seconds')
+	
 	def saveVideoSS(self):
 		global frame
 		global editLastFrame
@@ -359,7 +364,7 @@ class Window(QMainWindow, Ui_MainWindow):
 			dlgVid = QFileDialog()
 			#dlg.setNameFilter('PNG files (*.png)')
 			dlgVid.setDefaultSuffix('.avi')
-			fileNameVid = dlgVid.getSaveFileName(self.w, 'Navigate to Directory and Choose a File Name to Save To', 'untitled.avi', 'AVI Video (*.avi)')
+			fileNameVid, filter = dlgVid.getSaveFileName(self.w, 'Navigate to Directory and Choose a File Name to Save To', 'untitled.avi', 'AVI Video (*.avi)')
 			#if self.startEdit.isModified():
 			fileNameVid = str(fileNameVid)
 			#if fileNameVid.endswith('.avi') == False:
@@ -372,8 +377,25 @@ class Window(QMainWindow, Ui_MainWindow):
 				try:
 					out = cv2.VideoWriter(fileNameVid,fourcc, 9.0, (640,480), True)
 					print('past out')
+					
+					initialFrame = frame
+					rangeVid = editLastFrame - initialFrame
+					pd = QProgressDialog("Operation in progress.", "Cancel", 0, 100, self);
+					pd.setWindowTitle("Creating AVI Video...")
+					pd.setWindowModality(Qt.WindowModal)
+					pd.resize(400,100)
+					pd.show()
+					pd.setValue(0)
+					time.sleep(0.25)
+					
 					for i in range(frame, editLastFrame):
 						print('frame' + str(i))
+						
+						percentageComplete = ((i - initialFrame)/rangeVid)*100
+						pd.setValue(percentageComplete)
+						if pd.wasCanceled():
+							break;
+						
 						frameForVid = self.grabDataFrame()
 						out.write(frameForVid)
 						if frame <= editLastFrame:
@@ -385,6 +407,11 @@ class Window(QMainWindow, Ui_MainWindow):
 					print('Saved Video As ' + str(fileNameVid))
 					self.history.insertPlainText('SUCCESS: Saved Video\n')
 					self.history.moveCursor(QTextCursor.End)
+					
+					pd.setValue(100)
+					time.sleep(1)
+					pd.close()
+					
 				except:
 					self.history.insertPlainText('No AVI Video Generated\n Did Not Specify Proper FileName\n')
 					self.history.moveCursor(QTextCursor.End)
@@ -404,7 +431,7 @@ class Window(QMainWindow, Ui_MainWindow):
 			dlg = QFileDialog()
 			#dlg.setNameFilter('PNG files (*.png)')
 			dlg.setDefaultSuffix('.png')
-			fileNameImage = dlg.getSaveFileName(self.w, 'Navigate to Directory and Choose a File Name to Save To', 'untitled.png', 'PNG Image (*.png)')
+			fileNameImage, filter = dlg.getSaveFileName(self.w, 'Navigate to Directory and Choose a File Name to Save To', 'untitled.png', 'PNG Image (*.png)')
 			if fileNameImage != "":
 				try:
 					print(fileNameImage)
@@ -433,14 +460,31 @@ class Window(QMainWindow, Ui_MainWindow):
 			dlgTiff = QFileDialog()
 			#dlg.setNameFilter('PNG files (*.png)')
 			dlgTiff.setDefaultSuffix('.tiff')
-			fileNameTiff = dlgTiff.getSaveFileName(self.w, 'Navigate to Directory and Choose a File Name to Save To', 'untitled.tiff', 'TIFF File (*.tiff)')
+			fileNameTiff, filter = dlgTiff.getSaveFileName(self.w, 'Navigate to Directory and Choose a File Name to Save To', 'untitled.tiff', 'TIFF File (*.tiff)')
 			print(fileNameTiff)
 			if fileNameTiff != "":
 				self.history.insertPlainText('File Name Selected\n')
 				self.history.moveCursor(QTextCursor.End)
 				print('Collecting Data Frames...')
+				
+				initialFrame = 1
+				rangeVid = lastFrame - initialFrame
+				pd = QProgressDialog("Operation in progress.", "Cancel", 0, 100, self);
+				pd.setWindowTitle("Creating TIFF File...")
+				pd.setWindowModality(Qt.WindowModal)
+				pd.resize(400,100)
+				pd.show()
+				pd.setValue(0)
+				time.sleep(0.25)
+				
 				for i in range(1,lastFrame):
-					#print('Frame to Tiff: ' + str(i))
+					print('Frame to Tiff: ' + str(i))
+					
+					percentageComplete = ((i - initialFrame)/rangeVid)*100
+					pd.setValue(percentageComplete)
+					if pd.wasCanceled():
+						break;
+					
 					data = self.f_read[('image'+str(i))][:]
 					if i == 1:
 						dataCollection = data
@@ -460,6 +504,9 @@ class Window(QMainWindow, Ui_MainWindow):
 					self.history.moveCursor(QTextCursor.End)
 					print('Did Not Specify Proper FileName')
 					print('No Tiff File Generated')
+				pd.setValue(100)
+				time.sleep(1)
+				pd.close()
 			else:
 				self.history.insertPlainText('No Tiff File Generated\n Did Not Specify Proper FileName\n')
 				self.history.moveCursor(QTextCursor.End)
@@ -687,9 +734,7 @@ class Window(QMainWindow, Ui_MainWindow):
 		fileSelected = ""
 		dlg = QFileDialog()
 		dlg.setDefaultSuffix( '.HDF5' )
-		fileSelected = str(dlg.getOpenFileName(self, 'Open File', '/')) #, 'HD5F (*.HDF5)'))
-		file2 = fileSelected[2:-19] #required for python3 compatibility
-		fileSelected = file2
+		fileSelected, filter = dlg.getOpenFileName(self, 'Open File', '/') #, 'HD5F (*.HDF5)'))
 		print(fileSelected)
 		self.dispSelectedFile.setText(fileSelected)
 		if fileSelected != "":
