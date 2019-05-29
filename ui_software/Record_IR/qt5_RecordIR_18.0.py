@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from PyQt5 import QtCore, QtGui, uic
 print('Successful import of uic') #often reinstallation of PyQt5 is required
@@ -103,7 +103,7 @@ def generate_colour_map():
     def chunk(
             ulist, step): return map(
         lambda i: ulist[i: i + step],
-        xrange(0, len(ulist),
+        range(0, len(ulist),
                step))
 
     chunks = chunk(colourmap_ironblack, 3)
@@ -446,7 +446,7 @@ class App(QMainWindow, Ui_MainWindow):
     def runPostScript(self):
     	try:
     		def thread_second():
-    	    		call(["python", postScriptFileName])
+    	    		call(["python3", postScriptFileName])
     		processThread = threading.Thread(target=thread_second)  # <- note extra ','
     		processThread.start()
     	except:
