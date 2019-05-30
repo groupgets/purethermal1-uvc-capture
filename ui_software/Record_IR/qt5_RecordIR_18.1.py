@@ -22,7 +22,7 @@ from subprocess import call
 
 print('Loaded Packages and Starting IR Data...')
 
-qtCreatorFile = "ir_v8.ui"  # Enter file here.
+qtCreatorFile = "ir_v9.ui"  # Enter file here.
 postScriptFileName = "qt5_irDataViewerv11-pyWindows.py"
 
 Ui_MainWindow, QtBaseClass = uic.loadUiType(qtCreatorFile)
