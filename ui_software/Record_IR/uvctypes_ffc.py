@@ -283,5 +283,5 @@ def set_gain_low(devh):
     setGainSDK = 0x49
     controlID = (setGainSDK >> 2) + 1 #formula from Kurt Kiefer
     print('controlID: ' + str(controlID))
-    set_extension_unit(devh, SYS_UNIT_ID, controlID, shutter_mode, sizeData) #set_extension_unit(devh, unit, control, data, size)
+    set_extension_unit(devh, SYS_UNIT_ID, controlID, gain_mode, sizeData) #set_extension_unit(devh, unit, control, data, size)
     print("Shutter Mode #: {0}".format(repr(gain_mode.raw)))
