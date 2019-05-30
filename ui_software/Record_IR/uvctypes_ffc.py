@@ -260,4 +260,5 @@ def set_manual_ffc(devh):
     #0x3D set
     controlID = (0x3D >> 2) + 1
     print('controlID: ' + str(controlID))
-    set_extension_unit(devh, SYS_UNIT_ID, controlID, shutter_mode, sizeData) #set_extension_unit(devh, unit, control, data, size)
+    call_extension_unit(devh, SYS_UNIT_ID, controlID, shutter_mode, sizeData) #set_extension_unit(devh, unit, control, data, size)
+    print("Shutter Mode #: {0}".format(repr(shutter_mode.raw)))
