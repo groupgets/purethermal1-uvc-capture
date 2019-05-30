@@ -170,7 +170,7 @@ def startStream():
       print("done")
 
       print("Attempting to Manual FFC")
-      libuvc.set_manual_ffc(devh)
+      set_manual_ffc(devh)
       print("Success?")
     except:
       #libuvc.uvc_unref_device(dev)
