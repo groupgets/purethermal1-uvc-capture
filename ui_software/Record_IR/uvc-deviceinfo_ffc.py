@@ -25,6 +25,7 @@ def main():
     print_device_info(devh)
     print("Attempting to Manual FFC")
     set_manual_ffc(devh)
+    perform_manual_ffc(devh)
     print("Success?")
 
 if __name__ == '__main__':
