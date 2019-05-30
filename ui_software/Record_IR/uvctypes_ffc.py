@@ -255,9 +255,10 @@ def uvc_get_frame_formats_by_guid(devh, vs_fmt_guid):
 def set_manual_ffc(devh):
     sizeData = 2 #2 bytes
     shutter_mode = create_string_buffer(sizeData)
+    #0x200 Module ID VID
     #0x3C get
     #0x3D set
     #controlID = (0x3D >> 2) + 1
-    controlID = 17
+    controlID = ((0x200 + 0x3D) >> 2) + 1
     print('controlID: ' + str(controlID))
-    set_extension_unit(devh, SYS_UNIT_ID, controlID, shutter_mode, sizeData) #set_extension_unit(devh, unit, control, data, size)
+    set_extension_unit(devh, SYS_UNIT_ID, controlID, 0x1, sizeData) #set_extension_unit(devh, unit, control, data, size)
