@@ -23,6 +23,9 @@ def main():
         exit(1)
 
     print_device_info(devh)
+    print("Attempting to Manual FFC")
+    set_manual_ffc(devh)
+    print("Success?")
 
 if __name__ == '__main__':
   main()
