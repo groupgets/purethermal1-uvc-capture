@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from uvctypes import *
+from uvctypes_ffc import *
 
 def main():
     ctx = POINTER(uvc_context)()
