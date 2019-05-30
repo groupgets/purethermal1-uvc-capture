@@ -256,5 +256,5 @@ def set_manual_ffc(devh):
     sizeData = 2
     shutter_mode = create_string_buffer(sizeData)
     controlID = (0x3C >> 2) + 1
-    print('controlID: ' + controlID)
+    print('controlID: ' + str(controlID))
     set_extension_unit(devh, SYS_UNIT_ID, controlID, shutter_mode, sizeData) #set_extension_unit(devh, unit, control, data, size)
