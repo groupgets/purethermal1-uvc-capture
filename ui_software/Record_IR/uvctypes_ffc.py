@@ -276,3 +276,12 @@ def perform_manual_ffc(devh):
     print('controlID: ' + str(controlID))
     set_extension_unit(devh, SYS_UNIT_ID, controlID, shutter_mode, sizeData) #set_extension_unit(devh, unit, control, data, size)
     print("Shutter Mode #: {0}".format(repr(shutter_mode.raw)))
+
+def set_gain_low(devh):
+    sizeData = 4 #should be size 32 bytes?
+    gain_mode = create_string_buffer(sizeData)
+    setGainSDK = 0x49
+    controlID = (setGainSDK >> 2) + 1 #formula from Kurt Kiefer
+    print('controlID: ' + str(controlID))
+    set_extension_unit(devh, SYS_UNIT_ID, controlID, shutter_mode, sizeData) #set_extension_unit(devh, unit, control, data, size)
+    print("Shutter Mode #: {0}".format(repr(gain_mode.raw)))

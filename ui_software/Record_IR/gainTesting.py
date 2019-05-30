@@ -23,8 +23,9 @@ def main():
         exit(1)
 
     print_device_info(devh)
-    print("Attempting to Manual FFC")
-    set_manual_ffc(devh)
+    print("Attempting to Set Gain To Low")
+    set_gain_low(devh)
+    #set_manual_ffc(devh)
     #perform_manual_ffc(devh)
     print("Success?")
 
