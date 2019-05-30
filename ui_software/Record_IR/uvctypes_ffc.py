@@ -253,13 +253,14 @@ def uvc_get_frame_formats_by_guid(devh, vs_fmt_guid):
   return []
 
 def set_manual_ffc(devh):
-    sizeData = 32 #should be size 32 bits?
+    sizeData = 2 #should be size 32 bytes?
     shutter_mode = create_string_buffer(sizeData)
     #0x200 Module ID VID
     #0x3C get
     #0x3D set
     getSDK = 0x3D
-    controlID = (getSDK >> 2) + 1 #formula from Kurt Kiefer
+    runFFC = 0x42
+    controlID = (runFFC >> 2) + 1 #formula from Kurt Kiefer
     print('controlID: ' + str(controlID))
     set_extension_unit(devh, SYS_UNIT_ID, controlID, shutter_mode, sizeData) #set_extension_unit(devh, unit, control, data, size)
     print("Shutter Mode #: {0}".format(repr(shutter_mode.raw)))
