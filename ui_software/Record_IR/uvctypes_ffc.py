@@ -259,7 +259,6 @@ def set_manual_ffc(devh):
     #0x3C get
     #0x3D set
     getSDK = 0x3D
-    runFFC = 0x42
     controlID = (getSDK >> 2) + 1 #formula from Kurt Kiefer
     print('controlID: ' + str(controlID))
     set_extension_unit(devh, SYS_UNIT_ID, controlID, shutter_mode, sizeData) #set_extension_unit(devh, unit, control, data, size)
