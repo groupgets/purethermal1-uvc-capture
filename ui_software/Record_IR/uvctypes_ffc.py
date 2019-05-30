@@ -266,7 +266,7 @@ def set_manual_ffc(devh):
     print("Shutter Mode #: {0}".format(repr(shutter_mode.raw)))
 
 def perform_manual_ffc(devh):
-    sizeData = 0 #should be size 32 bytes?
+    sizeData = 2 #should be size 32 bytes?
     shutter_mode = create_string_buffer(sizeData)
     #0x200 Module ID VID
     #0x3C get
