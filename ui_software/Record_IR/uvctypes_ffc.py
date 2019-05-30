@@ -255,7 +255,6 @@ def uvc_get_frame_formats_by_guid(devh, vs_fmt_guid):
 def set_manual_ffc(devh):
     sizeData = 32 #should be size 32 bytes?
     shutter_mode = create_string_buffer(sizeData)
-    shutter_mode = 'LEP_SYS_FFC_SHUTTER_MODE_MANUAL'
     #0x200 Module ID VID
     #0x3C get
     #0x3D set
