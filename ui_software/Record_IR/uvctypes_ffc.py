@@ -161,6 +161,12 @@ class lep_oem_sw_version(Structure):
               ("dsp_build", c_ubyte),
               ("reserved", c_ushort)]
 
+class Gain(Enum):
+    LEP_SYS_GAIN_MODE_HIGH = 0,
+    LEP_SYS_GAIN_MODE_LOW,
+    LEP_SYS_GAIN_MODE_AUTO,
+    LEP_SYS_END_GAIN_MODE,
+
 def call_extension_unit(devh, unit, control, data, size):
   return libuvc.uvc_get_ctrl(devh, unit, control, data, size, 0x81)
 
