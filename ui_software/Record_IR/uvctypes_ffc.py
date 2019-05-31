@@ -285,7 +285,7 @@ def perform_manual_ffc(devh):
 
 def set_gain_low(devh):
     sizeData = 4 #should be size 32 bytes?
-    gain_mode = create_string_buffer("1")
+    gain_mode = create_string_buffer(4)
     setGainSDK = 0x49
     controlID = (setGainSDK >> 2) + 1 #formula from Kurt Kiefer
     print('controlID: ' + str(controlID))
