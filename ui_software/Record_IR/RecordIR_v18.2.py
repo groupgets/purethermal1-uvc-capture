@@ -355,6 +355,7 @@ class App(QMainWindow, Ui_MainWindow):
 
     def ffcFunction(self):
         devh = POINTER(uvc_device_handle)()
+        ctrl = uvc_stream_ctrl()
         perform_manual_ffc(devh)
 
     def startRec2(self):
