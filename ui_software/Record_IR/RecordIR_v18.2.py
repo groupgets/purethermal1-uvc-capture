@@ -169,7 +169,7 @@ def startStream():
         exit(1)
 
       print("done")
-      
+
     except:
       #libuvc.uvc_unref_device(dev)
       print('Failed to Open Device')
@@ -373,8 +373,8 @@ class App(QMainWindow, Ui_MainWindow):
             if (self.comboFFCmode.currentText() == 'MANUAL'):
                 set_manual_ffc(devh)
             else:
-                set_auto_ffc(devh)
-                #print('Cannot set to back to AUTO yet')
+                #set_auto_ffc(devh)
+                print('Cannot set to back to AUTO yet. Unplug USB from Raspberry Pi to reset lepton.')
 
     def ffcFunction(self):
         global devh
