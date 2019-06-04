@@ -55,18 +55,18 @@ Required Packages:
 Software:
 ```
   cd Documents
-	git clone https://github.com/Kheirlb/purethermal1-uvc-capture.git
-	cd purethermal1-uvc-capture
-	cd ui_software
-	git clone https://github.com/groupgets/libuvc
-	sudo apt-get install cmake
-	cd libuvc
-	mkdir build
-	cd build
-	cmake ..
-	make && sudo make install
-	sudo ldconfig -v
-	cd ../..
+  git clone https://github.com/Kheirlb/purethermal1-uvc-capture.git
+  cd purethermal1-uvc-capture
+  cd ui_software
+  git clone https://github.com/groupgets/libuvc
+  sudo apt-get install cmake
+  cd libuvc
+  mkdir build
+  cd build
+  cmake ..
+  make && sudo make install
+  sudo ldconfig -v
+  cd ../..
 ```
 USB Permissions:
 ```
@@ -82,6 +82,13 @@ Wireless Control Enable:
 Download VNC Viewer from RealVNC onto desired computer. Use the raspberrypi IP address to connect. The IP address is assigned when the raspberry pi is connected to your local network/WiFi.
 
 ## Run Software
-
+Navigate to desired directory and run desired version:
+```
+sudo python3 RecordIR_XX.X.py
+```
+or
+```
+sudo python3 PostProcessIR_vXX.py
+```
 ## Additional Comments:
 Special thanks to the developers of GroupGets GetThermal and purethermal1-uvc-capture and the Flir Community Forum who helped me achieve my goals in this project.
