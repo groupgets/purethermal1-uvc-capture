@@ -253,8 +253,19 @@ def uvc_get_frame_formats_by_guid(devh, vs_fmt_guid):
   return []
 
 def set_manual_ffc(devh):
-    sizeData = 4 
+    sizeData = 4
     shutter_mode = (c_uint16)(0)
+    #0x200 Module ID VID
+    #0x3C get
+    #0x3D set
+    getSDK = 0x3D
+    controlID = (getSDK >> 2) + 1 #formula from Kurt Kiefer
+    print('controlID: ' + str(controlID))
+    set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(shutter_mode), sizeData) #set_extension_unit(devh, unit, control, data, size)
+
+def set_auto_ffc(devh):
+    sizeData = 4
+    shutter_mode = (c_uint16)(1)
     #0x200 Module ID VID
     #0x3C get
     #0x3D set
@@ -278,6 +289,22 @@ def perform_manual_ffc(devh):
 def set_gain_low(devh):
     sizeData = 4
     gain_mode = (c_uint16)(1) #0=HIGH, 1=LOW, 2=AUTO
+    setGainSDK = 0x49
+    controlID = (setGainSDK >> 2) + 1 #formula from Kurt Kiefer
+    print('controlID: ' + str(controlID))
+    set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(gain_mode), sizeData) #set_extension_unit(devh, unit, control, data, size)
+
+def set_gain_high(devh):
+    sizeData = 4
+    gain_mode = (c_uint16)(0) #0=HIGH, 1=LOW, 2=AUTO
+    setGainSDK = 0x49
+    controlID = (setGainSDK >> 2) + 1 #formula from Kurt Kiefer
+    print('controlID: ' + str(controlID))
+    set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(gain_mode), sizeData) #set_extension_unit(devh, unit, control, data, size)
+
+def set_gain_auto(devh):
+    sizeData = 4
+    gain_mode = (c_uint16)(2) #0=HIGH, 1=LOW, 2=AUTO
     setGainSDK = 0x49
     controlID = (setGainSDK >> 2) + 1 #formula from Kurt Kiefer
     print('controlID: ' + str(controlID))
