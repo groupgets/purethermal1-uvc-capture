@@ -23,6 +23,12 @@ Required Components:
 - Raspberry Pi 3 Power Supply
 - Display with Keyboard/Mouse Control
 
+Software Primary Dependencies:
+- Python 3
+- PyQt5
+- OpenCV
+- libuvc
+
 ## Raspberry Pi Setup
 Plug Raspberry Pi into HDMI display and connect keyboard/mouse. Must have Rasbian Stretch installed onto SD Card. Connect the Raspberry Pi to your local network/WiFi and open linux terminal to perform following terminal commands.
 
