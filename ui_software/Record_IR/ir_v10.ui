@@ -92,12 +92,12 @@
           </property>
           <item>
            <property name="text">
-            <string>LOW</string>
+            <string>HIGH</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>HIGH</string>
+            <string>LOW</string>
            </property>
           </item>
           <item>
@@ -128,12 +128,12 @@
           </property>
           <item>
            <property name="text">
-            <string>MANUAL</string>
+            <string>AUTO</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>AUTO</string>
+            <string>MANUAL</string>
            </property>
           </item>
          </widget>

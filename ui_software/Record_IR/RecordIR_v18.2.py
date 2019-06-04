@@ -351,8 +351,18 @@ class App(QMainWindow, Ui_MainWindow):
         self.lineEdit.setText(defaultName)
         self.lineEdit.textChanged.connect(self.fileNaming)
         self.ffcBut.clicked.connect(self.ffcFunction)
+        self.comboGain.currentTextChanged.connect(self.gainFunction)
 
         #self.connect(self, SIGNAL('triggered()'), self.closeEvent)
+
+    def gainFunction(self):
+        global devh
+        if (self.comboGain.currentText() == 'LOW'):
+            set_gain_low(devh)
+        elif (self.comboGain.currentText() == 'HIGH'):
+            print('Cannot set to back to HIGH yet')
+        else:
+            print('Cannot set to AUTO')
 
     def ffcFunction(self):
         global devh
