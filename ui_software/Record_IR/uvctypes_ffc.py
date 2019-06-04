@@ -161,12 +161,6 @@ class lep_oem_sw_version(Structure):
               ("dsp_build", c_ubyte),
               ("reserved", c_ushort)]
 
-class Gain(Enum):
-    LEP_SYS_GAIN_MODE_HIGH = 0,
-    LEP_SYS_GAIN_MODE_LOW,
-    LEP_SYS_GAIN_MODE_AUTO,
-    LEP_SYS_END_GAIN_MODE,
-
 def call_extension_unit(devh, unit, control, data, size):
   return libuvc.uvc_get_ctrl(devh, unit, control, data, size, 0x81)
 
@@ -259,19 +253,18 @@ def uvc_get_frame_formats_by_guid(devh, vs_fmt_guid):
   return []
 
 def set_manual_ffc(devh):
-    sizeData = 32 #should be size 32 bytes?
-    shutter_mode = create_string_buffer(sizeData)
+    sizeData = 4 
+    shutter_mode = (c_uint16)(0)
     #0x200 Module ID VID
     #0x3C get
     #0x3D set
     getSDK = 0x3D
     controlID = (getSDK >> 2) + 1 #formula from Kurt Kiefer
     print('controlID: ' + str(controlID))
-    set_extension_unit(devh, SYS_UNIT_ID, controlID, shutter_mode, sizeData) #set_extension_unit(devh, unit, control, data, size)
-    print("Shutter Mode #: {0}".format(repr(shutter_mode.raw)))
+    set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(shutter_mode), sizeData) #set_extension_unit(devh, unit, control, data, size)
 
 def perform_manual_ffc(devh):
-    sizeData = 1 #should be size 32 bytes?
+    sizeData = 1
     shutter_mode = create_string_buffer(sizeData)
     #0x200 Module ID VID
     #0x3C get
@@ -281,13 +274,11 @@ def perform_manual_ffc(devh):
     controlID = (runFFC >> 2) + 1 #formula from Kurt Kiefer
     print('controlID: ' + str(controlID))
     set_extension_unit(devh, SYS_UNIT_ID, controlID, shutter_mode, sizeData) #set_extension_unit(devh, unit, control, data, size)
-    print("Shutter Mode #: {0}".format(repr(shutter_mode.raw)))
 
 def set_gain_low(devh):
-    sizeData = 4 #should be size 32 bytes?
-    gain_mode = create_string_buffer(4)
+    sizeData = 4
+    gain_mode = (c_uint16)(1) #0=HIGH, 1=LOW, 2=AUTO
     setGainSDK = 0x49
     controlID = (setGainSDK >> 2) + 1 #formula from Kurt Kiefer
     print('controlID: ' + str(controlID))
-    set_extension_unit(devh, SYS_UNIT_ID, controlID, gain_mode, sizeData) #set_extension_unit(devh, unit, control, data, size)
-    print("Shutter Mode #: {0}".format(repr(gain_mode.raw)))
+    set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(gain_mode), sizeData) #set_extension_unit(devh, unit, control, data, size)

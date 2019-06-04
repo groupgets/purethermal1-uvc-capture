@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from uvctypes_ffc import *
+import time
 
 def main():
     ctx = POINTER(uvc_context)()
@@ -25,8 +26,12 @@ def main():
     print_device_info(devh)
     print("Attempting to Set Gain To Low")
     set_gain_low(devh)
-    #set_manual_ffc(devh)
-    #perform_manual_ffc(devh)
+    time.sleep(2)
+    print("Attempting to Set Manual FFC")
+    set_manual_ffc(devh)
+    time.sleep(2)
+    print("Performing FFC")
+    perform_manual_ffc(devh)
     print("Success?")
 
 if __name__ == '__main__':
