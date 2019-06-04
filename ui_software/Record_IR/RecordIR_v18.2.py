@@ -126,6 +126,7 @@ def generate_colour_map():
     return lut
 
 def startStream():
+  global devh
   ctx = POINTER(uvc_context)()
   dev = POINTER(uvc_device)()
   devh = POINTER(uvc_device_handle)()
@@ -354,8 +355,7 @@ class App(QMainWindow, Ui_MainWindow):
         #self.connect(self, SIGNAL('triggered()'), self.closeEvent)
 
     def ffcFunction(self):
-        devh = POINTER(uvc_device_handle)()
-        ctrl = uvc_stream_ctrl()
+        global devh
         perform_manual_ffc(devh)
 
     def startRec2(self):
