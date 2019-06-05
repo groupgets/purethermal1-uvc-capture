@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>IR Data</string>
+   <string>Record IR</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -264,7 +264,7 @@
       <item>
        <widget class="QPushButton" name="runPost">
         <property name="text">
-         <string>Run IR Data Viewer - Post Processing Script</string>
+         <string>Run Post Processing Script</string>
         </property>
        </widget>
       </item>
