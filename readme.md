@@ -82,7 +82,7 @@ Wireless Control Enable:
 Download VNC Viewer from RealVNC onto desired computer. Use the raspberrypi IP address to connect. The IP address is assigned when the raspberry pi is connected to your local network/WiFi.
 
 ## Run Software
-Navigate to desired directory and run desired version:
+Navigate to ui_software/LATEST and run desired version:
 ```
 sudo python3 RecordIR_XX.X.py
 ```
