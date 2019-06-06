@@ -93,4 +93,4 @@ or
 sudo python3 PostProcessIR_vXX.py
 ```
 ## Additional Comments:
-Special thanks to the developers of GroupGets GetThermal and purethermal1-uvc-capture and the Flir Community Forum who helped me achieve my goals in this project.
+Special thanks to Parabilis Space Technologies, the developers of GroupGets GetThermal and purethermal1-uvc-capture, and the Flir Community Forum who helped me achieve my goals in this project.
