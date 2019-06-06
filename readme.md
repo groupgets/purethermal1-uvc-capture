@@ -42,16 +42,18 @@ Required Packages:
 ```
   sudo apt-get install python3-pyqt5
   sudo apt-get install python3-h5py
-  sudo pip3 install opencv-python
-  sudo pip3 install tifffile
-  sudo pip3 install psutil
-  sudo pip3 install matplotlib
+  sudo apt-get install python3-psutil
+  sudo apt-get install python3-matplotlib
 
+  sudo apt-get install python-opencv
+  sudo apt-get install python-tifffile
   sudo apt-get install libatlas-base-dev
   sudo apt-get install libjasper-dev
   sudo apt-get install libqtgui4
   sudo apt-get install libqt4-test
 ```
+You may need to use pip or pip3 to install some of these packages.
+
 Software:
 ```
   cd Documents
