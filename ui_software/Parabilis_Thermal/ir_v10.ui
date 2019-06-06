@@ -128,12 +128,17 @@
           </property>
           <item>
            <property name="text">
-            <string>AUTO</string>
+            <string>EXTERNAL</string>
            </property>
           </item>
           <item>
            <property name="text">
             <string>MANUAL</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>AUTO</string>
            </property>
           </item>
          </widget>

@@ -161,6 +161,28 @@ class lep_oem_sw_version(Structure):
               ("dsp_build", c_ubyte),
               ("reserved", c_ushort)]
 
+class lep_sys_shutter_mode(Structure):
+  _fields_ = [("shutterMode", c_ushort),
+              ("tempLockoutState", c_ushort),
+              ("videoFreezeDuringFFC", c_ushort),
+              ("ffcDesired", c_ushort),
+              ("elapsedTimeSinceLastFfc", c_ulong),
+              ("desiredFfcPeriod", c_ulong),
+              ("explicitCmdToOpen", c_bool),
+              ("desiredFfcTempDelta", c_ushort),
+              ("imminentDelay", c_ushort)]
+# LEP_SYS_FFC_SHUTTER_MODE_E shutterMode;   /* defines current mode */
+# LEP_SYS_SHUTTER_TEMP_LOCKOUT_STATE_E   tempLockoutState;
+# LEP_SYS_ENABLE_E videoFreezeDuringFFC;
+# LEP_SYS_ENABLE_E ffcDesired;              /* status of FFC desired */
+# LEP_UINT32 elapsedTimeSinceLastFfc;       /* in milliseconds x1 */
+# LEP_UINT32 desiredFfcPeriod;              /* in milliseconds x1 */
+# LEP_BOOL   explicitCmdToOpen;             /* true or false */
+# LEP_UINT16 desiredFfcTempDelta;           /* in Kelvin x100  */
+# LEP_UINT16 imminentDelay;                 /* in frame counts x1 */
+#
+# }LEP_SYS_FFC_SHUTTER_MODE_OBJ_T, *LEP_SYS_FFC_SHUTTER_MODE_OBJ_T_PTR;
+
 def call_extension_unit(devh, unit, control, data, size):
   return libuvc.uvc_get_ctrl(devh, unit, control, data, size, 0x81)
 
@@ -266,9 +288,14 @@ def set_manual_ffc(devh):
 def set_auto_ffc(devh):
     sizeData = 4
     shutter_mode = (c_uint16)(1)
-    #0x200 Module ID VID
-    #0x3C get
-    #0x3D set
+    getSDK = 0x3D
+    controlID = (getSDK >> 2) + 1 #formula from Kurt Kiefer
+    print('controlID: ' + str(controlID))
+    set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(shutter_mode), sizeData) #set_extension_unit(devh, unit, control, data, size)
+
+def set_external_ffc(devh):
+    sizeData = 4
+    shutter_mode = (c_uint16)(2) #2 = external
     getSDK = 0x3D
     controlID = (getSDK >> 2) + 1 #formula from Kurt Kiefer
     print('controlID: ' + str(controlID))
