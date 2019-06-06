@@ -1,14 +1,14 @@
-# ParabilisThermal
+# Parabilis Thermal
 Parabilis Space Technologies Thermal Imaging Software
 
-Recording Abilities:
+### Recording Abilities:
 - View the Flir Lepton 9 Hz Stream
 - Display Max and Min Temperatures (F or C)
 - Record Raw Data as HDF5 without overloading raspberry pi CPU
 - Save to Specific Filenames and Directories
 - Be Controlled Wirelessly using RealVNC
 
-Post Processing Abilities:
+### Post Processing Abilities:
 - View .HDF5 Recorded Raw Data in matplotlib format
 - Save .AVI Files of specific length
 - Save PNG Images
@@ -16,14 +16,14 @@ Post Processing Abilities:
 - View Temperatures at any pixel on the frame
 - Zoom in and analyze your data in depth
 
-Required Components:
+### Required Components:
 - Flir Lepton 3.5
 - PureThermal2 Interface Board (With USB Cord)
 - Raspberry Pi 3
 - Raspberry Pi 3 Power Supply
 - Display with Keyboard/Mouse Control
 
-Software Primary Dependencies:
+### Software Primary Dependencies:
 - Python 3
 - PyQt5
 - OpenCV
