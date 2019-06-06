@@ -32,13 +32,13 @@ Software Primary Dependencies:
 ## Raspberry Pi Setup
 Plug Raspberry Pi into HDMI display and connect keyboard/mouse. Must have Rasbian Stretch installed onto SD Card. Connect the Raspberry Pi to your local network/WiFi and open linux terminal to perform following terminal commands.
 
-System Update/Upgrade:
+### System Update/Upgrade:
 ```
   sudo apt-get update
   sudo apt-get upgrade
   sudo apt-get dist-upgrade
 ```
-Required Packages:
+### Required Packages:
 ```
   sudo apt-get install python3-pyqt5
   sudo apt-get install python3-h5py
@@ -54,7 +54,7 @@ Required Packages:
 ```
 You may need to use pip or pip3 to install some of these packages.
 
-Software:
+### Software:
 ```
   cd Documents
   git clone https://github.com/Kheirlb/purethermal1-uvc-capture.git
@@ -70,11 +70,11 @@ Software:
   sudo ldconfig -v
   cd ../..
 ```
-USB Permissions:
+### USB Permissions:
 ```
   sudo sh -c "echo 'SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"1e4e\", ATTRS{idProduct}==\"0100\", SYMLINK+=\"pt1\", GROUP=\"usb\", MODE=\"666\"' > /etc/udev/rules.d/99-pt1.rules"
 ```
-Wireless Control Enable:
+### Wireless Control Enable:
 ```
   sudo raspi-config
   - Interfacing Options
