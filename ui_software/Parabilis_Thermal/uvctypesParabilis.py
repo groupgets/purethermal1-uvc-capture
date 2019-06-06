@@ -315,6 +315,7 @@ def print_shutter_info(devh):
         shutter.ffcDesired, shutter.elapsedTimeSinceLastFfc, shutter.desiredFfcPeriod,
         shutter.explicitCmdToOpen, shutter.desiredFfcTempDelta, shutter.imminentDelay,
     ))
+    test = create_string_buffer(32)
 
 def perform_manual_ffc(devh):
     sizeData = 1
