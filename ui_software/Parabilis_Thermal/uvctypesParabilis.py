@@ -279,7 +279,7 @@ def uvc_get_frame_formats_by_guid(devh, vs_fmt_guid):
   return []
 
 def set_manual_ffc(devh):
-    sizeData = 4
+    sizeData = 32
     shutter_mode = (c_uint16)(0)
     #0x200 Module ID VID
     #0x3C get
@@ -290,7 +290,7 @@ def set_manual_ffc(devh):
     set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(sysShutterManual), sizeData) #set_extension_unit(devh, unit, control, data, size)
 
 def set_auto_ffc(devh):
-    sizeData = 4
+    sizeData = 32
     shutter_mode = (c_uint16)(1)
     getSDK = 0x3D
     controlID = (getSDK >> 2) + 1 #formula from Kurt Kiefer
@@ -298,7 +298,7 @@ def set_auto_ffc(devh):
     set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(sysShutterAuto), sizeData) #set_extension_unit(devh, unit, control, data, size)
 
 def set_external_ffc(devh):
-    sizeData = 4
+    sizeData = 32
     shutter_mode = (c_uint16)(2) #2 = external
     getSDK = 0x3D
     controlID = (getSDK >> 2) + 1 #formula from Kurt Kiefer
