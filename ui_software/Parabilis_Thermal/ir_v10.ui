@@ -124,7 +124,7 @@
         <item>
          <widget class="QComboBox" name="comboFFCmode">
           <property name="enabled">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
           <item>
            <property name="text">
