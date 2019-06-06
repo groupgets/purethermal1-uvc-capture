@@ -375,8 +375,8 @@ class App(QMainWindow, Ui_MainWindow):
             elif (self.comboFFCmode.currentText() == 'EXTERNAL'):
                 set_external_ffc(devh)
             else:
-                #set_auto_ffc(devh)
-                print('Cannot set to back to AUTO yet. Unplug USB from Raspberry Pi to reset lepton.')
+                set_auto_ffc(devh)
+                #print('Cannot set to back to AUTO yet. Unplug USB from Raspberry Pi to reset lepton.')
 
     def ffcFunction(self):
         global devh
