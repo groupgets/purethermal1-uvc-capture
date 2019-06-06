@@ -128,7 +128,7 @@
           </property>
           <item>
            <property name="text">
-            <string>EXTERNAL</string>
+            <string>AUTO</string>
            </property>
           </item>
           <item>
@@ -138,7 +138,7 @@
           </item>
           <item>
            <property name="text">
-            <string>AUTO</string>
+            <string>EXTERNAL</string>
            </property>
           </item>
          </widget>
