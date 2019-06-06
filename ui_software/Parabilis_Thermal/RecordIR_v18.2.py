@@ -377,6 +377,7 @@ class App(QMainWindow, Ui_MainWindow):
             else:
                 set_auto_ffc(devh)
                 #print('Cannot set to back to AUTO yet. Unplug USB from Raspberry Pi to reset lepton.')
+        print_shutter_info(devh)
 
     def ffcFunction(self):
         global devh

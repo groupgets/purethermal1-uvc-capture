@@ -305,6 +305,17 @@ def set_external_ffc(devh):
     print('controlID: ' + str(controlID))
     set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(sysShutterExternal), sizeData) #set_extension_unit(devh, unit, control, data, size)
 
+def print_shutter_info(devh):
+    shutter = lep_sys_shutter_mode()
+    getSDK = 0x3D
+    controlID = (getSDK >> 2) + 1
+    call_extension_unit(devh, SYS_UNIT_ID, controlID, byref(shutter), 32)
+    print("Shutter Info: {0} {1} {2} {3} {4} {5} {6} {7} {8}".format(
+        shutter.shutterMode, shutter.tempLockoutState, shutter.videoFreezeDuringFFC,
+        shutter.ffcDesired, shutter.elapsedTimeSinceLastFfc, shutter.desiredFfcPeriod,
+        shutter.explicitCmdToOpen, shutter.desiredFfcTempDelta, shutter.imminentDelay,
+    ))
+
 def perform_manual_ffc(devh):
     sizeData = 1
     shutter_mode = create_string_buffer(sizeData)
