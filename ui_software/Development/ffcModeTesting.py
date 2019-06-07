@@ -30,7 +30,12 @@ def main():
     print("Attempting to Call Shutter Mode Again in 2 Seconds")
     time.sleep(2)
     print_shutter_info(devh)
-    print('Function called')
+    print('Setting FFC to AUTO')
+    set_auto_ffc(devh)
+    print('Is it set to Auto?')
+    print_shutter_info(devh)
+    print('What else changed?')
+
 
 if __name__ == '__main__':
   main()
