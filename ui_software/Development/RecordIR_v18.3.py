@@ -170,8 +170,6 @@ def startStream():
 
       print("done")
       print_shutter_info(devh)
-      print_shutter_info(devh)
-      print_shutter_info(devh)
 
     except:
       #libuvc.uvc_unref_device(dev)
