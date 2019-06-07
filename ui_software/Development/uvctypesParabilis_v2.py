@@ -186,6 +186,7 @@ class lep_sys_shutter_mode(Structure):
 # }LEP_SYS_FFC_SHUTTER_MODE_OBJ_T, *LEP_SYS_FFC_SHUTTER_MODE_OBJ_T_PTR;
 
 sysShutterManual = lep_sys_shutter_mode(0, 0, 1, 0, 0, 180000, 0, 150, 52)
+sysShutterManual2 = lep_sys_shutter_mode(0, 0, 0, 0, 1, 0, 1, 0, 48928)
 sysShutterAuto = lep_sys_shutter_mode(1, 0, 1, 0, 0, 180000, 0, 150, 52)
 sysShutterAuto2 = lep_sys_shutter_mode(1, 0, 0, 0, 1, 0, 1, 0, 48928)
 sysShutterExternal = lep_sys_shutter_mode(2, 0, 1, 0, 0, 180000, 0, 150, 52)

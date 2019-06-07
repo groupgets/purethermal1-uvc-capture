@@ -34,6 +34,10 @@ def main():
     set_auto_ffc(devh)
     print('Is it set to Auto?')
     print_shutter_info(devh)
+    print('Setting FFC to MANUAL')
+    set_manual_ffc(devh)
+    print('Is it set to MANUAL?')
+    print_shutter_info(devh)
     print('What else changed?')
 
 
