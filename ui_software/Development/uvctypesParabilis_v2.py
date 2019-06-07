@@ -1,5 +1,6 @@
 from ctypes import *
 import platform
+import gc
 
 try:
   if platform.system() == 'Darwin':
@@ -310,11 +311,12 @@ def print_shutter_info(devh):
     getSDK = 0x3C
     controlID = (getSDK >> 2) + 1
     call_extension_unit(devh, SYS_UNIT_ID, controlID, byref(shutter), 32)
-    # print("Shutter Info: {0} {1} {2} {3} {4} {5} {6} {7} {8}".format(
-    #     shutter.shutterMode, shutter.tempLockoutState, shutter.videoFreezeDuringFFC,
-    #     shutter.ffcDesired, shutter.elapsedTimeSinceLastFfc, shutter.desiredFfcPeriod,
-    #     shutter.explicitCmdToOpen, shutter.desiredFfcTempDelta, shutter.imminentDelay,
-    # ))
+    print("Shutter Info: {0} {1} {2} {3} {4} {5} {6} {7} {8}".format(
+        shutter.shutterMode, shutter.tempLockoutState, shutter.videoFreezeDuringFFC,
+        shutter.ffcDesired, shutter.elapsedTimeSinceLastFfc, shutter.desiredFfcPeriod,
+        shutter.explicitCmdToOpen, shutter.desiredFfcTempDelta, shutter.imminentDelay,
+    ))
+    gc.collect()
 
 def perform_manual_ffc(devh):
     sizeData = 1
