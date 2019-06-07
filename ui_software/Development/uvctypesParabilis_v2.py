@@ -162,10 +162,10 @@ class lep_oem_sw_version(Structure):
               ("reserved", c_ushort)]
 
 class lep_sys_shutter_mode(Structure):
-  _fields_ = [("shutterMode", POINTER(c_ushort)),
-              ("tempLockoutState", POINTER(c_ushort)),
-              ("videoFreezeDuringFFC", POINTER(c_ushort)),
-              ("ffcDesired", POINTER(c_ushort)),
+  _fields_ = [("shutterMode", c_ushort),
+              ("tempLockoutState", c_ushort),
+              ("videoFreezeDuringFFC", c_ushort),
+              ("ffcDesired", c_ushort),
               ("elapsedTimeSinceLastFfc", c_ulong),
               ("desiredFfcPeriod", c_ulong),
               ("explicitCmdToOpen", c_bool),
@@ -307,15 +307,14 @@ def set_external_ffc(devh):
 
 def print_shutter_info(devh):
     shutter = lep_sys_shutter_mode()
-    getSDK = 0x3D
+    getSDK = 0x3C
     controlID = (getSDK >> 2) + 1
     call_extension_unit(devh, SYS_UNIT_ID, controlID, byref(shutter), 32)
-    print("Shutter Info: {0} {1} {2} {3} {4} {5} {6} {7} {8}".format(
-        shutter.shutterMode, shutter.tempLockoutState, shutter.videoFreezeDuringFFC,
-        shutter.ffcDesired, shutter.elapsedTimeSinceLastFfc, shutter.desiredFfcPeriod,
-        shutter.explicitCmdToOpen, shutter.desiredFfcTempDelta, shutter.imminentDelay,
-    ))
-    test = create_string_buffer(32)
+    # print("Shutter Info: {0} {1} {2} {3} {4} {5} {6} {7} {8}".format(
+    #     shutter.shutterMode, shutter.tempLockoutState, shutter.videoFreezeDuringFFC,
+    #     shutter.ffcDesired, shutter.elapsedTimeSinceLastFfc, shutter.desiredFfcPeriod,
+    #     shutter.explicitCmdToOpen, shutter.desiredFfcTempDelta, shutter.imminentDelay,
+    # ))
 
 def perform_manual_ffc(devh):
     sizeData = 1
