@@ -1,4 +1,5 @@
 from ctypes import *
+import ctypes
 import platform
 import gc
 
@@ -317,7 +318,7 @@ def print_shutter_info(devh):
         shutter.explicitCmdToOpen, shutter.desiredFfcTempDelta, shutter.imminentDelay,
     ))
     print('Things work okay')
-    _reset_cache()
+    ctypes._reset_cache()
     print('Things still okay')
     #gc.collect()
 
