@@ -317,7 +317,7 @@ def print_shutter_info(devh):
         shutter.explicitCmdToOpen, shutter.desiredFfcTempDelta, shutter.imminentDelay,
     ))
     print('Things work okay')
-    del shutter
+    _reset_cache()
     print('Things still okay')
     #gc.collect()
 
