@@ -312,7 +312,9 @@ def print_shutter_info(devh):
     getSDK = 0x3C
     controlID = (getSDK >> 2) + 1
     call_extension_unit(devh, SYS_UNIT_ID, controlID, byref(shutter), 32)
-    print("Shutter Info:\n {0}\n {1}\n {2}\n {3}\n {4}\n {5}\n {6}\n {7}\n {8}\n".format(
+    print("Shutter Info:\nshutterMode: {0}\tempLockoutState: {1}\nvideoFreezeDuringFFC: {2}\n\
+          ffcDesired: {3}\nelapsedTimeSinceLastFfc: {4}\ndesiredFfcPeriod: {5}\n\
+          explicitCmdToOpen {6}\ndesiredFfcTempDelta: {7}\nimminentDelay: {8}\n".format(
         shutter.shutterMode, shutter.tempLockoutState, shutter.videoFreezeDuringFFC,
         shutter.ffcDesired, shutter.elapsedTimeSinceLastFfc, shutter.desiredFfcPeriod,
         shutter.explicitCmdToOpen, shutter.desiredFfcTempDelta, shutter.imminentDelay,
