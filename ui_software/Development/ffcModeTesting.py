@@ -27,7 +27,10 @@ def main():
     print("Attempting to Call Shutter Mode")
     print_shutter_info(devh)
     print('Are things okay?')
-    print("Attempting to Call Shutter Mode Again")
+    print("Attempting to Call Shutter Mode Again in 2 Seconds")
+    time.sleep(2)
+    print_shutter_info(devh)
+    print('Function called')
 
 if __name__ == '__main__':
   main()
