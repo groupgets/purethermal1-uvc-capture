@@ -162,10 +162,10 @@ class lep_oem_sw_version(Structure):
               ("reserved", c_ushort)]
 
 class lep_sys_shutter_mode(Structure):
-  _fields_ = [("shutterMode", c_ushort),
-              ("tempLockoutState", c_ushort),
-              ("videoFreezeDuringFFC", c_ushort),
-              ("ffcDesired", c_ushort),
+  _fields_ = [("shutterMode", POINTER(c_ushort)),
+              ("tempLockoutState", POINTER(c_ushort)),
+              ("videoFreezeDuringFFC", POINTER(c_ushort)),
+              ("ffcDesired", POINTER(c_ushort)),
               ("elapsedTimeSinceLastFfc", c_ulong),
               ("desiredFfcPeriod", c_ulong),
               ("explicitCmdToOpen", c_bool),
