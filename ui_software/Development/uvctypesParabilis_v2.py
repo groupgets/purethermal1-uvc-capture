@@ -307,8 +307,8 @@ def set_external_ffc(devh):
     print('controlID: ' + str(controlID))
     set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(sysShutterExternal), sizeData) #set_extension_unit(devh, unit, control, data, size)
 
+shutter = lep_sys_shutter_mode()
 def print_shutter_info(devh):
-    shutter = lep_sys_shutter_mode()
     getSDK = 0x3C
     controlID = (getSDK >> 2) + 1
     call_extension_unit(devh, SYS_UNIT_ID, controlID, byref(shutter), 32)
