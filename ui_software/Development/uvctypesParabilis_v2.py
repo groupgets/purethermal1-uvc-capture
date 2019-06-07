@@ -316,7 +316,9 @@ def print_shutter_info(devh):
         shutter.ffcDesired, shutter.elapsedTimeSinceLastFfc, shutter.desiredFfcPeriod,
         shutter.explicitCmdToOpen, shutter.desiredFfcTempDelta, shutter.imminentDelay,
     ))
+    print('Things work okay')
     del shutter
+    print('Things still okay')
     #gc.collect()
 
 def perform_manual_ffc(devh):

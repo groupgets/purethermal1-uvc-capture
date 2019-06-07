@@ -26,6 +26,7 @@ def main():
     print_device_info(devh)
     print("Attempting to Call Shutter Mode")
     print_shutter_info(devh)
+    print('Are things okay?')
     print("Attempting to Call Shutter Mode Again")
 
 if __name__ == '__main__':
