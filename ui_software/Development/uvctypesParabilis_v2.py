@@ -291,7 +291,7 @@ def set_manual_ffc(devh):
     getSDK = 0x3D
     controlID = (getSDK >> 2) + 1 #formula from Kurt Kiefer
     print('controlID: ' + str(controlID))
-    set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(sysShutterManual), sizeData) #set_extension_unit(devh, unit, control, data, size)
+    set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(sysShutterManual2), sizeData) #set_extension_unit(devh, unit, control, data, size)
 
 def set_auto_ffc(devh):
     sizeData = 32
