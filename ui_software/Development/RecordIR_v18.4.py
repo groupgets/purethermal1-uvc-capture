@@ -357,13 +357,9 @@ class App(QMainWindow, Ui_MainWindow):
 
     def rebootCameraFunc(self):
         global devh
-        global thread
         self.stopRecAndSave()
         rebootCamera(devh)
-        #thread = 'unactive'
-        time.sleep(1)
-        QProcess.startDetached(os.path.basename(__file__))
-        sys.exit(0)
+        print('Restart the script')
 
     def gainFunction(self):
         global devh

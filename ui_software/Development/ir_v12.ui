@@ -276,7 +276,7 @@
       <item>
        <widget class="QPushButton" name="rebootBut">
         <property name="text">
-         <string>Re-Boot Lepton Camera</string>
+         <string>Re-Boot Camera and Close Program</string>
         </property>
        </widget>
       </item>
