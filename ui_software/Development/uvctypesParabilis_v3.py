@@ -370,7 +370,7 @@ def set_gain_auto(devh):
 def rebootCamera(devh):
     sizeData = 1
     runReboot = create_string_buffer(sizeData)
-    setReboot = 0x42
-    controlID = (setGainSDK >> 2) + 1
+    setRebootSDK = 0x42
+    controlID = (setRebootSDK >> 2) + 1
     print('controlID: ' + str(controlID))
     set_extension_unit(devh, OEM_UNIT_ID, controlID, runReboot, sizeData)
