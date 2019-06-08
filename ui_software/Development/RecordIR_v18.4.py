@@ -3,7 +3,7 @@
 from PyQt5 import QtCore, QtGui, uic
 print('Successful import of uic') #often reinstallation of PyQt5 is required
 
-from PyQt5.QtCore import (QCoreApplication, QThread, QThreadPool, pyqtSignal, pyqtSlot, Qt, QTimer, QDateTime)
+from PyQt5.QtCore import (QCoreApplication, QThread, QThreadPool, pyqtSignal, pyqtSlot, Qt, QTimer, QDateTime, QProcess)
 from PyQt5.QtGui import (QImage, QPixmap, QTextCursor)
 from PyQt5.QtWidgets import (QWidget, QMainWindow, QApplication, QLabel, QPushButton, QVBoxLayout, QGridLayout, QSizePolicy, QMessageBox, QFileDialog, QSlider, QComboBox, QProgressDialog)
 
@@ -360,7 +360,10 @@ class App(QMainWindow, Ui_MainWindow):
         global thread
         self.stopRecAndSave()
         rebootCamera(devh)
-        thread = 'unactive'
+        #thread = 'unactive'
+        time.sleep(1)
+        QProcess.startDetached(os.path.basename(__file__))
+        sys.exit(0)
 
     def gainFunction(self):
         global devh
