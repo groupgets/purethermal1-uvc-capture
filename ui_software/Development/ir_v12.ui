@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1007</width>
-    <height>701</height>
+    <width>1029</width>
+    <height>756</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,7 +30,7 @@
        </size>
       </property>
       <property name="text">
-       <string>Use GetThermal to set gain state to LOW. Click &quot;Start IR Camera Feed&quot; once camera ready.</string>
+       <string>Click &quot;Start IR Camera Feed&quot; once camera ready.</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>

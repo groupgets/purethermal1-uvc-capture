@@ -360,6 +360,7 @@ class App(QMainWindow, Ui_MainWindow):
         self.stopRecAndSave()
         rebootCamera(devh)
         print('Restart the script')
+        sys.exit()
 
     def gainFunction(self):
         global devh
