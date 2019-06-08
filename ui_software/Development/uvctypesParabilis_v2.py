@@ -190,6 +190,7 @@ sysShutterManual2 = lep_sys_shutter_mode(0, 0, 0, 0, 1, 0, 1, 0, 48928)
 sysShutterAuto = lep_sys_shutter_mode(1, 0, 1, 0, 0, 180000, 0, 150, 52)
 sysShutterAuto2 = lep_sys_shutter_mode(1, 0, 0, 0, 1, 0, 1, 0, 48928)
 sysShutterExternal = lep_sys_shutter_mode(2, 0, 1, 0, 0, 180000, 0, 150, 52)
+sysShutterExternal2 = lep_sys_shutter_mode(2, 0, 0, 0, 1, 0, 1, 0, 48928)
 
 def call_extension_unit(devh, unit, control, data, size):
   return libuvc.uvc_get_ctrl(devh, unit, control, data, size, 0x81)
@@ -307,7 +308,7 @@ def set_external_ffc(devh):
     getSDK = 0x3D
     controlID = (getSDK >> 2) + 1 #formula from Kurt Kiefer
     print('controlID: ' + str(controlID))
-    set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(sysShutterExternal), sizeData) #set_extension_unit(devh, unit, control, data, size)
+    set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(sysShutterExternal2), sizeData) #set_extension_unit(devh, unit, control, data, size)
 
 shutter = lep_sys_shutter_mode()
 def print_shutter_info(devh):
