@@ -351,8 +351,16 @@ class App(QMainWindow, Ui_MainWindow):
         self.ffcBut.clicked.connect(self.ffcFunction)
         self.comboGain.currentTextChanged.connect(self.gainFunction)
         self.comboFFCmode.currentTextChanged.connect(self.FFCmodeFunction)
+        self.rebootBut.clicked.connect(self.rebootCameraFunc)
 
         #self.connect(self, SIGNAL('triggered()'), self.closeEvent)
+
+    def rebootCameraFunc(self):
+        global devh
+        global thread
+        stopRecAndSave(self)
+        rebootCamera(devh)
+        thread = 'unactive'
 
     def gainFunction(self):
         global devh

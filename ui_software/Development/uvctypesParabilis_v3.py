@@ -366,3 +366,11 @@ def set_gain_auto(devh):
     controlID = (setGainSDK >> 2) + 1 #formula from Kurt Kiefer
     print('controlID: ' + str(controlID))
     set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(gain_mode), sizeData) #set_extension_unit(devh, unit, control, data, size)
+
+def rebootCamera(devh):
+    sizeData = 1
+    runReboot = create_string_buffer(sizeData)
+    setReboot = 0x42
+    controlID = (setGainSDK >> 2) + 1
+    print('controlID: ' + str(controlID))
+    set_extension_unit(devh, OEM_UNIT_ID, controlID, runReboot, sizeData)

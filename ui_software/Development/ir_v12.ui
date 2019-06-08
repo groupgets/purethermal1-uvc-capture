@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1007</width>
-    <height>686</height>
+    <height>701</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -270,6 +270,13 @@
        <widget class="QPushButton" name="runPost">
         <property name="text">
          <string>Run Post Processing Script</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="rebootBut">
+        <property name="text">
+         <string>Re-Boot Lepton Camera</string>
         </property>
        </widget>
       </item>
