@@ -30,7 +30,7 @@
        </size>
       </property>
       <property name="text">
-       <string>Use GetThermal to set gain state to LOW. Click &quot;Start IR Camera Feed&quot; once camera ready.</string>
+       <string>Click &quot;Start IR Camera Feed&quot; once camera ready.</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
