@@ -185,6 +185,17 @@ class lep_sys_shutter_mode(Structure):
 #
 # }LEP_SYS_FFC_SHUTTER_MODE_OBJ_T, *LEP_SYS_FFC_SHUTTER_MODE_OBJ_T_PTR;
 
+# Default Shutter Info: (1, 0, 0, 0, 1, 0, 1, 0, 48928)
+#  1	 shutterMode
+#  0	 tempLockoutState
+#  0	 videoFreezeDuringFFC
+#  0	 ffcDesired
+#  1	 elapsedTimeSinceLastFfc
+#  0	 desiredFfcPeriod
+#  True	 explicitCmdToOpen
+#  0	 desiredFfcTempDelta
+#  48928	 imminentDelay
+
 sysShutterManual = lep_sys_shutter_mode(0, 0, 1, 0, 0, 180000, 0, 150, 52)
 sysShutterManual2 = lep_sys_shutter_mode(0, 0, 0, 0, 1, 0, 1, 0, 48928)
 sysShutterAuto = lep_sys_shutter_mode(1, 0, 1, 0, 0, 180000, 0, 150, 52)
@@ -286,9 +297,6 @@ def uvc_get_frame_formats_by_guid(devh, vs_fmt_guid):
 def set_manual_ffc(devh):
     sizeData = 32
     shutter_mode = (c_uint16)(0)
-    #0x200 Module ID VID
-    #0x3C get
-    #0x3D set
     getSDK = 0x3D
     controlID = (getSDK >> 2) + 1 #formula from Kurt Kiefer
     print('controlID: ' + str(controlID))
@@ -300,7 +308,7 @@ def set_auto_ffc(devh):
     getSDK = 0x3D
     controlID = (getSDK >> 2) + 1 #formula from Kurt Kiefer
     print('controlID: ' + str(controlID))
-    set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(sysShutterAuto2), sizeData) #set_extension_unit(devh, unit, control, data, size)
+    set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(sysShutterAuto2), sizeData)
 
 def set_external_ffc(devh):
     sizeData = 32
@@ -308,7 +316,7 @@ def set_external_ffc(devh):
     getSDK = 0x3D
     controlID = (getSDK >> 2) + 1 #formula from Kurt Kiefer
     print('controlID: ' + str(controlID))
-    set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(sysShutterExternal2), sizeData) #set_extension_unit(devh, unit, control, data, size)
+    set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(sysShutterExternal2), sizeData)
 
 shutter = lep_sys_shutter_mode()
 def print_shutter_info(devh):
