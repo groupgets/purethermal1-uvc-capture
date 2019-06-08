@@ -358,7 +358,7 @@ class App(QMainWindow, Ui_MainWindow):
     def rebootCameraFunc(self):
         global devh
         global thread
-        stopRecAndSave(self)
+        self.stopRecAndSave()
         rebootCamera(devh)
         thread = 'unactive'
 
