@@ -52,7 +52,7 @@ Plug Raspberry Pi into HDMI display and connect keyboard/mouse. Must have Rasbia
   sudo apt-get install libjasper-dev
   sudo apt-get install libqtgui4
   sudo apt-get install libqt4-test
-  
+
   sudo apt-get install libusb-1.0-0-dev
   sudo apt-get install build-essential
 ```
@@ -88,7 +88,7 @@ You may need to use pip or pip3 to install some of these packages.
 Download VNC Viewer from RealVNC onto desired computer. Use the raspberrypi IP address to connect. The IP address is assigned when the raspberry pi is connected to your local network/WiFi.
 
 ## Run Software
-Navigate to ui_software/LATEST and run desired version:
+Navigate to ui_software/Parabilis_Thermal and run desired version:
 ```
 sudo python3 RecordIR_XX.X.py
 ```
