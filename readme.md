@@ -45,12 +45,16 @@ Plug Raspberry Pi into HDMI display and connect keyboard/mouse. Must have Rasbia
   sudo apt-get install python3-psutil
   sudo apt-get install python3-matplotlib
 
-  sudo apt-get install python-opencv
-  sudo apt-get install python-tifffile
+  sudo pip3 install opencv-contrib-python
+  sudo pip3 install --no-cache-dir tifffile
+
   sudo apt-get install libatlas-base-dev
   sudo apt-get install libjasper-dev
   sudo apt-get install libqtgui4
   sudo apt-get install libqt4-test
+  
+  sudo apt-get install libusb-1.0-0-dev
+  sudo apt-get install build-essential
 ```
 You may need to use pip or pip3 to install some of these packages.
 
