@@ -7,6 +7,7 @@ Parabilis Space Technologies Thermal Imaging Software
 - Record Raw Data as HDF5 without overloading raspberry pi CPU
 - Save to Specific Filenames and Directories
 - Be Controlled Wirelessly using RealVNC
+- Stable Build: RecordIR_v18.3.py
 
 ![Record IR Screenshot](/images/RecordIR.jpg?raw=true)
 
@@ -17,6 +18,7 @@ Parabilis Space Technologies Thermal Imaging Software
 - Generate TIFF Files for further processing in MATLAB or GNU Octave
 - View Temperatures at any pixel on the frame
 - Zoom in and analyze your data in depth
+- Stable Build: PostProcessIR_v11.py
 
 ![Post Process IR Screenshot](/images/PostProcessIR.jpg?raw=true)
 
@@ -28,6 +30,7 @@ Parabilis Space Technologies Thermal Imaging Software
 - Display with Keyboard/Mouse Control
 
 ### Software Primary Dependencies:
+- Rasbian Stretch
 - Python 3
 - PyQt5
 - OpenCV
@@ -36,15 +39,15 @@ Parabilis Space Technologies Thermal Imaging Software
 ## Raspberry Pi Setup
 Plug Raspberry Pi into HDMI display and connect keyboard/mouse. Must have Rasbian Stretch installed onto SD Card. Connect the Raspberry Pi to your local network/WiFi and open linux terminal to run build script or perform following terminal commands.
 
-## Build Script:
+## Build Script
 Big shout out to Jerry Pierre for creating a simply and easy to use raspberry pi build script which condenses all of the terminal commands into a simple shell script. Simply copy/save the build_pi_thermal_app.sh file in this repository to your raspberry pi and perform the following two commands in the terminal. The raspberry pi update/upgrade can take 15+ minutes and the package/software download & installation will take approximately 5 minutes.
 ```
 sudo chmod 775 build_pi_thermal_app.sh
 sudo ./build_pi_thermal_app.sh
 ```
 
-## Terminal Commands:
-If the build script does not work or you wish to do things manually, you can use the following terminal commands. Please feel free to email me if you need any help.
+## Terminal Commands
+If the build script does not work or you wish to do things manually, you can use the following terminal commands.
 
 ### System Update/Upgrade:
 ```

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 #File Created by Jerry Pierre and Edited by Karl Parks
+#sudo chmod 775 build_pi_thermal_app.sh
+#sudo ./build_pi_thermal_app.sh
 
 install_thermal_dependencies(){
 
