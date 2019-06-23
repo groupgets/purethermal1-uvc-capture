@@ -399,7 +399,7 @@ class App(QMainWindow, Ui_MainWindow):
     				dateAndTime = str(QDateTime.currentDateTime().toString())
     				dateAndTime = dateAndTime.replace(" ", "_")
     				dateAndTime = dateAndTime.replace(":", "-")
-    				filePathAndName = str(fileNamingFull + '_' + dateAndTime)
+    				filePathAndName = str(fileNamingFull + '_' + dateAndTime + '.HDF5')
     				print(filePathAndName)
     				self.filePathDisp.setText(filePathAndName)
     				try:
@@ -545,7 +545,7 @@ class App(QMainWindow, Ui_MainWindow):
 
     def displayStorage(self):
         usage = psutil.disk_usage('/')
-        oneMinVid = 25000000
+        oneMinVid = 18750000
         timeAvail = usage.free/oneMinVid
         self.storageLabel.setText('Recording Time Left: ' + str(round(timeAvail, 2)) + ' Minutes')
 

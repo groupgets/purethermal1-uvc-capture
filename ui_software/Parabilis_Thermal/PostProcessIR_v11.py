@@ -706,7 +706,7 @@ class Window(QMainWindow, Ui_MainWindow):
 		bounds = [0, 50, 100]
 		im = plt.imshow(rgbImage, cmap=ccm, clim=(readTempInt(toggleUnitState, 'min'), readTempInt(toggleUnitState, 'max')))
 		cbar = fig.colorbar(im);
-		cbar.minorticks_on()
+		cbar.ax.minorticks_on()
 		limits = cbar.get_clim()
 		cbar.set_label('     [$^\circ$' + toggleUnitState + ']', rotation=0) #270
 		plt.show()
