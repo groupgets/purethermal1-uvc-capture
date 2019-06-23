@@ -32,12 +32,16 @@ Parabilis Space Technologies Thermal Imaging Software
 ## Raspberry Pi Setup
 Plug Raspberry Pi into HDMI display and connect keyboard/mouse. Must have Rasbian Stretch installed onto SD Card. Connect the Raspberry Pi to your local network/WiFi and open linux terminal to run build script or perform following terminal commands.
 
-## Build Script
-Big shout out to Jerry Pierre for creating a simply and easy to use raspberry pi build script which condenses all of the terminal commands into a simply shell script. Simply copy/save build_pi_thermal_app.sh file and perform the following two commands in the terminal. This will take approximately 5-10 minutes.
+## Build Script:
+Big shout out to Jerry Pierre for creating a simply and easy to use raspberry pi build script which condenses all of the terminal commands into a simple shell script. Simply copy/save build_pi_thermal_app.sh file to your raspberry pi and perform the following two commands in the terminal. The package/software download/installation will take approximately 5-10 minutes.
 ```
 sudo chmod 775 build_pi_thermal_app.sh
 sudo ./build_pi_thermal_app.sh
 ```
+
+##Terminal Commands:
+If the build script does not work or you wish to do things manually, you can use the following terminal commands.
+
 ### System Update/Upgrade:
 ```
   sudo apt-get update
@@ -59,7 +63,7 @@ sudo ./build_pi_thermal_app.sh
   sudo apt-get install -y libqtgui4
   sudo apt-get install -y libqt4-test
 ```
-You may need to use pip or pip3 to install some of these packages.
+You may need to alternate using pip, pip3, or apt-get to install some of these packages.
 
 ### Software:
 ```
@@ -100,7 +104,7 @@ or
 sudo python3 PostProcessIR_vXX.py
 ```
 
-If you used the build script, then RecordIR_XX.X.py was created as an executable using chmod +x and can now be double-clicked.
+If you used the build script, then RecordIR_XX.X.py was created as an executable using chmod +x and can now be double-clicked to run.
 
 ## Additional Comments:
 Special thanks to Parabilis Space Technologies, Jerry Pierre, the developers of GroupGets GetThermal and purethermal1-uvc-capture, and the Flir Community Forum who helped me achieve my goals in this project.
