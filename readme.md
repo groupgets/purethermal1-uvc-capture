@@ -62,10 +62,10 @@ You may need to use pip or pip3 to install some of these packages.
 ```
   cd Documents
   git clone https://github.com/Kheirlb/purethermal1-uvc-capture.git
-  cd purethermal1-uvc-capture
-  cd ui_software
   git clone https://github.com/groupgets/libuvc
   sudo apt-get install cmake
+  sudo apt-get install libusb-1.0-0-dev
+  sudo apt-get install libjpeg-dev
   cd libuvc
   mkdir build
   cd build
