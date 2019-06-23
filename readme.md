@@ -24,6 +24,7 @@ Parabilis Space Technologies Thermal Imaging Software
 - Display with Keyboard/Mouse Control
 
 ### Software Primary Dependencies:
+- Rasbian Stretch
 - Python 3
 - PyQt5
 - OpenCV
