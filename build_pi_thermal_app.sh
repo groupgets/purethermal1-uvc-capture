@@ -28,8 +28,8 @@ install_thermal_app(){
     git clone https://github.com/Kheirlb/purethermal1-uvc-capture.git
     git clone https://github.com/groupgets/libuvc
     sudo apt-get install cmake -y
-    sudo apt-get install libusb-1.0-0-dev
-    sudo apt-get install libjpeg-dev
+    sudo apt-get install libusb-1.0-0-dev -y
+    sudo apt-get install libjpeg-dev -y
     cd libuvc
     mkdir build
     cd build
