@@ -734,7 +734,7 @@ class Window(QMainWindow, Ui_MainWindow):
 		fileSelected = ""
 		dlg = QFileDialog()
 		dlg.setDefaultSuffix( '.HDF5' )
-		fileSelected, filter = dlg.getOpenFileName(self, 'Open File', '/') #, 'HD5F (*.HDF5)'))
+		fileSelected, filter = dlg.getOpenFileName(self, 'Open File', '/', 'HDF5 (*.HDF5);; All Files (*)')
 		print(fileSelected)
 		self.dispSelectedFile.setText(fileSelected)
 		if fileSelected != "":

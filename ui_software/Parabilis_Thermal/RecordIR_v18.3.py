@@ -545,7 +545,7 @@ class App(QMainWindow, Ui_MainWindow):
 
     def displayStorage(self):
         usage = psutil.disk_usage('/')
-        oneMinVid = 18750000
+        oneMinVid = 20000000
         timeAvail = usage.free/oneMinVid
         self.storageLabel.setText('Recording Time Left: ' + str(round(timeAvail, 2)) + ' Minutes')
 
