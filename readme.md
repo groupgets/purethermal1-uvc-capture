@@ -32,7 +32,7 @@ Parabilis Space Technologies Thermal Imaging Software
 ## Raspberry Pi Setup
 Plug Raspberry Pi into HDMI display and connect keyboard/mouse. Must have Rasbian Stretch installed onto SD Card. Connect the Raspberry Pi to your local network/WiFi and open linux terminal to run build script or perform following terminal commands.
 
-## Build Script:
+## Build Script
 Big shout out to Jerry Pierre for creating a simply and easy to use raspberry pi build script which condenses all of the terminal commands into a simple shell script. Simply copy/save build_pi_thermal_app.sh file to your raspberry pi and perform the following two commands in the terminal. The package/software download & installation will take approximately 5-10 minutes.
 ```
 sudo chmod 775 build_pi_thermal_app.sh
@@ -106,5 +106,5 @@ sudo python3 PostProcessIR_vXX.py
 
 If you used the build script, then RecordIR_XX.X.py was created as an executable using chmod +x and can now be double-clicked to run.
 
-## Additional Comments:
+## Additional Comments
 Special thanks to Parabilis Space Technologies, Jerry Pierre, the developers of GroupGets GetThermal and purethermal1-uvc-capture, and the Flir Community Forum who helped me achieve my goals in this project.
