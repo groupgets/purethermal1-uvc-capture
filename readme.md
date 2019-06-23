@@ -7,15 +7,17 @@ Parabilis Space Technologies Thermal Imaging Software
 - Record Raw Data as HDF5 without overloading raspberry pi CPU
 - Save to Specific Filenames and Directories
 - Be Controlled Wirelessly using RealVNC
+- Change Lepton Gain and FFC Modes
+- Specifically designed for post-processing of raw thermal data
 - Stable Build: RecordIR_v18.3.py
 
 ![Record IR Screenshot](/images/RecordIR.jpg?raw=true)
 
 ### Post Processing Abilities:
-- View .HDF5 Recorded Raw Data in matplotlib format
-- Save .AVI Files of specific length
+- View HDF5 Recorded Raw Data in matplotlib format
+- Save AVI Files of specific length
 - Save PNG Images
-- Generate TIFF Files for further processing in MATLAB or GNU Octave
+- Generate TIFF Files for further processing in programs such as MATLAB or GNU Octave
 - View Temperatures at any pixel on the frame
 - Zoom in and analyze your data in depth
 - Stable Build: PostProcessIR_v11.py
@@ -25,29 +27,36 @@ Parabilis Space Technologies Thermal Imaging Software
 ### Required Components:
 - Flir Lepton 3.5
 - PureThermal2 Interface Board (With USB Cord)
-- Raspberry Pi 3
-- Raspberry Pi 3 Power Supply
+- Linux Computer (Tested on Raspberry Pi and NVIDIA Jetson Nano)
 - Display with Keyboard/Mouse Control
 
-### Software Primary Dependencies:
-- Rasbian Stretch
+### Primary Software Dependencies:
 - Python 3
 - PyQt5
 - OpenCV
 - libuvc
 
-## Raspberry Pi Setup
-Plug Raspberry Pi into HDMI display and connect keyboard/mouse. Must have Rasbian Stretch installed onto SD Card. Connect the Raspberry Pi to your local network/WiFi and open linux terminal to run build script or perform following terminal commands.
+## Computer Setup
+Parabilis Thermal can run on most Linux computers. This software was originally developed on the XUbuntu Linux distribution for a Raspberry Pi 3 B+. Big shout out to Jerry Pierre for creating a simply and easy to use Raspberry Pi and NVIDIA Jetson Nano build script which condenses all of the terminal commands into simple shell scripts. Simply plug your computer into a display and connect keyboard/mouse. You must have the appropriate Linux OS installed onto the computer (Raspbian Stretch must be written to the Raspberry Pi microSD Card). Connect the computer to your local network/WiFi and open a Linux terminal to run the build scripts.
 
-## Build Script
-Big shout out to Jerry Pierre for creating a simply and easy to use raspberry pi build script which condenses all of the terminal commands into a simple shell script. Simply copy/save the build_pi_thermal_app.sh file in this repository to your raspberry pi and perform the following two commands in the terminal. The raspberry pi update/upgrade can take 15+ minutes and the package/software download & installation will take approximately 5 minutes.
+### Raspberry Pi Build Script:
+Simply copy/save the build_pi_thermal_app.sh file in this repository to your Raspberry Pi and perform the following two commands in the terminal. The Raspberry Pi update/upgrade can take 15+ minutes and the package/software download & installation will take approximately 5 minutes.
 ```
 sudo chmod 775 build_pi_thermal_app.sh
 sudo ./build_pi_thermal_app.sh
 ```
 
+### NVIDIA Jetson Nano Build Script:
+Follow the very similar process to the Raspberry Pi above. The biggest difference is that the NVIDIA Jetson Nano will require a separate build script for OpenCV and will use build_nano_thermal_app.sh instead. Just down load this file as is https://github.com/mdegans/nano_build_opencv/blob/master/build_opencv.sh
+```
+sudo chmod 775 build_opencv.sh
+sudo chmod 775 build_nano_thermal_app.sh
+sudo ./build_opencv.sh
+sudo ./build_nano_thermal_app.sh
+```
+
 ## Terminal Commands
-If the build script does not work or you wish to do things manually, you can use the following terminal commands.
+If the build script does not work or you wish to do things manually, you can use the following terminal commands. Keep in mind the NVIDIA Jetson Nano requires a separate build for OpenCV.
 
 ### System Update/Upgrade:
 ```
@@ -92,14 +101,14 @@ You may need to alternate using pip, pip3, or apt-get to install some of these p
 ```
   sudo sh -c "echo 'SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"1e4e\", ATTRS{idProduct}==\"0100\", SYMLINK+=\"pt1\", GROUP=\"usb\", MODE=\"666\"' > /etc/udev/rules.d/99-pt1.rules"
 ```
-### Wireless Control Enable:
+### Wireless Control Enable on Raspberry Pi:
 ```
   sudo raspi-config
   - Interfacing Options
   -- VNC
   --- Yes
 ```
-Download VNC Viewer from RealVNC onto desired computer. Use the raspberrypi IP address to connect. The IP address is assigned when the raspberry pi is connected to your local network/WiFi.
+Download VNC Viewer from RealVNC onto desired computer. Use the Raspberry Pi IP address to connect. The IP address is assigned when the raspberry pi is connected to your local network/WiFi.
 
 ## Run Software
 Navigate to ui_software/Parabilis_Thermal and run desired version:
@@ -111,7 +120,10 @@ or
 sudo python3 PostProcessIR_vXX.py
 ```
 
-If you used the build script, then RecordIR_XX.X.py was created as an executable using chmod +x and can now be double-clicked to run.
+If you used the Raspberry Pi build script, then RecordIR_XX.X.py was created as an executable using chmod +x and can now be double-clicked to run.
+
+## Troubleshooting:
+- Ensure proper power supply. The Flir Lepton 3.5 can take a lot of power during the FFC (up to 650mW). Raspberry Pi's without a sufficient power supply have been known to have errors and it is recommended to have 5.25 VDC power supply.
 
 ## Additional Comments:
 Special thanks to Parabilis Space Technologies, Jerry Pierre, the developers of GroupGets GetThermal and purethermal1-uvc-capture, and the Flir Community Forum who helped me achieve my goals in this project.
