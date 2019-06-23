@@ -30,31 +30,34 @@ Parabilis Space Technologies Thermal Imaging Software
 - libuvc
 
 ## Raspberry Pi Setup
-Plug Raspberry Pi into HDMI display and connect keyboard/mouse. Must have Rasbian Stretch installed onto SD Card. Connect the Raspberry Pi to your local network/WiFi and open linux terminal to perform following terminal commands.
+Plug Raspberry Pi into HDMI display and connect keyboard/mouse. Must have Rasbian Stretch installed onto SD Card. Connect the Raspberry Pi to your local network/WiFi and open linux terminal to run build script or perform following terminal commands.
 
+## Build Script
+Big shout out to Jerry Pierre for creating a simply and easy to use raspberry pi build script which condenses all of the terminal commands into a simply shell script. Simply copy/save build_pi_thermal_app.sh file and perform the following two commands in the terminal. This will take approximately 5-10 minutes.
+```
+sudo chmod 775 build_pi_thermal_app.sh
+sudo ./build_pi_thermal_app.sh
+```
 ### System Update/Upgrade:
 ```
   sudo apt-get update
-  sudo apt-get upgrade
-  sudo apt-get dist-upgrade
+  sudo apt-get upgrade -y
+  sudo apt-get dist-upgrade -y --autoremove
 ```
 ### Required Packages:
 ```
-  sudo apt-get install python3-pyqt5
-  sudo apt-get install python3-h5py
-  sudo apt-get install python3-psutil
-  sudo apt-get install python3-matplotlib
+  sudo apt-get install -y python3-pyqt5
+  sudo apt-get install -y python3-h5py
+  sudo apt-get install -y python3-psutil
+  sudo apt-get install -y python3-matplotlib
 
   sudo pip3 install opencv-contrib-python
   sudo pip3 install --no-cache-dir tifffile
 
-  sudo apt-get install libatlas-base-dev
-  sudo apt-get install libjasper-dev
-  sudo apt-get install libqtgui4
-  sudo apt-get install libqt4-test
-
-  sudo apt-get install libusb-1.0-0-dev
-  sudo apt-get install build-essential
+  sudo apt-get install -y libatlas-base-dev
+  sudo apt-get install -y libjasper-dev
+  sudo apt-get install -y libqtgui4
+  sudo apt-get install -y libqt4-test
 ```
 You may need to use pip or pip3 to install some of these packages.
 
@@ -63,7 +66,7 @@ You may need to use pip or pip3 to install some of these packages.
   cd Documents
   git clone https://github.com/Kheirlb/purethermal1-uvc-capture.git
   git clone https://github.com/groupgets/libuvc
-  sudo apt-get install cmake
+  sudo apt-get install cmake -y
   sudo apt-get install libusb-1.0-0-dev
   sudo apt-get install libjpeg-dev
   cd libuvc
@@ -96,5 +99,8 @@ or
 ```
 sudo python3 PostProcessIR_vXX.py
 ```
+
+If you used the build script, then RecordIR_XX.X.py was created as an executable using chmod +x and can now be double-clicked.
+
 ## Additional Comments:
-Special thanks to Parabilis Space Technologies, the developers of GroupGets GetThermal and purethermal1-uvc-capture, and the Flir Community Forum who helped me achieve my goals in this project.
+Special thanks to Parabilis Space Technologies, Jerry Pierre, the developers of GroupGets GetThermal and purethermal1-uvc-capture, and the Flir Community Forum who helped me achieve my goals in this project.

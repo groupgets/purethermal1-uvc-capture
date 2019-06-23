@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-#File Created by Jerry Pierre and Edited by Karl Parks 
+#File Created by Jerry Pierre and Edited by Karl Parks
 
 install_thermal_dependencies(){
 
     echo "updating system."
     sudo apt-get update
+    sudo apt-get upgrade -y
     sudo apt-get dist-upgrade -y --autoremove
 
     echo "Installing thermal dependencies."
@@ -18,6 +19,7 @@ install_thermal_dependencies(){
     sudo apt-get install -y libjasper-dev
     sudo apt-get install -y libqtgui4
     sudo apt-get install -y libqt4-test
+
 }
 
 install_thermal_app(){
@@ -37,9 +39,9 @@ install_thermal_app(){
     cd ../..
 
     sudo sh -c "echo 'SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"1e4e\", ATTRS{idProduct}==\"0100\", SYMLINK+=\"pt1\", GROUP=\"usb\", MODE=\"666\"' > /etc/udev/rules.d/99-pt1.rules"
-    
+
     cd purethermal1-uvc-capture/ui_software/Parabilis_Thermal
-    sudo chmod +x RecordIR_v18.3.py 
+    sudo chmod +x RecordIR_v18.3.py
 
 }
 
