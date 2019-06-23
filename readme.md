@@ -8,7 +8,7 @@ Parabilis Space Technologies Thermal Imaging Software
 - Save to Specific Filenames and Directories
 - Be Controlled Wirelessly using RealVNC
 
-![Record IR Screenshot](/images/RecordIR.JPG?raw=true)
+![Record IR Screenshot](/images/RecordIR.jpg?raw=true)
 
 ### Post Processing Abilities:
 - View .HDF5 Recorded Raw Data in matplotlib format
@@ -18,7 +18,7 @@ Parabilis Space Technologies Thermal Imaging Software
 - View Temperatures at any pixel on the frame
 - Zoom in and analyze your data in depth
 
-![Post Process IR Screenshot](/images/PostProcessIR.JPG?raw=true)
+![Post Process IR Screenshot](/images/PostProcessIR.jpg?raw=true)
 
 ### Required Components:
 - Flir Lepton 3.5
