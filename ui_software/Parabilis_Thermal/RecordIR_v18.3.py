@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Author: Karl Parks, 2018
 
 from PyQt5 import QtCore, QtGui, uic
 print('Successful import of uic') #often reinstallation of PyQt5 is required

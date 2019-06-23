@@ -1,4 +1,5 @@
-# Author: Karl Parks
+#!/usr/bin/env python3
+# Author: Karl Parks, 2018
 # Python 3 and PyQt5 Implementation
 
 import sys
