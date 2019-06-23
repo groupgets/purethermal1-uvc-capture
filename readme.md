@@ -42,7 +42,7 @@ Parabilis Thermal can run on most Linux computers. This software was originally 
 ### Raspberry Pi Build Script:
 Simply copy/save the build_pi_thermal_app.sh file in this repository to your Raspberry Pi and perform the following two commands in the terminal. The Raspberry Pi update/upgrade can take 15+ minutes and the package/software download & installation will take approximately 5 minutes.
 
-[Link to Raspberry Pi Build Script](build_pi_thermal_app.sh)
+[Link to Raspberry Pi Build Script](https://raw.githubusercontent.com/Kheirlb/purethermal1-uvc-capture/master/build_pi_thermal_app.sh)
 
 ```
 sudo chmod 775 build_pi_thermal_app.sh
@@ -52,7 +52,7 @@ sudo ./build_pi_thermal_app.sh
 ### NVIDIA Jetson Nano Build Script:
 Follow the very similar process to the Raspberry Pi above. The biggest difference is that the NVIDIA Jetson Nano will require a separate build script for OpenCV and will use build_nano_thermal_app.sh instead. Just down load this file as is https://github.com/mdegans/nano_build_opencv/blob/master/build_opencv.sh
 
-[Link to NVIDIA Jetson Nano Build Script](build_nano_thermal_app.sh)
+[Link to NVIDIA Jetson Nano Build Script](https://raw.githubusercontent.com/Kheirlb/purethermal1-uvc-capture/master/build_nano_thermal_app.sh)
 
 ```
 sudo chmod 775 build_opencv.sh
