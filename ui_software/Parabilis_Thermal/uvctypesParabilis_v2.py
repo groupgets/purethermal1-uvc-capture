@@ -164,10 +164,10 @@ class lep_oem_sw_version(Structure):
               ("reserved", c_ushort)]
 
 class lep_sys_shutter_mode(Structure):
-  _fields_ = [("shutterMode", c_ushort),
-              ("tempLockoutState", c_ushort),
-              ("videoFreezeDuringFFC", c_ushort),
-              ("ffcDesired", c_ushort),
+  _fields_ = [("shutterMode", c_uint),
+              ("tempLockoutState", c_uint),
+              ("videoFreezeDuringFFC", c_uint),
+              ("ffcDesired", c_uint),
               ("elapsedTimeSinceLastFfc", c_ulong),
               ("desiredFfcPeriod", c_ulong),
               ("explicitCmdToOpen", c_bool),
@@ -185,7 +185,8 @@ class lep_sys_shutter_mode(Structure):
 #
 # }LEP_SYS_FFC_SHUTTER_MODE_OBJ_T, *LEP_SYS_FFC_SHUTTER_MODE_OBJ_T_PTR;
 
-# Default Shutter Info: (1, 0, 0, 0, 1, 0, 1, 0, 48928)
+# Original default shutter mode below is incorrect due to improper ctypes
+# Incorrect Default Shutter Info: (1, 0, 0, 0, 1, 0, 1, 0, 48928)
 #  1	 shutterMode
 #  0	 tempLockoutState
 #  0	 videoFreezeDuringFFC
@@ -195,6 +196,17 @@ class lep_sys_shutter_mode(Structure):
 #  True	 explicitCmdToOpen
 #  0	 desiredFfcTempDelta
 #  48928	 imminentDelay
+
+# Correct Default Shutter Info: (1, 0, 1, 0, 0, 180000, 0, 150, 52)
+#  1	 shutterMode
+#  0	 tempLockoutState
+#  1	 videoFreezeDuringFFC
+#  0	 ffcDesired
+#  0	 elapsedTimeSinceLastFfc
+#  180000	 desiredFfcPeriod
+#  False	 explicitCmdToOpen
+#  150	 desiredFfcTempDelta
+#  52	 imminentDelay
 
 sysShutterManual = lep_sys_shutter_mode(0, 0, 1, 0, 0, 180000, 0, 150, 52)
 sysShutterManual2 = lep_sys_shutter_mode(0, 0, 0, 0, 1, 0, 1, 0, 48928)
@@ -300,7 +312,7 @@ def set_manual_ffc(devh):
     getSDK = 0x3D
     controlID = (getSDK >> 2) + 1 #formula from Kurt Kiefer
     print('controlID: ' + str(controlID))
-    set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(sysShutterManual2), sizeData) #set_extension_unit(devh, unit, control, data, size)
+    set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(sysShutterManual), sizeData) #set_extension_unit(devh, unit, control, data, size)
 
 def set_auto_ffc(devh):
     sizeData = 32
@@ -308,7 +320,7 @@ def set_auto_ffc(devh):
     getSDK = 0x3D
     controlID = (getSDK >> 2) + 1 #formula from Kurt Kiefer
     print('controlID: ' + str(controlID))
-    set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(sysShutterAuto2), sizeData)
+    set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(sysShutterAuto), sizeData)
 
 def set_external_ffc(devh):
     sizeData = 32
@@ -316,7 +328,7 @@ def set_external_ffc(devh):
     getSDK = 0x3D
     controlID = (getSDK >> 2) + 1 #formula from Kurt Kiefer
     print('controlID: ' + str(controlID))
-    set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(sysShutterExternal2), sizeData)
+    set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(sysShutterExternal), sizeData)
 
 shutter = lep_sys_shutter_mode()
 def print_shutter_info(devh):
