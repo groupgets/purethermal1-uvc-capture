@@ -11,6 +11,7 @@ install_thermal_dependencies(){
     sudo apt-get dist-upgrade -y --autoremove
 
     echo "Installing thermal dependencies."
+    sudo apt install python3-pip -y
     sudo apt-get install -y python3-pyqt5
     sudo apt-get install -y python3-h5py
     sudo apt-get install -y python3-psutil
@@ -27,6 +28,7 @@ install_thermal_dependencies(){
 install_thermal_app(){
 
     echo "Installing and building thermal app."
+    sudo apt install git -y
     git clone https://github.com/Kheirlb/purethermal1-uvc-capture.git
     git clone https://github.com/groupgets/libuvc
     sudo apt-get install cmake -y
