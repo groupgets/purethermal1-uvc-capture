@@ -362,6 +362,7 @@ def set_gain_low(devh):
     controlID = (setGainSDK >> 2) + 1 #formula from Kurt Kiefer
     print('controlID: ' + str(controlID))
     set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(gain_mode), sizeData) #set_extension_unit(devh, unit, control, data, size)
+    perform_manual_ffc(devh)
 
 def set_gain_high(devh):
     sizeData = 4
@@ -370,6 +371,7 @@ def set_gain_high(devh):
     controlID = (setGainSDK >> 2) + 1 #formula from Kurt Kiefer
     print('controlID: ' + str(controlID))
     set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(gain_mode), sizeData) #set_extension_unit(devh, unit, control, data, size)
+    perform_manual_ffc(devh)
 
 def set_gain_auto(devh):
     sizeData = 4
@@ -378,3 +380,4 @@ def set_gain_auto(devh):
     controlID = (setGainSDK >> 2) + 1 #formula from Kurt Kiefer
     print('controlID: ' + str(controlID))
     set_extension_unit(devh, SYS_UNIT_ID, controlID, byref(gain_mode), sizeData) #set_extension_unit(devh, unit, control, data, size)
+    perform_manual_ffc(devh)
