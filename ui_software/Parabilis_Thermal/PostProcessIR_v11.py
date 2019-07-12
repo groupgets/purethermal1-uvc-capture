@@ -204,8 +204,9 @@ def raw_to_8bit(data):
 frame = 1
 videoState = 'notPlay'
 framerate = 1 #(1/9 frames per second), do not adjust
-timerHz = 111 #ms 1/9 = 0.111 sec, decrease to increase speed
+timerHz = 115 #ms 1/8.7 = 0.1149 sec, decrease to increase speed
 fileSelected = ""
+usedOnce = 1
 
 class Window(QMainWindow, Ui_MainWindow):
 	def __init__(self):
@@ -262,6 +263,9 @@ class Window(QMainWindow, Ui_MainWindow):
 		self.timer.timeout.connect(self.playVid5)
 		self.timer.start()
 
+		if (len(sys.argv) > 1):
+			self.getFile()
+
 	def cmIronFunc(self):
 		global colorMapType
 		colorMapType = 0
@@ -298,33 +302,33 @@ class Window(QMainWindow, Ui_MainWindow):
 		self.history.insertPlainText('Display ' + str(toggleUnitState) + '\n')
 		self.history.moveCursor(QTextCursor.End)
 
-	def startTimer(self):
-		global hz
-		self.timer.stop()
-		print(hz)
-		self.timer.setInterval(timerHz)
-		self.timer.timeout.connect(self.playVid5)
-		self.timer.start()
-		print('Re-Started Timer')
+	# def startTimer(self):
+	# 	global hz
+	# 	self.timer.stop()
+	# 	print(hz)
+	# 	self.timer.setInterval(timerHz)
+	# 	self.timer.timeout.connect(self.playVid5)
+	# 	self.timer.start()
+	# 	print('Re-Started Timer')
+	#
+	# def stopTimer(self):
+	# 	self.timer.stop()
 
-	def stopTimer(self):
-		self.timer.stop()
-
-	def speed(self):
-		global framerate
-		hzIndex = self.comboBoxHz.currentIndex()
-		if hzIndex == 0:
-			framerate = 0.5
-			print('Half Framerate')
-		elif hzIndex == 1:
-			framerate = 1
-			print('Normal Framerate')
-		elif hzIndex == 2:
-			framerate = 2
-			print('Double Framerate')
-		else:
-			hz = 111
-		self.startTimer()
+	# def speed(self):
+	# 	global framerate
+	# 	hzIndex = self.comboBoxHz.currentIndex()
+	# 	if hzIndex == 0:
+	# 		framerate = 0.5
+	# 		print('Half Framerate')
+	# 	elif hzIndex == 1:
+	# 		framerate = 1
+	# 		print('Normal Framerate')
+	# 	elif hzIndex == 2:
+	# 		framerate = 2
+	# 		print('Double Framerate')
+	# 	else:
+	# 		hz = 111
+	# 	self.startTimer()
 
 	def slValueChange(self):
 		global frame
@@ -359,24 +363,20 @@ class Window(QMainWindow, Ui_MainWindow):
 		global frame
 		global editLastFrame
 		global videoState
+		global fileSelected
 		videoState = 'pause'
 		if fileSelected != "":
+			frame = int(self.startEdit.text())
+			editLastFrame = int(self.stopEdit.text())
 			fileNameVid = ""
 			dlgVid = QFileDialog()
-			#dlg.setNameFilter('PNG files (*.png)')
 			dlgVid.setDefaultSuffix('.avi')
-			fileNameVid, filter = dlgVid.getSaveFileName(self.w, 'Navigate to Directory and Choose a File Name to Save To', 'untitled.avi', 'AVI Video (*.avi)')
-			#if self.startEdit.isModified():
+			fileNameVid, filter = dlgVid.getSaveFileName(self.w, 'Navigate to Directory and Choose a File Name to Save To', fileSelected + '_f' + str(frame) + '-' + str(editLastFrame) + '_VIDEO.avi', 'AVI Video (*.avi)')
 			fileNameVid = str(fileNameVid)
-			#if fileNameVid.endswith('.avi') == False:
-			#	fileNameVid = fileNameVid + '.avi'
-			frame = int(self.startEdit.text())
-			#if self.stopEdit.isModified():
-			editLastFrame = int(self.stopEdit.text())
 			fourcc = cv2.VideoWriter_fourcc(*'MJPG')
 			if fileNameVid != "":
 				try:
-					out = cv2.VideoWriter(fileNameVid,fourcc, 9.0, (640,480), True)
+					out = cv2.VideoWriter(fileNameVid, fourcc, 8.7, (640,480), True)
 					print('past out')
 
 					initialFrame = frame
@@ -432,7 +432,7 @@ class Window(QMainWindow, Ui_MainWindow):
 			dlg = QFileDialog()
 			#dlg.setNameFilter('PNG files (*.png)')
 			dlg.setDefaultSuffix('.png')
-			fileNameImage, filter = dlg.getSaveFileName(self.w, 'Navigate to Directory and Choose a File Name to Save To', 'untitled.png', 'PNG Image (*.png)')
+			fileNameImage, filter = dlg.getSaveFileName(self.w, 'Navigate to Directory and Choose a File Name to Save To', fileSelected + '_f' + str(frame) + '_PNG.png', 'PNG Image (*.png)')
 			if fileNameImage != "":
 				try:
 					print(fileNameImage)
@@ -461,7 +461,7 @@ class Window(QMainWindow, Ui_MainWindow):
 			dlgTiff = QFileDialog()
 			#dlg.setNameFilter('PNG files (*.png)')
 			dlgTiff.setDefaultSuffix('.tiff')
-			fileNameTiff, filter = dlgTiff.getSaveFileName(self.w, 'Navigate to Directory and Choose a File Name to Save To', 'untitled.tiff', 'TIFF File (*.tiff)')
+			fileNameTiff, filter = dlgTiff.getSaveFileName(self.w, 'Navigate to Directory and Choose a File Name to Save To', fileSelected + '_TIFF.tiff', 'TIFF File (*.tiff)')
 			print(fileNameTiff)
 			if fileNameTiff != "":
 				self.history.insertPlainText('File Name Selected\n')
@@ -731,17 +731,27 @@ class Window(QMainWindow, Ui_MainWindow):
 		global fileSelected
 		global editLastFrame
 		global lastFrame
+		global usedOnce
 		#self.pauseVideo()
-		fileSelected = ""
-		dlg = QFileDialog()
-		dlg.setDefaultSuffix( '.HDF5' )
-		fileSelected, filter = dlg.getOpenFileName(self, 'Open File', '/', 'HDF5 (*.HDF5);; All Files (*)')
-		print(fileSelected)
-		self.dispSelectedFile.setText(fileSelected)
+		if (len(sys.argv) > 1) and (usedOnce == 1):
+			print("First file specified from command line")
+			fileSelected = sys.argv[1]
+			usedOnce = 0
+		else:
+			lastFileSelected = ""
+			if fileSelected != "":
+				lastFileSelected = fileSelected
+			fileSelected = ""
+			dlg = QFileDialog()
+			dlg.setDefaultSuffix( '.HDF5' )
+			fileSelected, filter = dlg.getOpenFileName(self, 'Open File', lastFileSelected, 'HDF5 (*.HDF5);; All Files (*)')
+			print(fileSelected)
+			self.dispSelectedFile.setText(fileSelected)
 		if fileSelected != "":
 			try:
 				self.dispSelectedFile.setText(fileSelected)
 				self.f_read = h5py.File(str(fileSelected), 'r')
+				frame = 1
 				self.dispImg()
 				self.enableThings()
 				self.setSlider()
