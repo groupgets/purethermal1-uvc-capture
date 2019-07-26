@@ -164,15 +164,15 @@ class lep_oem_sw_version(Structure):
               ("reserved", c_ushort)]
 
 class lep_sys_shutter_mode(Structure):
-  _fields_ = [("shutterMode", c_uint),
-              ("tempLockoutState", c_uint),
-              ("videoFreezeDuringFFC", c_uint),
-              ("ffcDesired", c_uint),
-              ("elapsedTimeSinceLastFfc", c_ulong),
-              ("desiredFfcPeriod", c_ulong),
+  _fields_ = [("shutterMode", c_uint32),
+              ("tempLockoutState", c_uint32),
+              ("videoFreezeDuringFFC", c_uint32),
+              ("ffcDesired", c_uint32),
+              ("elapsedTimeSinceLastFfc", c_uint32),
+              ("desiredFfcPeriod", c_uint32),
               ("explicitCmdToOpen", c_bool),
-              ("desiredFfcTempDelta", c_ushort),
-              ("imminentDelay", c_ushort)]
+              ("desiredFfcTempDelta", c_uint16),
+              ("imminentDelay", c_uint16)]
 # LEP_SYS_FFC_SHUTTER_MODE_E shutterMode;   /* defines current mode */
 # LEP_SYS_SHUTTER_TEMP_LOCKOUT_STATE_E   tempLockoutState;
 # LEP_SYS_ENABLE_E videoFreezeDuringFFC;
@@ -197,7 +197,7 @@ class lep_sys_shutter_mode(Structure):
 #  0	 desiredFfcTempDelta
 #  48928	 imminentDelay
 
-# Correct Default Shutter Info: (1, 0, 1, 0, 0, 180000, 0, 150, 52)
+# Correct Default Shutter Info According to IDD: (1, 0, 1, 0, 0, 180000, 0, 150, 52)
 #  1	 shutterMode
 #  0	 tempLockoutState
 #  1	 videoFreezeDuringFFC
@@ -208,12 +208,24 @@ class lep_sys_shutter_mode(Structure):
 #  150	 desiredFfcTempDelta
 #  52	 imminentDelay
 
-sysShutterManual = lep_sys_shutter_mode(0, 0, 1, 0, 0, 180000, 0, 150, 52)
-sysShutterManual2 = lep_sys_shutter_mode(0, 0, 0, 0, 1, 0, 1, 0, 48928)
-sysShutterAuto = lep_sys_shutter_mode(1, 0, 1, 0, 0, 180000, 0, 150, 52)
-sysShutterAuto2 = lep_sys_shutter_mode(1, 0, 0, 0, 1, 0, 1, 0, 48928)
-sysShutterExternal = lep_sys_shutter_mode(2, 0, 1, 0, 0, 180000, 0, 150, 52)
-sysShutterExternal2 = lep_sys_shutter_mode(2, 0, 0, 0, 1, 0, 1, 0, 48928)
+# Default Shutter Info According to Lepton on Bootup: (1, 0, 1, 0, 0, 180000, 1, 0, 150)
+#  1	 shutterMode
+#  0	 tempLockoutState
+#  1	 videoFreezeDuringFFC
+#  0	 ffcDesired
+#  0	 elapsedTimeSinceLastFfc
+#  180000	 desiredFfcPeriod
+#  True	 explicitCmdToOpen
+#  0	 desiredFfcTempDelta
+#  150	 imminentDelay
+
+explicitCmdToOpenVal = 1
+desiredFfcTempDeltaVal = 0
+imminentDelayVal = 150
+
+sysShutterManual = lep_sys_shutter_mode(0, 0, 1, 0, 0, 180000, explicitCmdToOpenVal, desiredFfcTempDeltaVal, imminentDelayVal)
+sysShutterAuto = lep_sys_shutter_mode(1, 0, 1, 0, 0, 180000, explicitCmdToOpenVal, desiredFfcTempDeltaVal, imminentDelayVal)
+sysShutterExternal = lep_sys_shutter_mode(2, 0, 1, 0, 0, 180000, explicitCmdToOpenVal, desiredFfcTempDeltaVal, imminentDelayVal)
 
 def call_extension_unit(devh, unit, control, data, size):
   return libuvc.uvc_get_ctrl(devh, unit, control, data, size, 0x81)

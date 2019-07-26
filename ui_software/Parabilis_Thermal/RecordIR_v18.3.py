@@ -179,7 +179,12 @@ def startStream():
         print("uvc_start_streaming failed: {0}".format(res))
         exit(1)
 
-      print("done")
+      print("done starting stream, displaying settings")
+      print_shutter_info(devh)
+      print("resetting settings to default")
+      set_auto_ffc(devh)
+      set_gain_high(devh)
+      print("current settings")
       print_shutter_info(devh)
 
     except:
