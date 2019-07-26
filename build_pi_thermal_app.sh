@@ -3,12 +3,16 @@
 #sudo chmod 775 build_pi_thermal_app.sh
 #sudo ./build_pi_thermal_app.sh
 
-install_thermal_dependencies(){
+install_system_updates(){
 
     echo "updating system."
     sudo apt-get update
     sudo apt-get upgrade -y
     sudo apt-get dist-upgrade -y --autoremove
+
+}
+
+install_thermal_dependencies(){
 
     echo "Installing thermal dependencies."
     sudo apt install python3-pip -y
@@ -50,7 +54,7 @@ install_thermal_app(){
 }
 
 main () {
-
+    #install_system_updates
     install_thermal_dependencies
     install_thermal_app
 }

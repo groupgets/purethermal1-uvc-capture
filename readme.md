@@ -129,7 +129,22 @@ sudo python3 PostProcessIR_vXX.py
 If you used the Raspberry Pi build script, then RecordIR_XX.X.py was created as an executable using chmod +x and can now be double-clicked to run.
 
 ## Troubleshooting:
-- Ensure proper power supply. The Flir Lepton 3.5 can take a lot of power during the FFC (up to 650mW). Raspberry Pi's without a sufficient power supply have been known to have errors and it is recommended to have 5.25 VDC power supply.
+Ensure proper power supply. The Flir Lepton 3.5 can take a lot of power during the FFC (up to 650mW). Raspberry Pi's without a sufficient power supply have been known to have errors and it is recommended to have 5.25 VDC power supply.
+
+Unknown Issues:
+- Video Feed Freezes. Have not discovered issue. May be related to PyQt5 and Qt Threading. 
+- Switching FFC Mode to Auto makes it FFC every second. May be related to desiredFfcPeriod
+Shutter Info:
+ 1	 shutterMode
+ 0	 tempLockoutState
+ 1	 videoFreezeDuringFFC
+ 0	 ffcDesired
+ 773094113284574	 elapsedTimeSinceLastFfc
+ 5067193825886209	 desiredFfcPeriod
+ False	 explicitCmdToOpen
+ 0	 desiredFfcTempDelta
+ 0	 imminentDelay
+
 
 ## Additional Comments:
 Special thanks to Parabilis Space Technologies, Jerry Pierre, the developers of GroupGets GetThermal and purethermal1-uvc-capture, and the Flir Community Forum who helped me achieve my goals in this project.
