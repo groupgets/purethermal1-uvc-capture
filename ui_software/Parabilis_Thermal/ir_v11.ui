@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1007</width>
-    <height>686</height>
+    <width>1097</width>
+    <height>745</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,35 +15,6 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0" rowspan="2">
-     <widget class="QLabel" name="displayFrame">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>640</width>
-        <height>480</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>Click &quot;Start IR Camera Feed&quot; once camera ready.</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1" rowspan="2">
-     <widget class="Line" name="line">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="2">
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
@@ -68,6 +39,31 @@
           </property>
           <property name="text">
            <string>Perform FFC</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_9">
+        <item>
+         <widget class="QPushButton" name="cmIronBut">
+          <property name="text">
+           <string>Ironblack</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="cmGrayBut">
+          <property name="text">
+           <string>Grayscale</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="cmRainBut">
+          <property name="text">
+           <string>Rainbow</string>
           </property>
          </widget>
         </item>
@@ -274,6 +270,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="printShutterBut">
+        <property name="text">
+         <string>Print Shutter Info to Terminal</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QLabel" name="label">
         <property name="text">
          <string>Command Log:</string>
@@ -281,22 +284,6 @@
        </widget>
       </item>
      </layout>
-    </item>
-    <item row="1" column="2">
-     <widget class="QPlainTextEdit" name="history">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>87</height>
-       </size>
-      </property>
-     </widget>
     </item>
     <item row="2" column="0" colspan="3">
      <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -344,6 +331,51 @@
        </widget>
       </item>
      </layout>
+    </item>
+    <item row="0" column="0" rowspan="2">
+     <widget class="QLabel" name="displayFrame">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>640</width>
+        <height>480</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Click &quot;Start IR Camera Feed&quot; once camera ready.</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QPlainTextEdit" name="history">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>87</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1" rowspan="2">
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
