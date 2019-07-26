@@ -145,6 +145,20 @@ Shutter Info:
  0	 desiredFfcTempDelta
  0	 imminentDelay
 
+Strang differences between ubuntu and pi. Likely has to do with size of variable types. ctypes may need to be configured differently.
+
+Shutter Info:
+ 1	 shutterMode
+ 0	 tempLockoutState
+ 1	 videoFreezeDuringFFC
+ 0	 ffcDesired
+ 4703	 elapsedTimeSinceLastFfc
+ 180000	 desiredFfcPeriod
+ True	 explicitCmdToOpen
+ 0	 desiredFfcTempDelta
+ 150	 imminentDelay
+
+
 
 ## Additional Comments:
 Special thanks to Parabilis Space Technologies, Jerry Pierre, the developers of GroupGets GetThermal and purethermal1-uvc-capture, and the Flir Community Forum who helped me achieve my goals in this project.
