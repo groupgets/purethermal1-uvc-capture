@@ -19,7 +19,11 @@ install_thermal_dependencies(){
     sudo apt-get install -y python3-pyqt5
     sudo apt-get install -y python3-h5py
     sudo apt-get install -y python3-psutil
-    sudo pip3 install opencv-contrib-python
+    #sudo pip3 install opencv-contrib-python
+	git clone https://github.com/Itseez/opencv_contrib.git 
+    cd opencv_contrib
+    git checkout 3.1.0
+    cd ..
     sudo pip3 install --no-cache-dir tifffile
     sudo apt-get install -y python3-matplotlib
     sudo apt-get install -y libatlas-base-dev
