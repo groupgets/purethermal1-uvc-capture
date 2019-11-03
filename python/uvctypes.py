@@ -5,7 +5,10 @@ try:
   if platform.system() == 'Darwin':
     libuvc = cdll.LoadLibrary("libuvc.dylib")
   elif platform.system() == 'Linux':
-    libuvc = cdll.LoadLibrary("libuvc.so")
+    try:
+      libuvc = cdll.LoadLibrary("libuvc.so")
+    except OSError:
+      libuvc = cdll.LoadLibrary("libuvc.so.0")
   else:
     libuvc = cdll.LoadLibrary("libuvc")
 except OSError:
