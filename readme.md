@@ -77,15 +77,17 @@ If the build script does not work or you wish to do things manually, you can use
   sudo apt-get install -y python3-psutil
   sudo apt-get install -y python3-matplotlib
 
-  sudo pip3 install opencv-contrib-python
-  sudo pip3 install --no-cache-dir tifffile
+  git clone https://github.com/Itseez/opencv_contrib.git
+  cd opencv_contrib
+  git checkout 3.1.0
+  cd ..
 
   sudo apt-get install -y libatlas-base-dev
   sudo apt-get install -y libjasper-dev
   sudo apt-get install -y libqtgui4
   sudo apt-get install -y libqt4-test
 ```
-You may need to alternate using pip, pip3, or apt-get to install some of these packages.
+You may need to alternate using pip, pip3, or apt-get to install some of these packages. Specifically OpenCV is available on pip3 and apt via "sudo pip3 install opencv-contrib-python" and "sudo apt install python3-opencv", however cloning the git repository has proven to be more reliable on Raspbian.
 
 ### Software:
 ```
