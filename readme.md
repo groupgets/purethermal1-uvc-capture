@@ -1,5 +1,5 @@
 # Parabilis Thermal
-Parabilis Space Technologies Thermal Imaging Software
+Parabilis Thermal Imaging Software
 
 ### Recording Abilities:
 - View the Flir Lepton 9 Hz Stream
