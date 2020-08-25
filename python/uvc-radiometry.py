@@ -55,10 +55,36 @@ def display_temperature(img, val_k, loc, color):
   cv2.line(img, (x - 2, y), (x + 2, y), color, 1)
   cv2.line(img, (x, y - 2), (x, y + 2), color, 1)
 
+def get_devices(ctx):
+
+  devices = []
+
+  devs = POINTER(c_void_p)()
+  res = libuvc.uvc_get_device_list(ctx, byref(devs))
+
+  if res != 0:
+    print("uvc_find_device error")
+    exit(1)
+
+  count = 0
+  while devs[count] != None:
+    dev = cast(devs[count], POINTER(uvc_device))
+    count += 1
+
+    desc = POINTER(uvc_device_descriptor)()
+    res = libuvc.uvc_get_device_descriptor(dev, byref(desc))
+
+    if res != 0:
+      print("Could not get device descriptor")
+      continue
+
+    if desc.contents.idProduct == PT_USB_PID and desc.contents.idVendor == PT_USB_VID:
+      devices.append((desc.contents, dev))
+
+  return devices
+
 def main():
   ctx = POINTER(uvc_context)()
-  dev = POINTER(uvc_device)()
-  devh = POINTER(uvc_device_handle)()
   ctrl = uvc_stream_ctrl()
 
   res = libuvc.uvc_init(byref(ctx), 0)
@@ -67,18 +93,30 @@ def main():
     exit(1)
 
   try:
-    res = libuvc.uvc_find_device(ctx, byref(dev), PT_USB_VID, PT_USB_PID, 0)
-    if res < 0:
-      print("uvc_find_device error")
+
+    devs = get_devices(ctx)
+
+    if len(devs) == 0:
+      print("Did not find any devices")
       exit(1)
 
+    print("Found {} devices".format(len(devs)))
+
     try:
-      res = libuvc.uvc_open(dev, byref(devh))
+      second = False
+      for (desc, dev) in devs:
+        devh = POINTER(uvc_device_handle)()
+        res = libuvc.uvc_open(dev, byref(devh))
+        if res == 0:
+          break
+        print("could not open {}, trying next".format(desc.serialNumber))
+        second = True
+
       if res < 0:
-        print("uvc_open error")
+        print("Could not open any devices")
         exit(1)
 
-      print("device opened!")
+      print("device opened: ", desc.manufacturer, desc.product, desc.serialNumber)
 
       print_device_info(devh)
       print_device_formats(devh)

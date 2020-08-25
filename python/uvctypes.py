@@ -22,6 +22,14 @@ class uvc_context(Structure):
               ("handler_thread", c_ulong),
               ("kill_handler_thread", c_int)]
 
+class uvc_device_descriptor(Structure):
+  _fields_ = [("idVendor", c_uint16),
+              ("idProduct", c_uint16),
+              ("bcdUVC", c_uint16),
+              ("serialNumber", c_char_p),
+              ("manufacturer", c_char_p),
+              ("product", c_char_p)]
+
 class uvc_device(Structure):
   _fields_ = [("ctx", POINTER(uvc_context)),
               ("ref", c_int),
