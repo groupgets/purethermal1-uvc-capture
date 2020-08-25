@@ -243,11 +243,17 @@ def uvc_iter_frames_for_format(devh, format_desc):
     yield p_frame_desc.contents
     p_frame_desc = p_frame_desc.contents.next
 
-def print_device_formats(devh):
-  for format_desc in uvc_iter_formats(devh):
+def print_frame_format(devh, frame_desc):
+    print("  frame {0}x{1} @ {2}fps".format(frame_desc.wWidth, frame_desc.wHeight, int(1e7 / frame_desc.dwDefaultFrameInterval)))
+
+def print_device_format(devh, format_desc):
     print("format: {0}".format(format_desc.guidFormat[0:4]))
     for frame_desc in uvc_iter_frames_for_format(devh, format_desc):
-      print("  frame {0}x{1} @ {2}fps".format(frame_desc.wWidth, frame_desc.wHeight, int(1e7 / frame_desc.dwDefaultFrameInterval)))
+        print_frame_format(devh, frame_desc)
+
+def print_device_formats(devh):
+    for format_desc in uvc_iter_formats(devh):
+        print_device_format(devh, format_desc)
 
 def uvc_get_frame_formats_by_guid(devh, vs_fmt_guid):
   for format_desc in uvc_iter_formats(devh):
