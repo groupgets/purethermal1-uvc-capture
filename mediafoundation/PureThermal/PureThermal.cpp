@@ -1,5 +1,4 @@
-﻿#include "pch.h"
-#include "Device.h"
+﻿#include "Device.h"
 
 
 double KelvinToCelsius(std::uint16_t kelvin)
@@ -25,12 +24,10 @@ int main()
 		Device pureThermal{};
 		if (!pureThermal)
 		{
-			std::cout << "\nDid not find \"PureThermal\" device\n";
+			std::cout << "\nDid not find any \"PureThermal\" device\n";
 		}
 		else
-		{
-			std::cout << "\nFound \"PureThermal\" device\n\n";
-
+		{		
 			pureThermal.PrintDeviceInfo();
 
 			std::cout << "\nPress any key to perform an FFC..." << std::endl;
@@ -39,7 +36,7 @@ int main()
 
 			std::cout << "Press any key to capture a frame..." << std::endl;
 			std::cin.get();
-			auto frame = pureThermal.GetFrame();
+			Device::Frame frame = pureThermal.GetFrame();
 			if (!(frame.data.empty()))
 			{
 				std::stringstream fileName;
@@ -64,6 +61,7 @@ int main()
 			{
 				std::cout << "Y16 format not supported" << std::endl;
 			}
+
 		}
 	}
 

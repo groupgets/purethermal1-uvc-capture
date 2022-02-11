@@ -1,6 +1,4 @@
-#include "pch.h"
 #include "Device.h"
-
 
 template <class T>
 void SafeRelease(T** object)
@@ -14,6 +12,9 @@ void SafeRelease(T** object)
 
 
 Device::Device()
+	: flir_status(new LEP_STATUS_T)
+	, _selectedDeviceID("N/A")
+	, flir_uptime_ms(0)
 {
 	if (!SelectDevice())
 	{
@@ -48,14 +49,30 @@ Device::~Device()
 }
 
 
+/*
+	Check the FLIR LEPTON® Software Interface Description Document (IDD) for more information:
+	https://cdn.sparkfun.com/assets/0/6/d/2/e/16465-FLIRLepton-SoftwareIDD.pdf
+*/
 void Device::PrintDeviceInfo()
 {
+	// Version
 	LepOemSwVersion version{};
-	char flir_pn[32];
-	char flir_sn[8];
 	SetGetExtensionUnit(_xuLepOem, 9, KSPROPERTY_TYPE_GET, &version, sizeof(version));
-	SetGetExtensionUnit(_xuLepOem, 8, KSPROPERTY_TYPE_GET, flir_pn, sizeof(flir_pn));
-	SetGetExtensionUnit(_xuLepSys, 3, KSPROPERTY_TYPE_GET, flir_sn, sizeof(flir_sn));
+
+	// Part Number
+	LEP_OEM_PART_NUMBER_T_PTR flir_pn = new LEP_OEM_PART_NUMBER_T;// aka char flir_pn[32];
+	SetGetExtensionUnit(_xuLepOem, 8, KSPROPERTY_TYPE_GET, flir_pn, sizeof(flir_pn->value));
+
+	// Serial Number
+	LEP_UINT64 flir_sn; // aka char flir_sn[8];
+	SetGetExtensionUnit(_xuLepSys, 3, KSPROPERTY_TYPE_GET, &flir_sn, sizeof(flir_sn));
+	//since we have a 64 bit value we need to check every byte for it self
+	char flir_sn_char[8];
+	memcpy(flir_sn_char, &flir_sn, 8);
+
+	//Uptime
+	SetGetExtensionUnit(_xuLepSys, 4, KSPROPERTY_TYPE_GET, &flir_uptime_ms, sizeof(flir_uptime_ms));
+
 	std::cout
 		<< "Version gpp: "
 		<< static_cast<unsigned int>(version.gpp_major) << "."
@@ -65,17 +82,20 @@ void Device::PrintDeviceInfo()
 		<< static_cast<unsigned int>(version.dsp_major) << "."
 		<< static_cast<unsigned int>(version.dsp_minor) << "."
 		<< static_cast<unsigned int>(version.dsp_build) << "\n"
-		<< "FLIR part#: " << flir_pn << "\n"
+		<< "FLIR part#: " << std::string(flir_pn->value) << "\n"
 		<< "FLIR serial#: ";
-	for (size_t i = 0; i < sizeof(flir_sn); ++i)
+	for (size_t i = 0; i < sizeof(flir_sn_char); ++i)
 	{
 		if (i != 0)
 		{
 			std::cout << "-";
 		}
-		std::cout << static_cast<unsigned int>(flir_sn[i]);
+		std::cout << static_cast<unsigned int>(flir_sn_char[i]);
 	}
-	std::cout << "\n";
+
+	std::cout << "\nFLIR uptime: " << flir_uptime_ms * 0.001 << " seconds" << std::endl;
+
+	std::cout << "\nCam status: " << GetFLIRStatus() << std::endl;
 }
 
 
@@ -161,25 +181,39 @@ bool Device::SelectDevice()
 	hr = MFEnumDeviceSources(pVideoConfig, &_availableVideoDevices, &_numberOfAvailableVideoDevices);
 	CheckResult(hr, "Device enumeration");
 
-	for (UINT32 i = 0; i < _numberOfAvailableVideoDevices; ++i)
-	{
-		UINT32 cchName;
-		WCHAR* szDevicePath;
-		hr = _availableVideoDevices[i]->GetAllocatedString(
-			MF_DEVSOURCE_ATTRIBUTE_SOURCE_TYPE_VIDCAP_SYMBOLIC_LINK,
-			&szDevicePath, &cchName);
-		auto sDevicePath = WCharToString(szDevicePath);
-		CoTaskMemFree(szDevicePath);
-		CheckResult(hr, "Get video device path");
-		if (sDevicePath.find("vid_1e4e&pid_0100") != std::string::npos)
+	if (_numberOfAvailableVideoDevices > 0) {
+		for (UINT32 i = 0; i < _numberOfAvailableVideoDevices; ++i)
 		{
-			_selectedDeviceIndex = i;
-			break;
+			UINT32 cchName;
+			WCHAR* szDevicePath;
+			hr = _availableVideoDevices[i]->GetAllocatedString(
+				MF_DEVSOURCE_ATTRIBUTE_SOURCE_TYPE_VIDCAP_SYMBOLIC_LINK,
+				&szDevicePath, &cchName);
+			auto sDevicePath = WCharToString(szDevicePath);
+			CoTaskMemFree(szDevicePath);
+			CheckResult(hr, "Get video device path");
+			std::istringstream f(sDevicePath);
+			std::vector<std::string> deviceIds;
+			std::string id;
+			while (std::getline(f, id, '&')) {
+				deviceIds.push_back(id);
+			}
+
+			if (sDevicePath.find("vid_1e4e&pid_0100") != std::string::npos)
+			{			
+				std::cout << "ID for device " << i << ": " + deviceIds[3] << std::endl;
+
+				_selectedDeviceIndex = i;
+				_selectedDeviceID = deviceIds[3];
+			}
 		}
+	}else{
+		return false;
 	}
 
 	if (_selectedDeviceIndex != (std::numeric_limits<UINT32>::max)())
 	{
+		std::cout << std::endl << "Using PureThermal device with index " << _selectedDeviceIndex << " and ID: "<< _selectedDeviceID << std::endl << std::endl;
 		return true;
 	}
 	else
@@ -514,4 +548,34 @@ HRESULT Device::OnReadSample(HRESULT status, DWORD streamIndex, DWORD streamFlag
 	}
 
 	return hr;
+}
+
+std::string Device::GetFLIRStatus() {
+
+	SetGetExtensionUnit(_xuLepSys, 2, KSPROPERTY_TYPE_GET, flir_status, sizeof(flir_status));
+	std::string status = "N/A";
+	switch (flir_status->camStatus) {
+	case LEP_SYSTEM_READY:
+		status = "Ready";
+		break;
+	case LEP_SYSTEM_INITIALIZING:
+		status = "Initializing";
+		break;
+	case LEP_SYSTEM_IN_LOW_POWER_MODE:
+		status = "In low power mode";
+		break;
+	case LEP_SYSTEM_GOING_INTO_STANDBY:
+		status = "Going into standby";
+		break;
+	case LEP_SYSTEM_FLAT_FIELD_IN_PROCESS:
+		status = "Flat field in process";
+		break;
+	case LEP_SYSTEM_END_STATES:
+		status = "End states";
+		break;
+	default:
+		status = "N/A";
+	}
+
+	return status;
 }
