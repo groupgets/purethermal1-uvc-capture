@@ -3,11 +3,13 @@
 """
 CV2 video capture example from Pure Thermal 1
 """
+SAVE_DIR = '/home/nle/flir_data/'
+import time
 
 try:
     import cv2
 except ImportError:
-    print "ERROR python-opencv must be installed"
+    print ("ERROR python-opencv must be installed")
     exit(1)
 
 class OpenCvCapture(object):
@@ -19,13 +21,13 @@ class OpenCvCapture(object):
         # capture from the LAST camera in the system
         # presumably, if the system has a built-in webcam it will be the first
         for i in reversed(range(10)):
-            print "Testing for presense of camera #{0}...".format(i)
+            print ("Testing for presense of camera #{0}...".format(i))
             cv2_cap = cv2.VideoCapture(i)
             if cv2_cap.isOpened():
                 break
 
         if not cv2_cap.isOpened():
-            print "Camera not found!"
+            print ("Camera not found!")
             exit(1)
 
         self.cv2_cap = cv2_cap
@@ -36,16 +38,18 @@ class OpenCvCapture(object):
         """
 
         cv2.namedWindow("lepton", cv2.WINDOW_NORMAL)
-        print "Running, ESC or Ctrl-c to exit..."
+        print ("Running, ESC or Ctrl-c to exit...")
         while True:
             ret, img = self.cv2_cap.read()
 
             if ret == False:
-                print "Error reading image"
+                print ("Error reading image")
                 break
-
             cv2.imshow("lepton", cv2.resize(img, (640, 480)))
-            if cv2.waitKey(5) == 27:
+            key = cv2.waitKey(1)
+            if key == 32:
+                cv2.imwrite(SAVE_DIR + 'data_{}.jpg'.format(time.time()), img)
+            elif key == 27:
                 break
 
         cv2.destroyAllWindows()
