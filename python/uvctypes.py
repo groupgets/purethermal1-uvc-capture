@@ -5,7 +5,10 @@ try:
   if platform.system() == 'Darwin':
     libuvc = cdll.LoadLibrary("libuvc.dylib")
   elif platform.system() == 'Linux':
-    libuvc = cdll.LoadLibrary("libuvc.so")
+    try:
+      libuvc = cdll.LoadLibrary("libuvc.so")
+    except OSError:
+      libuvc = cdll.LoadLibrary("libuvc.so.0")
   else:
     libuvc = cdll.LoadLibrary("libuvc")
 except OSError:
@@ -18,6 +21,14 @@ class uvc_context(Structure):
               ("open_devices", c_void_p),
               ("handler_thread", c_ulong),
               ("kill_handler_thread", c_int)]
+
+class uvc_device_descriptor(Structure):
+  _fields_ = [("idVendor", c_uint16),
+              ("idProduct", c_uint16),
+              ("bcdUVC", c_uint16),
+              ("serialNumber", c_char_p),
+              ("manufacturer", c_char_p),
+              ("product", c_char_p)]
 
 class uvc_device(Structure):
   _fields_ = [("ctx", POINTER(uvc_context)),
@@ -177,10 +188,10 @@ SYS_UNIT_ID = 6
 VID_UNIT_ID = 7
 
 UVC_FRAME_FORMAT_UYVY = 4
-UVC_FRAME_FORMAT_I420 = 5
-UVC_FRAME_FORMAT_RGB = 7
-UVC_FRAME_FORMAT_BGR = 8
-UVC_FRAME_FORMAT_Y16 = 13
+UVC_FRAME_FORMAT_I420 = 16
+UVC_FRAME_FORMAT_RGB = 5
+UVC_FRAME_FORMAT_BGR = 6
+UVC_FRAME_FORMAT_Y16 = 10
 
 VS_FMT_GUID_GREY = create_string_buffer(
     b"Y8  \x00\x00\x10\x00\x80\x00\x00\xaa\x00\x38\x9b\x71", 16
@@ -240,11 +251,17 @@ def uvc_iter_frames_for_format(devh, format_desc):
     yield p_frame_desc.contents
     p_frame_desc = p_frame_desc.contents.next
 
-def print_device_formats(devh):
-  for format_desc in uvc_iter_formats(devh):
+def print_frame_format(devh, frame_desc):
+    print("  frame {0}x{1} @ {2}fps".format(frame_desc.wWidth, frame_desc.wHeight, int(1e7 / frame_desc.dwDefaultFrameInterval)))
+
+def print_device_format(devh, format_desc):
     print("format: {0}".format(format_desc.guidFormat[0:4]))
     for frame_desc in uvc_iter_frames_for_format(devh, format_desc):
-      print("  frame {0}x{1} @ {2}fps".format(frame_desc.wWidth, frame_desc.wHeight, int(1e7 / frame_desc.dwDefaultFrameInterval)))
+        print_frame_format(devh, frame_desc)
+
+def print_device_formats(devh):
+    for format_desc in uvc_iter_formats(devh):
+        print_device_format(devh, format_desc)
 
 def uvc_get_frame_formats_by_guid(devh, vs_fmt_guid):
   for format_desc in uvc_iter_formats(devh):
